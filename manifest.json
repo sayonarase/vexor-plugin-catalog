@@ -1,58 +1,5217 @@
 [
-  {"name":"check_postgres","title":"check_postgres","description":"Comprehensive PostgreSQL health/replication/locks/queries","license":"BSD-2-Clause","language":"perl","categories":["database"],"homepage":"https://github.com/bucardo/check_postgres","download_url":"https://raw.githubusercontent.com/bucardo/check_postgres/master/check_postgres.pl","version":"master","tags":["postgres","postgresql","database","sql"]},
-  {"name":"check_ssl_cert","title":"check_ssl_cert","description":"Checks X.509 certificate expiry, chain, OCSP, CT for any TLS service","license":"GPL-3.0","language":"bash","categories":["security","certificates"],"homepage":"https://github.com/matteocorti/check_ssl_cert","download_url":"https://raw.githubusercontent.com/matteocorti/check_ssl_cert/master/check_ssl_cert","version":"master","tags":["ssl","tls","certificate","x509","pki"]},
-  {"name":"check_systemd","title":"check_systemd","description":"Monitors systemd unit states, failed units, startup time","license":"LGPL-2.1","language":"python","categories":["os"],"homepage":"https://github.com/Josef-Friedrich/check_systemd","download_url":"https://raw.githubusercontent.com/Josef-Friedrich/check_systemd/main/check_systemd.py","version":"main","tags":["systemd","linux","services"]},
-  {"name":"check_redfish","title":"check_redfish","description":"Server hardware health via Redfish REST API (PSU, CPU, DIMM, RAID, fans)","license":"MIT","language":"python","categories":["hardware"],"homepage":"https://github.com/bb-Ricardo/check_redfish","download_url":"https://raw.githubusercontent.com/bb-Ricardo/check_redfish/main/check_redfish.py","version":"main","tags":["redfish","hardware","bmc","ipmi","dell","hp","lenovo"]},
-  {"name":"check_openmanage","title":"check_openmanage","description":"Dell PowerEdge server hardware monitoring via OMSA","license":"GPL-3.0","language":"perl","categories":["hardware"],"homepage":"https://github.com/trondham/check_openmanage","download_url":"https://raw.githubusercontent.com/trondham/check_openmanage/master/check_openmanage","version":"3.7.13","tags":["dell","openmanage","omsa","hardware","poweredge"]},
-
-  {"name":"check_logfiles","title":"check_logfiles (lausser)","description":"Pattern-based log file monitoring with rotation handling","license":"GPL-2.0","language":"perl","categories":["logs"],"homepage":"https://github.com/lausser/check_logfiles","download_url":"https://raw.githubusercontent.com/lausser/check_logfiles/master/plugins-scripts/check_logfiles.pl","version":"master","tags":["logs","patterns","consol"]},
-  {"name":"check_mssql_health","title":"check_mssql_health","description":"Microsoft SQL Server health: connection time, locks, jobs, replication","license":"GPL-2.0","language":"perl","categories":["database"],"homepage":"https://github.com/lausser/check_mssql_health","download_url":"https://raw.githubusercontent.com/lausser/check_mssql_health/master/plugins-scripts/check_mssql_health.pl","version":"master","tags":["mssql","sql-server","database"]},
-  {"name":"check_mysql_health","title":"check_mysql_health","description":"MySQL/MariaDB health: threads, queries, replication, innodb stats","license":"GPL-2.0","language":"perl","categories":["database"],"homepage":"https://github.com/lausser/check_mysql_health","download_url":"https://raw.githubusercontent.com/lausser/check_mysql_health/master/plugins-scripts/check_mysql_health.pl","version":"master","tags":["mysql","mariadb","database","replication"]},
-  {"name":"check_nwc_health","title":"check_nwc_health","description":"Network component health: Cisco, HP, Juniper, F5, Fortinet, etc.","license":"GPL-2.0","language":"perl","categories":["network"],"homepage":"https://github.com/lausser/check_nwc_health","download_url":"https://raw.githubusercontent.com/lausser/check_nwc_health/master/plugins-scripts/check_nwc_health.pl","version":"master","tags":["cisco","juniper","hp","fortinet","network","snmp"]},
-  {"name":"check_oracle_health","title":"check_oracle_health","description":"Oracle DB health: tablespaces, sessions, locks, cache hit ratios","license":"GPL-2.0","language":"perl","categories":["database"],"homepage":"https://github.com/lausser/check_oracle_health","download_url":"https://raw.githubusercontent.com/lausser/check_oracle_health/master/plugins-scripts/check_oracle_health.pl","version":"master","tags":["oracle","database","sql"]},
-  {"name":"check_db2_health","title":"check_db2_health","description":"IBM DB2 health checks","license":"GPL-2.0","language":"perl","categories":["database"],"homepage":"https://github.com/lausser/check_db2_health","download_url":"https://raw.githubusercontent.com/lausser/check_db2_health/master/plugins-scripts/check_db2_health.pl","version":"master","tags":["db2","ibm","database"]},
-  {"name":"check_hpasm","title":"check_hpasm","description":"HP ProLiant server hardware via hpasmcli/SNMP","license":"GPL-2.0","language":"perl","categories":["hardware"],"homepage":"https://github.com/lausser/check_hpasm","download_url":"https://raw.githubusercontent.com/lausser/check_hpasm/master/plugins-scripts/check_hpasm.pl","version":"master","tags":["hp","proliant","hpasm","hardware"]},
-  {"name":"check_emc_isilon_health","title":"check_emc_isilon_health","description":"EMC Isilon storage cluster health","license":"GPL-2.0","language":"perl","categories":["storage"],"homepage":"https://github.com/lausser/check_emc_isilon_health","download_url":"https://raw.githubusercontent.com/lausser/check_emc_isilon_health/master/plugins-scripts/check_emc_isilon_health.pl","version":"master","tags":["emc","isilon","storage","nas"]},
-  {"name":"check_netapp_health","title":"check_netapp_health","description":"NetApp ONTAP health via SNMP/REST","license":"GPL-2.0","language":"perl","categories":["storage"],"homepage":"https://github.com/lausser/check_netapp_health","download_url":"https://raw.githubusercontent.com/lausser/check_netapp_health/master/plugins-scripts/check_netapp_health.pl","version":"master","tags":["netapp","ontap","storage","nas"]},
-  {"name":"check_disk_io","title":"check_disk_io (lausser)","description":"Disk I/O statistics with throughput and IOPS","license":"GPL-2.0","language":"perl","categories":["os","storage"],"homepage":"https://github.com/lausser/check_disk_io","download_url":"https://raw.githubusercontent.com/lausser/check_disk_io/master/plugins-scripts/check_disk_io.pl","version":"master","tags":["disk","iops","linux"]},
-  {"name":"check_memory","title":"check_memory (lausser)","description":"Detailed memory + swap + buffers analysis","license":"GPL-2.0","language":"perl","categories":["os"],"homepage":"https://github.com/lausser/check_memory","download_url":"https://raw.githubusercontent.com/lausser/check_memory/master/plugins-scripts/check_memory.pl","version":"master","tags":["memory","ram","swap","linux"]},
-  {"name":"check_uptime","title":"check_uptime (lausser)","description":"System uptime check with min/max thresholds","license":"GPL-2.0","language":"perl","categories":["os"],"homepage":"https://github.com/lausser/check_uptime","download_url":"https://raw.githubusercontent.com/lausser/check_uptime/master/plugins-scripts/check_uptime.pl","version":"master","tags":["uptime","linux"]},
-  {"name":"check_pulse_secure","title":"check_pulse_secure","description":"Pulse Secure / Ivanti Connect Secure VPN appliance health","license":"GPL-2.0","language":"perl","categories":["security","network"],"homepage":"https://github.com/lausser/check_pulse_secure","download_url":"https://raw.githubusercontent.com/lausser/check_pulse_secure/master/plugins-scripts/check_pulse_secure.pl","version":"master","tags":["pulse","ivanti","vpn"]},
-
-  {"name":"check_rabbitmq_aliveness","title":"check_rabbitmq_aliveness","description":"RabbitMQ vhost test-publish-and-consume aliveness probe","license":"Apache-2.0","language":"perl","categories":["messaging"],"homepage":"https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq","download_url":"https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_aliveness","version":"2.0.3","tags":["rabbitmq","amqp","messaging"]},
-  {"name":"check_rabbitmq_cluster","title":"check_rabbitmq_cluster","description":"RabbitMQ cluster membership and node count","license":"Apache-2.0","language":"perl","categories":["messaging"],"homepage":"https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq","download_url":"https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_cluster","version":"2.0.3","tags":["rabbitmq","amqp","cluster","ha"]},
-  {"name":"check_rabbitmq_connections","title":"check_rabbitmq_connections","description":"Active RabbitMQ client connection count","license":"Apache-2.0","language":"perl","categories":["messaging"],"homepage":"https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq","download_url":"https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_connections","version":"2.0.3","tags":["rabbitmq","amqp","connections"]},
-  {"name":"check_rabbitmq_exchange","title":"check_rabbitmq_exchange","description":"RabbitMQ exchange message rates","license":"Apache-2.0","language":"perl","categories":["messaging"],"homepage":"https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq","download_url":"https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_exchange","version":"2.0.3","tags":["rabbitmq","amqp","exchange"]},
-  {"name":"check_rabbitmq_objects","title":"check_rabbitmq_objects","description":"RabbitMQ vhost object counts (queues, channels, consumers)","license":"Apache-2.0","language":"perl","categories":["messaging"],"homepage":"https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq","download_url":"https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_objects","version":"2.0.3","tags":["rabbitmq","amqp"]},
-  {"name":"check_rabbitmq_overview","title":"check_rabbitmq_overview","description":"RabbitMQ broker-level overview statistics","license":"Apache-2.0","language":"perl","categories":["messaging"],"homepage":"https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq","download_url":"https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_overview","version":"2.0.3","tags":["rabbitmq","amqp","throughput"]},
-  {"name":"check_rabbitmq_partition","title":"check_rabbitmq_partition","description":"Detects RabbitMQ network partition (split-brain)","license":"Apache-2.0","language":"perl","categories":["messaging"],"homepage":"https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq","download_url":"https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_partition","version":"2.0.3","tags":["rabbitmq","amqp","cluster"]},
-  {"name":"check_rabbitmq_queue","title":"check_rabbitmq_queue","description":"RabbitMQ queue depth, consumers, rates","license":"Apache-2.0","language":"perl","categories":["messaging"],"homepage":"https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq","download_url":"https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_queue","version":"2.0.3","tags":["rabbitmq","amqp","queue"]},
-  {"name":"check_rabbitmq_server","title":"check_rabbitmq_server","description":"RabbitMQ resource alarm status (memory/disk watermark)","license":"Apache-2.0","language":"perl","categories":["messaging"],"homepage":"https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq","download_url":"https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_server","version":"2.0.3","tags":["rabbitmq","amqp","alarms"]},
-  {"name":"check_rabbitmq_shovels","title":"check_rabbitmq_shovels","description":"RabbitMQ shovel plugin state","license":"Apache-2.0","language":"perl","categories":["messaging"],"homepage":"https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq","download_url":"https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_shovels","version":"2.0.3","tags":["rabbitmq","amqp","shovel"]},
-  {"name":"check_rabbitmq_watermark","title":"check_rabbitmq_watermark","description":"RabbitMQ memory/disk high-watermark alarm","license":"Apache-2.0","language":"perl","categories":["messaging"],"homepage":"https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq","download_url":"https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_watermark","version":"2.0.3","tags":["rabbitmq","amqp","watermark"]},
-
-  {"name":"check_bareos","title":"check_bareos","description":"Bareos backup jobs and catalog via REST API","license":"GPL-3.0","language":"go","categories":["backup"],"homepage":"https://github.com/NETWAYS/check_bareos","download_url":"https://github.com/NETWAYS/check_bareos/releases/download/v2.1.1/check_bareos-linux-amd64","version":"2.1.1","tags":["bareos","backup"]},
-  {"name":"check_elasticsearch","title":"check_elasticsearch (NETWAYS)","description":"Elasticsearch cluster health, shards, node usage","license":"GPL-3.0","language":"go","categories":["database","monitoring"],"homepage":"https://github.com/NETWAYS/check_elasticsearch","download_url":"https://github.com/NETWAYS/check_elasticsearch/releases/download/v1.0.0/check_elasticsearch-linux-amd64","version":"1.0.0","tags":["elasticsearch","opensearch","search"]},
-  {"name":"check_logstash","title":"check_logstash","description":"Logstash pipeline status, throughput, JVM heap","license":"GPL-3.0","language":"go","categories":["monitoring","logs"],"homepage":"https://github.com/NETWAYS/check_logstash","download_url":"https://github.com/NETWAYS/check_logstash/releases/download/v0.12.2/check_logstash-linux-amd64","version":"0.12.2","tags":["logstash","elk","logs"]},
-  {"name":"check_influxdb","title":"check_influxdb","description":"InfluxDB health, write throughput, query latency","license":"GPL-3.0","language":"go","categories":["database","monitoring"],"homepage":"https://github.com/NETWAYS/check_influxdb","download_url":"https://github.com/NETWAYS/check_influxdb/releases/download/v0.2.1/check_influxdb-linux-amd64","version":"0.2.1","tags":["influxdb","timeseries","tsdb"]},
-  {"name":"check_prometheus","title":"check_prometheus","description":"Evaluate Prometheus queries as Nagios/Icinga checks","license":"GPL-3.0","language":"go","categories":["monitoring"],"homepage":"https://github.com/NETWAYS/check_prometheus","download_url":"https://github.com/NETWAYS/check_prometheus/releases/download/v0.6.0/check_prometheus-linux-amd64","version":"0.6.0","tags":["prometheus","promql","metrics"]},
-  {"name":"check_graphite","title":"check_graphite","description":"Graphite metric series threshold checks","license":"GPL-2.0","language":"python","categories":["monitoring"],"homepage":"https://github.com/NETWAYS/check_graphite","download_url":"https://raw.githubusercontent.com/NETWAYS/check_graphite/master/check_graphite.py","version":"1.0.1","tags":["graphite","metrics","carbon"]},
-  {"name":"check_iftraffic","title":"check_iftraffic","description":"SNMP interface bandwidth utilization vs link speed","license":"GPL-2.0","language":"perl","categories":["network"],"homepage":"https://github.com/NETWAYS/check_iftraffic","download_url":"https://raw.githubusercontent.com/NETWAYS/check_iftraffic/master/check_iftraffic.pl","version":"1.0.2","tags":["snmp","interface","bandwidth"]},
-  {"name":"check_system_basics","title":"check_system_basics","description":"Linux CPU/memory/swap/uptime basics","license":"GPL-3.0","language":"go","categories":["os"],"homepage":"https://github.com/NETWAYS/check_system_basics","download_url":"https://github.com/NETWAYS/check_system_basics/releases/download/v0.1.8/check_system_basics-linux-amd64","version":"0.1.8","tags":["linux","cpu","memory","uptime"]},
-
-  {"name":"check_haproxy","title":"check_haproxy (DinoTools)","description":"HAProxy backend/frontend status via stats socket or CSV","license":"GPL-2.0","language":"perl","categories":["webserver"],"homepage":"https://github.com/DinoTools/monitoring-check_haproxy","download_url":"https://raw.githubusercontent.com/DinoTools/monitoring-check_haproxy/master/check_haproxy","version":"master","tags":["haproxy","loadbalancer"]},
-  {"name":"check_jenkins","title":"check_jenkins (DinoTools)","description":"Jenkins job state and queue depth","license":"GPL-3.0","language":"perl","categories":["app"],"homepage":"https://github.com/DinoTools/monitoring-check_jenkins","download_url":"https://raw.githubusercontent.com/DinoTools/monitoring-check_jenkins/master/check_jenkins.pl","version":"master","tags":["jenkins","ci","cd"]},
-  {"name":"check_sophos_xg_vpn","title":"check_sophos_xg_vpn","description":"Sophos XG/SFOS IPsec VPN tunnel state via SNMP","license":"GPL-3.0","language":"perl","categories":["network","security"],"homepage":"https://github.com/DinoTools/monitoring-check_sophos_xg","download_url":"https://raw.githubusercontent.com/DinoTools/monitoring-check_sophos_xg/main/check_sophos_xg_vpn.pl","version":"0.6","tags":["sophos","xg","vpn","ipsec"]},
-  {"name":"check_meinberg_lantime_hw","title":"check_meinberg_lantime_hw","description":"Meinberg Lantime hardware health via SNMP","license":"GPL-3.0","language":"perl","categories":["hardware"],"homepage":"https://github.com/DinoTools/monitoring-check_meinberg_lantime","download_url":"https://raw.githubusercontent.com/DinoTools/monitoring-check_meinberg_lantime/main/check_meinberg_lantime_hw.pl","version":"0.2.0","tags":["meinberg","ntp","gps"]},
-  {"name":"check_meinberg_lantime_ntp","title":"check_meinberg_lantime_ntp","description":"Meinberg Lantime NTP refclock sync quality","license":"GPL-3.0","language":"perl","categories":["time"],"homepage":"https://github.com/DinoTools/monitoring-check_meinberg_lantime","download_url":"https://raw.githubusercontent.com/DinoTools/monitoring-check_meinberg_lantime/main/check_meinberg_lantime_ntp.pl","version":"0.2.0","tags":["meinberg","ntp","stratum"]},
-  {"name":"check_netint","title":"check_netint (DinoTools)","description":"Linux /proc/net/dev interface traffic + errors with perfdata","license":"GPL-2.0","language":"perl","categories":["network","os"],"homepage":"https://github.com/DinoTools/monitoring-check_netint","download_url":"https://raw.githubusercontent.com/DinoTools/monitoring-check_netint/master/check_netint.pl","version":"2.4","tags":["linux","interface","bandwidth"]},
-
-  {"name":"check-prtg-sensor","title":"check_prtg_sensor","description":"Query PRTG sensor values as Nagios checks","license":"GPL-3.0","language":"python","categories":["monitoring"],"homepage":"https://github.com/m-erhardt/check-prtg-sensor","download_url":"https://raw.githubusercontent.com/m-erhardt/check-prtg-sensor/main/check_prtg_sensor.py","version":"main","tags":["prtg","paessler","sensor"]},
-  {"name":"check-borgbackup-repo","title":"check_borgbackup_repo","description":"BorgBackup repository age + integrity check","license":"GPL-3.0","language":"python","categories":["backup"],"homepage":"https://github.com/m-erhardt/check-borgbackup-repo","download_url":"https://raw.githubusercontent.com/m-erhardt/check-borgbackup-repo/main/check_borgbackup_repo.py","version":"main","tags":["borg","backup","restic"]},
-  {"name":"check-restic-repo","title":"check_restic_repo","description":"Restic repository snapshot age + integrity","license":"GPL-3.0","language":"python","categories":["backup"],"homepage":"https://github.com/m-erhardt/check-restic-repo","download_url":"https://raw.githubusercontent.com/m-erhardt/check-restic-repo/main/check_restic_repo.py","version":"main","tags":["restic","backup"]},
-  {"name":"check-haproxy-status","title":"check_haproxy_status","description":"HAProxy backend health via stats CSV","license":"GPL-3.0","language":"python","categories":["webserver"],"homepage":"https://github.com/m-erhardt/check-haproxy-status","download_url":"https://raw.githubusercontent.com/m-erhardt/check-haproxy-status/main/check_haproxy_status.py","version":"main","tags":["haproxy","loadbalancer"]},
-  {"name":"check-nextcloud-updates","title":"check_nextcloud_updates","description":"Nextcloud server + app update availability","license":"GPL-3.0","language":"python","categories":["app"],"homepage":"https://github.com/m-erhardt/check-nextcloud-updates","download_url":"https://raw.githubusercontent.com/m-erhardt/check-nextcloud-updates/main/check_nextcloud_updates.py","version":"main","tags":["nextcloud","updates"]},
-  {"name":"check-cisco-asa-vpn","title":"check_cisco_asa_vpn","description":"Cisco ASA IPsec/SSL VPN tunnels via SNMP","license":"GPL-3.0","language":"python","categories":["network","security"],"homepage":"https://github.com/m-erhardt/check-cisco-asa-vpn","download_url":"https://raw.githubusercontent.com/m-erhardt/check-cisco-asa-vpn/main/check_cisco_asa_vpn.py","version":"main","tags":["cisco","asa","vpn"]},
-  {"name":"check-disksmart","title":"check_disksmart","description":"S.M.A.R.T. disk health via smartctl","license":"GPL-3.0","language":"python","categories":["storage"],"homepage":"https://github.com/m-erhardt/check-disksmart","download_url":"https://raw.githubusercontent.com/m-erhardt/check-disksmart/main/check_disksmart.py","version":"main","tags":["smart","disk","hdd","ssd"]},
-  {"name":"check-pi-temp","title":"check_pi_temp","description":"Raspberry Pi SoC temperature","license":"GPL-3.0","language":"python","categories":["hardware"],"homepage":"https://github.com/m-erhardt/check-pi-temp","download_url":"https://raw.githubusercontent.com/m-erhardt/check-pi-temp/main/check_pi_temp.py","version":"main","tags":["raspberrypi","temperature"]}
+  {
+    "name": "check_postgres",
+    "title": "check_postgres",
+    "description": "Comprehensive PostgreSQL health/replication/locks/queries",
+    "license": "BSD-2-Clause",
+    "language": "perl",
+    "categories": [
+      "database"
+    ],
+    "homepage": "https://github.com/bucardo/check_postgres",
+    "download_url": "https://raw.githubusercontent.com/bucardo/check_postgres/master/check_postgres.pl",
+    "version": "master",
+    "tags": [
+      "postgres",
+      "postgresql",
+      "database",
+      "sql"
+    ]
+  },
+  {
+    "name": "check_ssl_cert",
+    "title": "check_ssl_cert",
+    "description": "Checks X.509 certificate expiry, chain, OCSP, CT for any TLS service",
+    "license": "GPL-3.0",
+    "language": "bash",
+    "categories": [
+      "security",
+      "certificates"
+    ],
+    "homepage": "https://github.com/matteocorti/check_ssl_cert",
+    "download_url": "https://raw.githubusercontent.com/matteocorti/check_ssl_cert/master/check_ssl_cert",
+    "version": "master",
+    "tags": [
+      "ssl",
+      "tls",
+      "certificate",
+      "x509",
+      "pki"
+    ]
+  },
+  {
+    "name": "check_systemd",
+    "title": "check_systemd",
+    "description": "Monitors systemd unit states, failed units, startup time",
+    "license": "LGPL-2.1",
+    "language": "python",
+    "categories": [
+      "os"
+    ],
+    "homepage": "https://github.com/Josef-Friedrich/check_systemd",
+    "download_url": "https://raw.githubusercontent.com/Josef-Friedrich/check_systemd/main/check_systemd.py",
+    "version": "main",
+    "tags": [
+      "systemd",
+      "linux",
+      "services"
+    ]
+  },
+  {
+    "name": "check_redfish",
+    "title": "check_redfish",
+    "description": "Server hardware health via Redfish REST API (PSU, CPU, DIMM, RAID, fans)",
+    "license": "MIT",
+    "language": "python",
+    "categories": [
+      "hardware"
+    ],
+    "homepage": "https://github.com/bb-Ricardo/check_redfish",
+    "download_url": "https://raw.githubusercontent.com/bb-Ricardo/check_redfish/main/check_redfish.py",
+    "version": "main",
+    "tags": [
+      "redfish",
+      "hardware",
+      "bmc",
+      "ipmi",
+      "dell",
+      "hp",
+      "lenovo"
+    ]
+  },
+  {
+    "name": "check_openmanage",
+    "title": "check_openmanage",
+    "description": "Dell PowerEdge server hardware monitoring via OMSA",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [
+      "hardware"
+    ],
+    "homepage": "https://github.com/trondham/check_openmanage",
+    "download_url": "https://raw.githubusercontent.com/trondham/check_openmanage/master/check_openmanage",
+    "version": "3.7.13",
+    "tags": [
+      "dell",
+      "openmanage",
+      "omsa",
+      "hardware",
+      "poweredge"
+    ]
+  },
+  {
+    "name": "check_logfiles",
+    "title": "check_logfiles (lausser)",
+    "description": "Pattern-based log file monitoring with rotation handling",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "logs"
+    ],
+    "homepage": "https://github.com/lausser/check_logfiles",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_logfiles/master/plugins-scripts/check_logfiles.pl",
+    "version": "master",
+    "tags": [
+      "logs",
+      "patterns",
+      "consol"
+    ]
+  },
+  {
+    "name": "check_mssql_health",
+    "title": "check_mssql_health",
+    "description": "Microsoft SQL Server health: connection time, locks, jobs, replication",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "database"
+    ],
+    "homepage": "https://github.com/lausser/check_mssql_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_mssql_health/master/plugins-scripts/check_mssql_health.pl",
+    "version": "master",
+    "tags": [
+      "mssql",
+      "sql-server",
+      "database"
+    ]
+  },
+  {
+    "name": "check_mysql_health",
+    "title": "check_mysql_health",
+    "description": "MySQL/MariaDB health: threads, queries, replication, innodb stats",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "database"
+    ],
+    "homepage": "https://github.com/lausser/check_mysql_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_mysql_health/master/plugins-scripts/check_mysql_health.pl",
+    "version": "master",
+    "tags": [
+      "mysql",
+      "mariadb",
+      "database",
+      "replication"
+    ]
+  },
+  {
+    "name": "check_nwc_health",
+    "title": "check_nwc_health",
+    "description": "Network component health: Cisco, HP, Juniper, F5, Fortinet, etc.",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "network"
+    ],
+    "homepage": "https://github.com/lausser/check_nwc_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_nwc_health/master/plugins-scripts/check_nwc_health.pl",
+    "version": "master",
+    "tags": [
+      "cisco",
+      "juniper",
+      "hp",
+      "fortinet",
+      "network",
+      "snmp"
+    ]
+  },
+  {
+    "name": "check_oracle_health",
+    "title": "check_oracle_health",
+    "description": "Oracle DB health: tablespaces, sessions, locks, cache hit ratios",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "database"
+    ],
+    "homepage": "https://github.com/lausser/check_oracle_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_oracle_health/master/plugins-scripts/check_oracle_health.pl",
+    "version": "master",
+    "tags": [
+      "oracle",
+      "database",
+      "sql"
+    ]
+  },
+  {
+    "name": "check_db2_health",
+    "title": "check_db2_health",
+    "description": "IBM DB2 health checks",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "database"
+    ],
+    "homepage": "https://github.com/lausser/check_db2_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_db2_health/master/plugins-scripts/check_db2_health.pl",
+    "version": "master",
+    "tags": [
+      "db2",
+      "ibm",
+      "database"
+    ]
+  },
+  {
+    "name": "check_hpasm",
+    "title": "check_hpasm",
+    "description": "HP ProLiant server hardware via hpasmcli/SNMP",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "hardware"
+    ],
+    "homepage": "https://github.com/lausser/check_hpasm",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_hpasm/master/plugins-scripts/check_hpasm.pl",
+    "version": "master",
+    "tags": [
+      "hp",
+      "proliant",
+      "hpasm",
+      "hardware"
+    ]
+  },
+  {
+    "name": "check_emc_isilon_health",
+    "title": "check_emc_isilon_health",
+    "description": "EMC Isilon storage cluster health",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "storage"
+    ],
+    "homepage": "https://github.com/lausser/check_emc_isilon_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_emc_isilon_health/master/plugins-scripts/check_emc_isilon_health.pl",
+    "version": "master",
+    "tags": [
+      "emc",
+      "isilon",
+      "storage",
+      "nas"
+    ]
+  },
+  {
+    "name": "check_netapp_health",
+    "title": "check_netapp_health",
+    "description": "NetApp ONTAP health via SNMP/REST",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "storage"
+    ],
+    "homepage": "https://github.com/lausser/check_netapp_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_netapp_health/master/plugins-scripts/check_netapp_health.pl",
+    "version": "master",
+    "tags": [
+      "netapp",
+      "ontap",
+      "storage",
+      "nas"
+    ]
+  },
+  {
+    "name": "check_disk_io",
+    "title": "check_disk_io (lausser)",
+    "description": "Disk I/O statistics with throughput and IOPS",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "os",
+      "storage"
+    ],
+    "homepage": "https://github.com/lausser/check_disk_io",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_disk_io/master/plugins-scripts/check_disk_io.pl",
+    "version": "master",
+    "tags": [
+      "disk",
+      "iops",
+      "linux"
+    ]
+  },
+  {
+    "name": "check_memory",
+    "title": "check_memory (lausser)",
+    "description": "Detailed memory + swap + buffers analysis",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "os"
+    ],
+    "homepage": "https://github.com/lausser/check_memory",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_memory/master/plugins-scripts/check_memory.pl",
+    "version": "master",
+    "tags": [
+      "memory",
+      "ram",
+      "swap",
+      "linux"
+    ]
+  },
+  {
+    "name": "check_uptime",
+    "title": "check_uptime (lausser)",
+    "description": "System uptime check with min/max thresholds",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "os"
+    ],
+    "homepage": "https://github.com/lausser/check_uptime",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_uptime/master/plugins-scripts/check_uptime.pl",
+    "version": "master",
+    "tags": [
+      "uptime",
+      "linux"
+    ]
+  },
+  {
+    "name": "check_pulse_secure",
+    "title": "check_pulse_secure",
+    "description": "Pulse Secure / Ivanti Connect Secure VPN appliance health",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "security",
+      "network"
+    ],
+    "homepage": "https://github.com/lausser/check_pulse_secure",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_pulse_secure/master/plugins-scripts/check_pulse_secure.pl",
+    "version": "master",
+    "tags": [
+      "pulse",
+      "ivanti",
+      "vpn"
+    ]
+  },
+  {
+    "name": "check_rabbitmq_aliveness",
+    "title": "check_rabbitmq_aliveness",
+    "description": "RabbitMQ vhost test-publish-and-consume aliveness probe",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [
+      "messaging"
+    ],
+    "homepage": "https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq",
+    "download_url": "https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_aliveness",
+    "version": "2.0.3",
+    "tags": [
+      "rabbitmq",
+      "amqp",
+      "messaging"
+    ]
+  },
+  {
+    "name": "check_rabbitmq_cluster",
+    "title": "check_rabbitmq_cluster",
+    "description": "RabbitMQ cluster membership and node count",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [
+      "messaging"
+    ],
+    "homepage": "https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq",
+    "download_url": "https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_cluster",
+    "version": "2.0.3",
+    "tags": [
+      "rabbitmq",
+      "amqp",
+      "cluster",
+      "ha"
+    ]
+  },
+  {
+    "name": "check_rabbitmq_connections",
+    "title": "check_rabbitmq_connections",
+    "description": "Active RabbitMQ client connection count",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [
+      "messaging"
+    ],
+    "homepage": "https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq",
+    "download_url": "https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_connections",
+    "version": "2.0.3",
+    "tags": [
+      "rabbitmq",
+      "amqp",
+      "connections"
+    ]
+  },
+  {
+    "name": "check_rabbitmq_exchange",
+    "title": "check_rabbitmq_exchange",
+    "description": "RabbitMQ exchange message rates",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [
+      "messaging"
+    ],
+    "homepage": "https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq",
+    "download_url": "https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_exchange",
+    "version": "2.0.3",
+    "tags": [
+      "rabbitmq",
+      "amqp",
+      "exchange"
+    ]
+  },
+  {
+    "name": "check_rabbitmq_objects",
+    "title": "check_rabbitmq_objects",
+    "description": "RabbitMQ vhost object counts (queues, channels, consumers)",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [
+      "messaging"
+    ],
+    "homepage": "https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq",
+    "download_url": "https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_objects",
+    "version": "2.0.3",
+    "tags": [
+      "rabbitmq",
+      "amqp"
+    ]
+  },
+  {
+    "name": "check_rabbitmq_overview",
+    "title": "check_rabbitmq_overview",
+    "description": "RabbitMQ broker-level overview statistics",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [
+      "messaging"
+    ],
+    "homepage": "https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq",
+    "download_url": "https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_overview",
+    "version": "2.0.3",
+    "tags": [
+      "rabbitmq",
+      "amqp",
+      "throughput"
+    ]
+  },
+  {
+    "name": "check_rabbitmq_partition",
+    "title": "check_rabbitmq_partition",
+    "description": "Detects RabbitMQ network partition (split-brain)",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [
+      "messaging"
+    ],
+    "homepage": "https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq",
+    "download_url": "https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_partition",
+    "version": "2.0.3",
+    "tags": [
+      "rabbitmq",
+      "amqp",
+      "cluster"
+    ]
+  },
+  {
+    "name": "check_rabbitmq_queue",
+    "title": "check_rabbitmq_queue",
+    "description": "RabbitMQ queue depth, consumers, rates",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [
+      "messaging"
+    ],
+    "homepage": "https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq",
+    "download_url": "https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_queue",
+    "version": "2.0.3",
+    "tags": [
+      "rabbitmq",
+      "amqp",
+      "queue"
+    ]
+  },
+  {
+    "name": "check_rabbitmq_server",
+    "title": "check_rabbitmq_server",
+    "description": "RabbitMQ resource alarm status (memory/disk watermark)",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [
+      "messaging"
+    ],
+    "homepage": "https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq",
+    "download_url": "https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_server",
+    "version": "2.0.3",
+    "tags": [
+      "rabbitmq",
+      "amqp",
+      "alarms"
+    ]
+  },
+  {
+    "name": "check_rabbitmq_shovels",
+    "title": "check_rabbitmq_shovels",
+    "description": "RabbitMQ shovel plugin state",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [
+      "messaging"
+    ],
+    "homepage": "https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq",
+    "download_url": "https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_shovels",
+    "version": "2.0.3",
+    "tags": [
+      "rabbitmq",
+      "amqp",
+      "shovel"
+    ]
+  },
+  {
+    "name": "check_rabbitmq_watermark",
+    "title": "check_rabbitmq_watermark",
+    "description": "RabbitMQ memory/disk high-watermark alarm",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [
+      "messaging"
+    ],
+    "homepage": "https://github.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq",
+    "download_url": "https://raw.githubusercontent.com/nagios-plugins-rabbitmq/nagios-plugins-rabbitmq/master/scripts/check_rabbitmq_watermark",
+    "version": "2.0.3",
+    "tags": [
+      "rabbitmq",
+      "amqp",
+      "watermark"
+    ]
+  },
+  {
+    "name": "check_bareos",
+    "title": "check_bareos",
+    "description": "Bareos backup jobs and catalog via REST API",
+    "license": "GPL-3.0",
+    "language": "go",
+    "categories": [
+      "backup"
+    ],
+    "homepage": "https://github.com/NETWAYS/check_bareos",
+    "download_url": "https://github.com/NETWAYS/check_bareos/releases/download/v2.1.1/check_bareos-linux-amd64",
+    "version": "2.1.1",
+    "tags": [
+      "bareos",
+      "backup"
+    ]
+  },
+  {
+    "name": "check_elasticsearch",
+    "title": "check_elasticsearch (NETWAYS)",
+    "description": "Elasticsearch cluster health, shards, node usage",
+    "license": "GPL-3.0",
+    "language": "go",
+    "categories": [
+      "database",
+      "monitoring"
+    ],
+    "homepage": "https://github.com/NETWAYS/check_elasticsearch",
+    "download_url": "https://github.com/NETWAYS/check_elasticsearch/releases/download/v1.0.0/check_elasticsearch-linux-amd64",
+    "version": "1.0.0",
+    "tags": [
+      "elasticsearch",
+      "opensearch",
+      "search"
+    ]
+  },
+  {
+    "name": "check_logstash",
+    "title": "check_logstash",
+    "description": "Logstash pipeline status, throughput, JVM heap",
+    "license": "GPL-3.0",
+    "language": "go",
+    "categories": [
+      "monitoring",
+      "logs"
+    ],
+    "homepage": "https://github.com/NETWAYS/check_logstash",
+    "download_url": "https://github.com/NETWAYS/check_logstash/releases/download/v0.12.2/check_logstash-linux-amd64",
+    "version": "0.12.2",
+    "tags": [
+      "logstash",
+      "elk",
+      "logs"
+    ]
+  },
+  {
+    "name": "check_influxdb",
+    "title": "check_influxdb",
+    "description": "InfluxDB health, write throughput, query latency",
+    "license": "GPL-3.0",
+    "language": "go",
+    "categories": [
+      "database",
+      "monitoring"
+    ],
+    "homepage": "https://github.com/NETWAYS/check_influxdb",
+    "download_url": "https://github.com/NETWAYS/check_influxdb/releases/download/v0.2.1/check_influxdb-linux-amd64",
+    "version": "0.2.1",
+    "tags": [
+      "influxdb",
+      "timeseries",
+      "tsdb"
+    ]
+  },
+  {
+    "name": "check_prometheus",
+    "title": "check_prometheus",
+    "description": "Evaluate Prometheus queries as Nagios/Icinga checks",
+    "license": "GPL-3.0",
+    "language": "go",
+    "categories": [
+      "monitoring"
+    ],
+    "homepage": "https://github.com/NETWAYS/check_prometheus",
+    "download_url": "https://github.com/NETWAYS/check_prometheus/releases/download/v0.6.0/check_prometheus-linux-amd64",
+    "version": "0.6.0",
+    "tags": [
+      "prometheus",
+      "promql",
+      "metrics"
+    ]
+  },
+  {
+    "name": "check_graphite",
+    "title": "check_graphite",
+    "description": "Graphite metric series threshold checks",
+    "license": "GPL-2.0",
+    "language": "python",
+    "categories": [
+      "monitoring"
+    ],
+    "homepage": "https://github.com/NETWAYS/check_graphite",
+    "download_url": "https://raw.githubusercontent.com/NETWAYS/check_graphite/master/check_graphite.py",
+    "version": "1.0.1",
+    "tags": [
+      "graphite",
+      "metrics",
+      "carbon"
+    ]
+  },
+  {
+    "name": "check_iftraffic",
+    "title": "check_iftraffic",
+    "description": "SNMP interface bandwidth utilization vs link speed",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "network"
+    ],
+    "homepage": "https://github.com/NETWAYS/check_iftraffic",
+    "download_url": "https://raw.githubusercontent.com/NETWAYS/check_iftraffic/master/check_iftraffic.pl",
+    "version": "1.0.2",
+    "tags": [
+      "snmp",
+      "interface",
+      "bandwidth"
+    ]
+  },
+  {
+    "name": "check_system_basics",
+    "title": "check_system_basics",
+    "description": "Linux CPU/memory/swap/uptime basics",
+    "license": "GPL-3.0",
+    "language": "go",
+    "categories": [
+      "os"
+    ],
+    "homepage": "https://github.com/NETWAYS/check_system_basics",
+    "download_url": "https://github.com/NETWAYS/check_system_basics/releases/download/v0.1.8/check_system_basics-linux-amd64",
+    "version": "0.1.8",
+    "tags": [
+      "linux",
+      "cpu",
+      "memory",
+      "uptime"
+    ]
+  },
+  {
+    "name": "check_haproxy",
+    "title": "check_haproxy (DinoTools)",
+    "description": "HAProxy backend/frontend status via stats socket or CSV",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "webserver"
+    ],
+    "homepage": "https://github.com/DinoTools/monitoring-check_haproxy",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_haproxy/master/check_haproxy",
+    "version": "master",
+    "tags": [
+      "haproxy",
+      "loadbalancer"
+    ]
+  },
+  {
+    "name": "check_jenkins",
+    "title": "check_jenkins (DinoTools)",
+    "description": "Jenkins job state and queue depth",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [
+      "app"
+    ],
+    "homepage": "https://github.com/DinoTools/monitoring-check_jenkins",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_jenkins/master/check_jenkins.pl",
+    "version": "master",
+    "tags": [
+      "jenkins",
+      "ci",
+      "cd"
+    ]
+  },
+  {
+    "name": "check_sophos_xg_vpn",
+    "title": "check_sophos_xg_vpn",
+    "description": "Sophos XG/SFOS IPsec VPN tunnel state via SNMP",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [
+      "network",
+      "security"
+    ],
+    "homepage": "https://github.com/DinoTools/monitoring-check_sophos_xg",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_sophos_xg/main/check_sophos_xg_vpn.pl",
+    "version": "0.6",
+    "tags": [
+      "sophos",
+      "xg",
+      "vpn",
+      "ipsec"
+    ]
+  },
+  {
+    "name": "check_meinberg_lantime_hw",
+    "title": "check_meinberg_lantime_hw",
+    "description": "Meinberg Lantime hardware health via SNMP",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [
+      "hardware"
+    ],
+    "homepage": "https://github.com/DinoTools/monitoring-check_meinberg_lantime",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_meinberg_lantime/main/check_meinberg_lantime_hw.pl",
+    "version": "0.2.0",
+    "tags": [
+      "meinberg",
+      "ntp",
+      "gps"
+    ]
+  },
+  {
+    "name": "check_meinberg_lantime_ntp",
+    "title": "check_meinberg_lantime_ntp",
+    "description": "Meinberg Lantime NTP refclock sync quality",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [
+      "time"
+    ],
+    "homepage": "https://github.com/DinoTools/monitoring-check_meinberg_lantime",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_meinberg_lantime/main/check_meinberg_lantime_ntp.pl",
+    "version": "0.2.0",
+    "tags": [
+      "meinberg",
+      "ntp",
+      "stratum"
+    ]
+  },
+  {
+    "name": "check_netint",
+    "title": "check_netint (DinoTools)",
+    "description": "Linux /proc/net/dev interface traffic + errors with perfdata",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [
+      "network",
+      "os"
+    ],
+    "homepage": "https://github.com/DinoTools/monitoring-check_netint",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_netint/master/check_netint.pl",
+    "version": "2.4",
+    "tags": [
+      "linux",
+      "interface",
+      "bandwidth"
+    ]
+  },
+  {
+    "name": "check-prtg-sensor",
+    "title": "check_prtg_sensor",
+    "description": "Query PRTG sensor values as Nagios checks",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [
+      "monitoring"
+    ],
+    "homepage": "https://github.com/m-erhardt/check-prtg-sensor",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-prtg-sensor/main/check_prtg_sensor.py",
+    "version": "main",
+    "tags": [
+      "prtg",
+      "paessler",
+      "sensor"
+    ]
+  },
+  {
+    "name": "check-borgbackup-repo",
+    "title": "check_borgbackup_repo",
+    "description": "BorgBackup repository age + integrity check",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [
+      "backup"
+    ],
+    "homepage": "https://github.com/m-erhardt/check-borgbackup-repo",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-borgbackup-repo/main/check_borgbackup_repo.py",
+    "version": "main",
+    "tags": [
+      "borg",
+      "backup",
+      "restic"
+    ]
+  },
+  {
+    "name": "check-restic-repo",
+    "title": "check_restic_repo",
+    "description": "Restic repository snapshot age + integrity",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [
+      "backup"
+    ],
+    "homepage": "https://github.com/m-erhardt/check-restic-repo",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-restic-repo/main/check_restic_repo.py",
+    "version": "main",
+    "tags": [
+      "restic",
+      "backup"
+    ]
+  },
+  {
+    "name": "check-haproxy-status",
+    "title": "check_haproxy_status",
+    "description": "HAProxy backend health via stats CSV",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [
+      "webserver"
+    ],
+    "homepage": "https://github.com/m-erhardt/check-haproxy-status",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-haproxy-status/main/check_haproxy_status.py",
+    "version": "main",
+    "tags": [
+      "haproxy",
+      "loadbalancer"
+    ]
+  },
+  {
+    "name": "check-nextcloud-updates",
+    "title": "check_nextcloud_updates",
+    "description": "Nextcloud server + app update availability",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [
+      "app"
+    ],
+    "homepage": "https://github.com/m-erhardt/check-nextcloud-updates",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-nextcloud-updates/main/check_nextcloud_updates.py",
+    "version": "main",
+    "tags": [
+      "nextcloud",
+      "updates"
+    ]
+  },
+  {
+    "name": "check-cisco-asa-vpn",
+    "title": "check_cisco_asa_vpn",
+    "description": "Cisco ASA IPsec/SSL VPN tunnels via SNMP",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [
+      "network",
+      "security"
+    ],
+    "homepage": "https://github.com/m-erhardt/check-cisco-asa-vpn",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-cisco-asa-vpn/main/check_cisco_asa_vpn.py",
+    "version": "main",
+    "tags": [
+      "cisco",
+      "asa",
+      "vpn"
+    ]
+  },
+  {
+    "name": "check-disksmart",
+    "title": "check_disksmart",
+    "description": "S.M.A.R.T. disk health via smartctl",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [
+      "storage"
+    ],
+    "homepage": "https://github.com/m-erhardt/check-disksmart",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-disksmart/main/check_disksmart.py",
+    "version": "main",
+    "tags": [
+      "smart",
+      "disk",
+      "hdd",
+      "ssd"
+    ]
+  },
+  {
+    "name": "check-pi-temp",
+    "title": "check_pi_temp",
+    "description": "Raspberry Pi SoC temperature",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [
+      "hardware"
+    ],
+    "homepage": "https://github.com/m-erhardt/check-pi-temp",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-pi-temp/main/check_pi_temp.py",
+    "version": "main",
+    "tags": [
+      "raspberrypi",
+      "temperature"
+    ]
+  },
+  {
+    "name": "check_snmp_agent",
+    "title": "check_snmp_agent",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins/tests/check_snmp_agent.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_breeze",
+    "title": "check_breeze",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_breeze.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_disk_smb",
+    "title": "check_disk_smb",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_disk_smb.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_file_age",
+    "title": "check_file_age",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_file_age.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_flexlm",
+    "title": "check_flexlm",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_flexlm.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_ifoperstatus",
+    "title": "check_ifoperstatus",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_ifoperstatus.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_ifstatus",
+    "title": "check_ifstatus",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_ifstatus.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_ircd",
+    "title": "check_ircd",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_ircd.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_log",
+    "title": "check_log",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_log.sh",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_mailq",
+    "title": "check_mailq",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_mailq.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_mssql",
+    "title": "check_mssql",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_mssql.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_netdns",
+    "title": "check_netdns",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_netdns.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_oracle",
+    "title": "check_oracle",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_oracle.sh",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_rpc",
+    "title": "check_rpc",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_rpc.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_sensors",
+    "title": "check_sensors",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_sensors.sh",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_uptime",
+    "title": "check_uptime",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_uptime.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_wave",
+    "title": "check_wave",
+    "description": "A suite of Monitoring Plugins (formerly known as nagios-plugins)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/monitoring-plugins/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/monitoring-plugins/monitoring-plugins/master/plugins-scripts/check_wave.pl",
+    "version": "main",
+    "tags": [
+      "monitoring-plugins",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_mssql_health",
+    "title": "check_mssql_health",
+    "description": "A plugin, which checks various parameters of Microsoft SQL database servers.",
+    "license": "GPL-2.0",
+    "language": "php",
+    "categories": [],
+    "homepage": "https://github.com/lausser/check_mssql_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_mssql_health/master/contrib/check_mssql_health.php",
+    "version": "main",
+    "tags": [
+      "lausser",
+      "check_mssql_health"
+    ]
+  },
+  {
+    "name": "check_mysql_health",
+    "title": "check_mysql_health",
+    "description": "A plugin (monitoring-plugin, not nagios-plugin, see also http://is.gd/PP1330) which checks various parameters of MySQL database servers.",
+    "license": "GPL-2.0",
+    "language": "php",
+    "categories": [],
+    "homepage": "https://github.com/lausser/check_mysql_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_mysql_health/master/contrib/check_mysql_health.php",
+    "version": "main",
+    "tags": [
+      "lausser",
+      "check_mysql_health"
+    ]
+  },
+  {
+    "name": "check_oracle_health",
+    "title": "check_oracle_health",
+    "description": " A plugin (monitoring-plugin, not nagios-plugin, see also http://is.gd/PP1330) which checks various parameters of Oracle database servers. (We also offer trainings: http://www.consol.de/open-source-mo",
+    "license": "GPL-2.0",
+    "language": "php",
+    "categories": [],
+    "homepage": "https://github.com/lausser/check_oracle_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_oracle_health/master/contrib/check_oracle_health.php",
+    "version": "main",
+    "tags": [
+      "lausser",
+      "check_oracle_health"
+    ]
+  },
+  {
+    "name": "check_nwc_health",
+    "title": "check_nwc_health",
+    "description": "nwc = network component. This plugin checks lots of aspects of routers, switches, wlan controllers, firewalls,.....",
+    "license": "GPL-2.0",
+    "language": "php",
+    "categories": [],
+    "homepage": "https://github.com/lausser/check_nwc_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_nwc_health/master/contrib/check_nwc_health.php",
+    "version": "main",
+    "tags": [
+      "lausser",
+      "check_nwc_health"
+    ]
+  },
+  {
+    "name": "check_printer_health",
+    "title": "check_printer_health",
+    "description": "check_nwc_health is a plugin (monitoring-plugin, not nagios-plugin, see also http://is.gd/PP1330) which checks the health of snmp-enabled printers",
+    "license": "AGPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/lausser/check_printer_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_printer_health/master/plugins-scripts/check_printer_health.pl",
+    "version": "main",
+    "tags": [
+      "lausser",
+      "check_printer_health"
+    ]
+  },
+  {
+    "name": "check_ups_health",
+    "title": "check_ups_health",
+    "description": "A plugin (monitoring-plugin, not nagios-plugin, see also http://is.gd/PP1330) for uninterruptible power supplies.",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/lausser/check_ups_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_ups_health/master/plugins-scripts/check_ups_health.pl",
+    "version": "main",
+    "tags": [
+      "lausser",
+      "check_ups_health"
+    ]
+  },
+  {
+    "name": "check_sap_health",
+    "title": "check_sap_health",
+    "description": "A plugin (monitoring-plugin, not nagios-plugin, see also http://is.gd/PP1330) which checks various parameters of a SAP system. You can check CCMS metrics as well as execute arbitrary BAPI calls.",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/lausser/check_sap_health",
+    "download_url": "https://raw.githubusercontent.com/lausser/check_sap_health/master/plugins-scripts/check_sap_health.pl",
+    "version": "main",
+    "tags": [
+      "lausser",
+      "check_sap_health"
+    ]
+  },
+  {
+    "name": "check_deps",
+    "title": "check_deps",
+    "description": "A shell script (that can be used as a Nagios/Icinga plugin) to check an SSL/TLS connection.",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/matteocorti/check_ssl_cert",
+    "download_url": "https://raw.githubusercontent.com/matteocorti/check_ssl_cert/master/utils/check_deps.sh",
+    "version": "main",
+    "tags": [
+      "matteocorti",
+      "check_ssl_cert"
+    ]
+  },
+  {
+    "name": "check_documentation",
+    "title": "check_documentation",
+    "description": "A shell script (that can be used as a Nagios/Icinga plugin) to check an SSL/TLS connection.",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/matteocorti/check_ssl_cert",
+    "download_url": "https://raw.githubusercontent.com/matteocorti/check_ssl_cert/master/utils/check_documentation.sh",
+    "version": "main",
+    "tags": [
+      "matteocorti",
+      "check_ssl_cert"
+    ]
+  },
+  {
+    "name": "check_distribution",
+    "title": "check_distribution",
+    "description": "check_updates is a Nagios plugin to check if RedHat or Fedora system is up-to-date",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/matteocorti/check_updates",
+    "download_url": "https://raw.githubusercontent.com/matteocorti/check_updates/master/check_distribution.sh",
+    "version": "main",
+    "tags": [
+      "matteocorti",
+      "check_updates"
+    ]
+  },
+  {
+    "name": "check_distribution",
+    "title": "check_distribution",
+    "description": "check_rbl is a Nagios plugin to check if an SMTP server is blacklisted",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/matteocorti/check_rbl",
+    "download_url": "https://raw.githubusercontent.com/matteocorti/check_rbl/master/check_distribution.sh",
+    "version": "master",
+    "tags": [
+      "matteocorti",
+      "check_rbl"
+    ]
+  },
+  {
+    "name": "check_netapp_ontap",
+    "title": "check_netapp_ontap",
+    "description": ":four_leaf_clover: Check NetApp Ontap :four_leaf_clover:",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/district09/check_netapp_ontap",
+    "download_url": "https://raw.githubusercontent.com/district09/check_netapp_ontap/master/check_netapp_ontap.pl",
+    "version": "master",
+    "tags": [
+      "district09",
+      "check_netapp_ontap"
+    ]
+  },
+  {
+    "name": "check_nextcloud",
+    "title": "check_nextcloud",
+    "description": "Nagios/Centreon/Icinga monitoring plugin for the [Nextcloud serverinfo API](https://github.com/nextcloud/serverinfo)",
+    "license": "AGPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/BornToBeRoot/check_nextcloud",
+    "download_url": "https://raw.githubusercontent.com/BornToBeRoot/check_nextcloud/main/check_nextcloud.py",
+    "version": "main",
+    "tags": [
+      "borntoberoot",
+      "check_nextcloud"
+    ]
+  },
+  {
+    "name": "check_rancher2",
+    "title": "check_rancher2",
+    "description": "Monitoring plugin to check Docker / Kubernetes clusters managed by Rancher 2.x",
+    "license": "GPL-2.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/Napsty/check_rancher2",
+    "download_url": "https://raw.githubusercontent.com/Napsty/check_rancher2/master/check_rancher2.sh",
+    "version": "master",
+    "tags": [
+      "napsty",
+      "check_rancher2"
+    ]
+  },
+  {
+    "name": "check_domain_expiration",
+    "title": "check_domain_expiration",
+    "description": "Icinga2/Nagios plugin for checking domain expiration",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/ewypych/icinga-domain-expiration-plugin",
+    "download_url": "https://raw.githubusercontent.com/ewypych/icinga-domain-expiration-plugin/master/check_domain_expiration.sh",
+    "version": "master",
+    "tags": [
+      "ewypych",
+      "icinga-domain-expiration-plugin"
+    ]
+  },
+  {
+    "name": "check_systemd_service",
+    "title": "check_systemd_service",
+    "description": "Nagios plugin to check the status of a systemd service",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/melmorabity/nagios-plugin-systemd-service",
+    "download_url": "https://raw.githubusercontent.com/melmorabity/nagios-plugin-systemd-service/master/check_systemd_service.sh",
+    "version": "master",
+    "tags": [
+      "melmorabity",
+      "nagios-plugin-systemd-service"
+    ]
+  },
+  {
+    "name": "check_dnssec_expiry",
+    "title": "check_dnssec_expiry",
+    "description": "Icinga / Nagios plugin to validate DNSSEC validity of a DNS zone.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/mrimann/check_dnssec_expiry",
+    "download_url": "https://raw.githubusercontent.com/mrimann/check_dnssec_expiry/master/check_dnssec_expiry.sh",
+    "version": "master",
+    "tags": [
+      "mrimann",
+      "check_dnssec_expiry"
+    ]
+  },
+  {
+    "name": "check_routeros",
+    "title": "check_routeros",
+    "description": "Monitoring plugin for MikroTik devices for Icinga/Nagios/...",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/DinoTools/monitoring-check_routeros",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_routeros/main/check_routeros.py",
+    "version": "main",
+    "tags": [
+      "dinotools",
+      "monitoring-check_routeros"
+    ]
+  },
+  {
+    "name": "check_selenium_docker",
+    "title": "check_selenium_docker",
+    "description": "Synthetic website monitoring with Selenium and Docker.",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/opsdis/check_selenium_docker",
+    "download_url": "https://raw.githubusercontent.com/opsdis/check_selenium_docker/master/check_selenium_docker.py",
+    "version": "master",
+    "tags": [
+      "opsdis",
+      "check_selenium_docker"
+    ]
+  },
+  {
+    "name": "check_vcsa_cpu",
+    "title": "check_vcsa_cpu",
+    "description": "Monitoring f\u00fcr VMware vCenter Server Appliance via API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/vmware-vcsa-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/vmware-vcsa-monitoring/master/check_vcsa_cpu.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "vmware-vcsa-monitoring"
+    ]
+  },
+  {
+    "name": "check_vcsa_mem",
+    "title": "check_vcsa_mem",
+    "description": "Monitoring f\u00fcr VMware vCenter Server Appliance via API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/vmware-vcsa-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/vmware-vcsa-monitoring/master/check_vcsa_mem.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "vmware-vcsa-monitoring"
+    ]
+  },
+  {
+    "name": "check_vcsa_services",
+    "title": "check_vcsa_services",
+    "description": "Monitoring f\u00fcr VMware vCenter Server Appliance via API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/vmware-vcsa-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/vmware-vcsa-monitoring/master/check_vcsa_services.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "vmware-vcsa-monitoring"
+    ]
+  },
+  {
+    "name": "check_vcsa_storage",
+    "title": "check_vcsa_storage",
+    "description": "Monitoring f\u00fcr VMware vCenter Server Appliance via API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/vmware-vcsa-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/vmware-vcsa-monitoring/master/check_vcsa_storage.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "vmware-vcsa-monitoring"
+    ]
+  },
+  {
+    "name": "check_purefa_alert",
+    "title": "check_purefa_alert",
+    "description": "Nagios plugins for FlashArray and FlashBlade monitoring",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/PureStorage-OpenConnect/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/PureStorage-OpenConnect/nagios-plugins/master/check_purefa_alert.py",
+    "version": "master",
+    "tags": [
+      "purestorage-openconnect",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_purefa_hw",
+    "title": "check_purefa_hw",
+    "description": "Nagios plugins for FlashArray and FlashBlade monitoring",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/PureStorage-OpenConnect/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/PureStorage-OpenConnect/nagios-plugins/master/check_purefa_hw.py",
+    "version": "master",
+    "tags": [
+      "purestorage-openconnect",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_purefa_perf",
+    "title": "check_purefa_perf",
+    "description": "Nagios plugins for FlashArray and FlashBlade monitoring",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/PureStorage-OpenConnect/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/PureStorage-OpenConnect/nagios-plugins/master/check_purefa_perf.py",
+    "version": "master",
+    "tags": [
+      "purestorage-openconnect",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_purefa_pod",
+    "title": "check_purefa_pod",
+    "description": "Nagios plugins for FlashArray and FlashBlade monitoring",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/PureStorage-OpenConnect/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/PureStorage-OpenConnect/nagios-plugins/master/check_purefa_pod.py",
+    "version": "master",
+    "tags": [
+      "purestorage-openconnect",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_purefa_space",
+    "title": "check_purefa_space",
+    "description": "Nagios plugins for FlashArray and FlashBlade monitoring",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/PureStorage-OpenConnect/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/PureStorage-OpenConnect/nagios-plugins/master/check_purefa_space.py",
+    "version": "master",
+    "tags": [
+      "purestorage-openconnect",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_purefb_alert",
+    "title": "check_purefb_alert",
+    "description": "Nagios plugins for FlashArray and FlashBlade monitoring",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/PureStorage-OpenConnect/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/PureStorage-OpenConnect/nagios-plugins/master/check_purefb_alert.py",
+    "version": "master",
+    "tags": [
+      "purestorage-openconnect",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_purefb_hw",
+    "title": "check_purefb_hw",
+    "description": "Nagios plugins for FlashArray and FlashBlade monitoring",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/PureStorage-OpenConnect/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/PureStorage-OpenConnect/nagios-plugins/master/check_purefb_hw.py",
+    "version": "master",
+    "tags": [
+      "purestorage-openconnect",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_purefb_perf",
+    "title": "check_purefb_perf",
+    "description": "Nagios plugins for FlashArray and FlashBlade monitoring",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/PureStorage-OpenConnect/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/PureStorage-OpenConnect/nagios-plugins/master/check_purefb_perf.py",
+    "version": "master",
+    "tags": [
+      "purestorage-openconnect",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_purefb_space",
+    "title": "check_purefb_space",
+    "description": "Nagios plugins for FlashArray and FlashBlade monitoring",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/PureStorage-OpenConnect/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/PureStorage-OpenConnect/nagios-plugins/master/check_purefb_space.py",
+    "version": "master",
+    "tags": [
+      "purestorage-openconnect",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_fail2ban",
+    "title": "check_fail2ban",
+    "description": "Nagios plugin for check fail2ban status and jails.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/zevilz/NagiosFail2banStatus",
+    "download_url": "https://raw.githubusercontent.com/zevilz/NagiosFail2banStatus/master/check_fail2ban.sh",
+    "version": "master",
+    "tags": [
+      "zevilz",
+      "nagiosfail2banstatus"
+    ]
+  },
+  {
+    "name": "check_azure_resource",
+    "title": "check_azure_resource",
+    "description": "Nagios plugin to monitor Azure resources",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/melmorabity/nagios-plugin-azure-resource",
+    "download_url": "https://raw.githubusercontent.com/melmorabity/nagios-plugin-azure-resource/master/check_azure_resource.py",
+    "version": "master",
+    "tags": [
+      "melmorabity",
+      "nagios-plugin-azure-resource"
+    ]
+  },
+  {
+    "name": "check_routeros-upgrade",
+    "title": "check_routeros-upgrade",
+    "description": "A simple monitoring plugin to check RouterOS for updates.",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/x70b1/check_routeros-upgrade",
+    "download_url": "https://raw.githubusercontent.com/x70b1/check_routeros-upgrade/master/check_routeros-upgrade.sh",
+    "version": "master",
+    "tags": [
+      "x70b1",
+      "check_routeros-upgrade"
+    ]
+  },
+  {
+    "name": "check_test",
+    "title": "check_test",
+    "description": "A tool for Azure Monitor at Microsoft Azure",
+    "license": "Apache-2.0",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/heartbeatsjp/azmon",
+    "download_url": "https://raw.githubusercontent.com/heartbeatsjp/azmon/master/check_test.go",
+    "version": "master",
+    "tags": [
+      "heartbeatsjp",
+      "azmon"
+    ]
+  },
+  {
+    "name": "check_sophos_xg_disk",
+    "title": "check_sophos_xg_disk",
+    "description": "Monitoring plugin to check Sophos XG firewalls with Icinga, Nagios and other compatible monitoring solutions ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/DinoTools/monitoring-check_sophos_xg",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_sophos_xg/main/check_sophos_xg_disk.pl",
+    "version": "main",
+    "tags": [
+      "dinotools",
+      "monitoring-check_sophos_xg"
+    ]
+  },
+  {
+    "name": "check_sophos_xg_ha",
+    "title": "check_sophos_xg_ha",
+    "description": "Monitoring plugin to check Sophos XG firewalls with Icinga, Nagios and other compatible monitoring solutions ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/DinoTools/monitoring-check_sophos_xg",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_sophos_xg/main/check_sophos_xg_ha.pl",
+    "version": "main",
+    "tags": [
+      "dinotools",
+      "monitoring-check_sophos_xg"
+    ]
+  },
+  {
+    "name": "check_sophos_xg_info",
+    "title": "check_sophos_xg_info",
+    "description": "Monitoring plugin to check Sophos XG firewalls with Icinga, Nagios and other compatible monitoring solutions ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/DinoTools/monitoring-check_sophos_xg",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_sophos_xg/main/check_sophos_xg_info.pl",
+    "version": "main",
+    "tags": [
+      "dinotools",
+      "monitoring-check_sophos_xg"
+    ]
+  },
+  {
+    "name": "check_sophos_xg_license",
+    "title": "check_sophos_xg_license",
+    "description": "Monitoring plugin to check Sophos XG firewalls with Icinga, Nagios and other compatible monitoring solutions ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/DinoTools/monitoring-check_sophos_xg",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_sophos_xg/main/check_sophos_xg_license.pl",
+    "version": "main",
+    "tags": [
+      "dinotools",
+      "monitoring-check_sophos_xg"
+    ]
+  },
+  {
+    "name": "check_sophos_xg_memory",
+    "title": "check_sophos_xg_memory",
+    "description": "Monitoring plugin to check Sophos XG firewalls with Icinga, Nagios and other compatible monitoring solutions ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/DinoTools/monitoring-check_sophos_xg",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_sophos_xg/main/check_sophos_xg_memory.pl",
+    "version": "main",
+    "tags": [
+      "dinotools",
+      "monitoring-check_sophos_xg"
+    ]
+  },
+  {
+    "name": "check_sophos_xg_service",
+    "title": "check_sophos_xg_service",
+    "description": "Monitoring plugin to check Sophos XG firewalls with Icinga, Nagios and other compatible monitoring solutions ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/DinoTools/monitoring-check_sophos_xg",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_sophos_xg/main/check_sophos_xg_service.pl",
+    "version": "main",
+    "tags": [
+      "dinotools",
+      "monitoring-check_sophos_xg"
+    ]
+  },
+  {
+    "name": "check_nextcloud_security",
+    "title": "check_nextcloud_security",
+    "description": "Check the security level of your Nextcloud instance with the Nextcloud Security API",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/sowoi/check-nextcloud-security",
+    "download_url": "https://raw.githubusercontent.com/sowoi/check-nextcloud-security/main/check_nextcloud_security.py",
+    "version": "main",
+    "tags": [
+      "sowoi",
+      "check-nextcloud-security"
+    ]
+  },
+  {
+    "name": "check_oom",
+    "title": "check_oom",
+    "description": "Icinga2/Nagios check for Out of memory problems",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/l13t/icinga2_check_oom",
+    "download_url": "https://raw.githubusercontent.com/l13t/icinga2_check_oom/master/check_oom.py",
+    "version": "master",
+    "tags": [
+      "l13t",
+      "icinga2_check_oom"
+    ]
+  },
+  {
+    "name": "check_chrony",
+    "title": "check_chrony",
+    "description": "Nagios plugin to check the clock offset of chronyd",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/melmorabity/nagios-plugin-chrony",
+    "download_url": "https://raw.githubusercontent.com/melmorabity/nagios-plugin-chrony/master/check_chrony.py",
+    "version": "master",
+    "tags": [
+      "melmorabity",
+      "nagios-plugin-chrony"
+    ]
+  },
+  {
+    "name": "check_influxdb_query",
+    "title": "check_influxdb_query",
+    "description": "A simple nagios plugin to query an InfluxDB database.",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/Transatel/nagios-check-plugin-influxdb",
+    "download_url": "https://raw.githubusercontent.com/Transatel/nagios-check-plugin-influxdb/master/check_influxdb_query.py",
+    "version": "master",
+    "tags": [
+      "transatel",
+      "nagios-check-plugin-influxdb"
+    ]
+  },
+  {
+    "name": "check_disk_io",
+    "title": "check_disk_io",
+    "description": "Monitoring plugin to check disk io with Icinga, Nagios and other compatible monitoring solutions ",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/DinoTools/monitoring-check_disk_io",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_disk_io/main/check_disk_io.py",
+    "version": "main",
+    "tags": [
+      "dinotools",
+      "monitoring-check_disk_io"
+    ]
+  },
+  {
+    "name": "check_distribution",
+    "title": "check_distribution",
+    "description": "check_free_mem is a Nagios plugin that checks the amount of free real memory on a Linux system",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/matteocorti/check_free_mem",
+    "download_url": "https://raw.githubusercontent.com/matteocorti/check_free_mem/master/check_distribution.sh",
+    "version": "master",
+    "tags": [
+      "matteocorti",
+      "check_free_mem"
+    ]
+  },
+  {
+    "name": "check_network_interface",
+    "title": "check_network_interface",
+    "description": "Monitoring plugin to check network interfaces with Icinga, Nagios and other compatible monitoring solutions",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/DinoTools/monitoring-check_network_interface",
+    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_network_interface/main/check_network_interface.py",
+    "version": "main",
+    "tags": [
+      "dinotools",
+      "monitoring-check_network_interface"
+    ]
+  },
+  {
+    "name": "check_sateon",
+    "title": "check_sateon",
+    "description": "Nagios/Icinga plugin for checking SATEON field network device status",
+    "license": "MIT",
+    "language": "php",
+    "categories": [],
+    "homepage": "https://github.com/xyhtac/check_sateon",
+    "download_url": "https://raw.githubusercontent.com/xyhtac/check_sateon/main/check_sateon.php",
+    "version": "main",
+    "tags": [
+      "xyhtac",
+      "check_sateon"
+    ]
+  },
+  {
+    "name": "check_mysql_write",
+    "title": "check_mysql_write",
+    "description": "A simple monitoring plugin to check if MySQL/MariaDB host can do write operations. Supports Galera Cluster.",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/Napsty/check_mysql_write",
+    "download_url": "https://raw.githubusercontent.com/Napsty/check_mysql_write/master/check_mysql_write.sh",
+    "version": "master",
+    "tags": [
+      "napsty",
+      "check_mysql_write"
+    ]
+  },
+  {
+    "name": "check_snmp_status",
+    "title": "check_snmp_status",
+    "description": "Nagios/Icinga plugin for retrieving temperature or CPU/RAM/disk/network usage with SNMP",
+    "license": "GPL-3.0",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/Undone/check_snmp_status",
+    "download_url": "https://raw.githubusercontent.com/Undone/check_snmp_status/master/check_snmp_status.go",
+    "version": "master",
+    "tags": [
+      "undone",
+      "check_snmp_status"
+    ]
+  },
+  {
+    "name": "check_conntrackd",
+    "title": "check_conntrackd",
+    "description": "Various Nagios NRPE checks",
+    "license": "Apache-2.0",
+    "language": "ruby",
+    "categories": [],
+    "homepage": "https://github.com/kwilczynski/nagios-nrpe-checks",
+    "download_url": "https://raw.githubusercontent.com/kwilczynski/nagios-nrpe-checks/master/check_conntrackd.rb",
+    "version": "master",
+    "tags": [
+      "kwilczynski",
+      "nagios-nrpe-checks"
+    ]
+  },
+  {
+    "name": "check_named",
+    "title": "check_named",
+    "description": "Various Nagios NRPE checks",
+    "license": "Apache-2.0",
+    "language": "ruby",
+    "categories": [],
+    "homepage": "https://github.com/kwilczynski/nagios-nrpe-checks",
+    "download_url": "https://raw.githubusercontent.com/kwilczynski/nagios-nrpe-checks/master/check_named.rb",
+    "version": "master",
+    "tags": [
+      "kwilczynski",
+      "nagios-nrpe-checks"
+    ]
+  },
+  {
+    "name": "check_predicted",
+    "title": "check_predicted",
+    "description": "Nagios plugin that analyzes RRD files for real-time anomaly detection.",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/wezelboy/check_predicted",
+    "download_url": "https://raw.githubusercontent.com/wezelboy/check_predicted/master/check_predicted.py",
+    "version": "master",
+    "tags": [
+      "wezelboy",
+      "check_predicted"
+    ]
+  },
+  {
+    "name": "check_selinux",
+    "title": "check_selinux",
+    "description": "Nagios plugin to check the current mode of SELinux",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/melmorabity/nagios-plugin-selinux",
+    "download_url": "https://raw.githubusercontent.com/melmorabity/nagios-plugin-selinux/master/check_selinux.sh",
+    "version": "master",
+    "tags": [
+      "melmorabity",
+      "nagios-plugin-selinux"
+    ]
+  },
+  {
+    "name": "check_invoiceninja",
+    "title": "check_invoiceninja",
+    "description": "Monitoring plugin to check Invoice Ninja application",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/infiniroot/check_invoiceninja",
+    "download_url": "https://raw.githubusercontent.com/infiniroot/check_invoiceninja/main/check_invoiceninja.sh",
+    "version": "main",
+    "tags": [
+      "infiniroot",
+      "check_invoiceninja"
+    ]
+  },
+  {
+    "name": "check_nvidiasmi",
+    "title": "check_nvidiasmi",
+    "description": "Monitoring scripts",
+    "license": "GPL-3.0",
+    "language": "php",
+    "categories": [],
+    "homepage": "https://github.com/antonzhelyazkov/nagiosScripts",
+    "download_url": "https://raw.githubusercontent.com/antonzhelyazkov/nagiosScripts/master/check_nvidiasmi.php",
+    "version": "master",
+    "tags": [
+      "antonzhelyazkov",
+      "nagiosscripts"
+    ]
+  },
+  {
+    "name": "check_nvidiasmi",
+    "title": "check_nvidiasmi",
+    "description": "Monitoring scripts",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/antonzhelyazkov/nagiosScripts",
+    "download_url": "https://raw.githubusercontent.com/antonzhelyazkov/nagiosScripts/master/check_nvidiasmi.sh",
+    "version": "master",
+    "tags": [
+      "antonzhelyazkov",
+      "nagiosscripts"
+    ]
+  },
+  {
+    "name": "check_emc_isilon",
+    "title": "check_emc_isilon",
+    "description": "SNMP check for EMC Isilon storage",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/l13t/icinga2_check_emc_isilon",
+    "download_url": "https://raw.githubusercontent.com/l13t/icinga2_check_emc_isilon/master/check_emc_isilon.py",
+    "version": "master",
+    "tags": [
+      "l13t",
+      "icinga2_check_emc_isilon"
+    ]
+  },
+  {
+    "name": "check_hp_switch",
+    "title": "check_hp_switch",
+    "description": "HP / Aruba Switch CRC/Packet Drop Check (Nagios / Icinga)",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/V4n1X/check-hp-switch",
+    "download_url": "https://raw.githubusercontent.com/V4n1X/check-hp-switch/master/check_hp_switch.sh",
+    "version": "master",
+    "tags": [
+      "v4n1x",
+      "check-hp-switch"
+    ]
+  },
+  {
+    "name": "check_ipset",
+    "title": "check_ipset",
+    "description": "Nagios plugin for check ipset sets status.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/zevilz/NagiosIpsetStatus",
+    "download_url": "https://raw.githubusercontent.com/zevilz/NagiosIpsetStatus/master/check_ipset.sh",
+    "version": "master",
+    "tags": [
+      "zevilz",
+      "nagiosipsetstatus"
+    ]
+  },
+  {
+    "name": "check_vcsa",
+    "title": "check_vcsa",
+    "description": "VCSA api monitoring via python",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/loydi/vcsa-api-monitoring",
+    "download_url": "https://raw.githubusercontent.com/loydi/vcsa-api-monitoring/master/check_vcsa.py",
+    "version": "master",
+    "tags": [
+      "loydi",
+      "vcsa-api-monitoring"
+    ]
+  },
+  {
+    "name": "check_ro_mounts",
+    "title": "check_ro_mounts",
+    "description": "Monitoring Plugin in Perl to check for read-only mounted file systems",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/Napsty/check_ro_mounts",
+    "download_url": "https://raw.githubusercontent.com/Napsty/check_ro_mounts/main/check_ro_mounts.pl",
+    "version": "main",
+    "tags": [
+      "napsty",
+      "check_ro_mounts"
+    ]
+  },
+  {
+    "name": "check_jarm",
+    "title": "check_jarm",
+    "description": "Icinga/Nagios and stand-alone check scripts for the heuristic testing of machine-in-the-middle situations.",
+    "license": "BSD-3-Clause",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/pentagridsec/check-mitm",
+    "download_url": "https://raw.githubusercontent.com/pentagridsec/check-mitm/main/check_jarm.py",
+    "version": "main",
+    "tags": [
+      "pentagridsec",
+      "check-mitm"
+    ]
+  },
+  {
+    "name": "check_traceroute",
+    "title": "check_traceroute",
+    "description": "Icinga/Nagios and stand-alone check scripts for the heuristic testing of machine-in-the-middle situations.",
+    "license": "BSD-3-Clause",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/pentagridsec/check-mitm",
+    "download_url": "https://raw.githubusercontent.com/pentagridsec/check-mitm/main/check_traceroute.py",
+    "version": "main",
+    "tags": [
+      "pentagridsec",
+      "check-mitm"
+    ]
+  },
+  {
+    "name": "check_vmware_horizon",
+    "title": "check_vmware_horizon",
+    "description": "Icinga/ Nagios check for vmware Horizon",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/ascii42/check_vmware_horizon",
+    "download_url": "https://raw.githubusercontent.com/ascii42/check_vmware_horizon/master/check_vmware_horizon.sh",
+    "version": "master",
+    "tags": [
+      "ascii42",
+      "check_vmware_horizon"
+    ]
+  },
+  {
+    "name": "check_interrupts",
+    "title": "check_interrupts",
+    "description": "Icinga2/Nagios plugin for checking - interrupts https://exchange.icinga.com/honzahommer/check_interrupts",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/honzahommer/icinga-interrupts-plugin",
+    "download_url": "https://raw.githubusercontent.com/honzahommer/icinga-interrupts-plugin/master/check_interrupts.sh",
+    "version": "master",
+    "tags": [
+      "honzahommer",
+      "icinga-interrupts-plugin"
+    ]
+  },
+  {
+    "name": "check_dummy",
+    "title": "check_dummy",
+    "description": "Nagios/Icinga monitoring plugins",
+    "license": "Apache-2.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/apsivam/monitoring_plugins",
+    "download_url": "https://raw.githubusercontent.com/apsivam/monitoring_plugins/master/check_dummy.sh",
+    "version": "master",
+    "tags": [
+      "apsivam",
+      "monitoring_plugins"
+    ]
+  },
+  {
+    "name": "check_linux_stats",
+    "title": "check_linux_stats",
+    "description": "Nagios/Icinga monitoring plugins",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/apsivam/monitoring_plugins",
+    "download_url": "https://raw.githubusercontent.com/apsivam/monitoring_plugins/master/check_linux_stats.pl",
+    "version": "master",
+    "tags": [
+      "apsivam",
+      "monitoring_plugins"
+    ]
+  },
+  {
+    "name": "check_eve_ng",
+    "title": "check_eve_ng",
+    "description": "monitoring check plugin for the EVE-NG API (written in golang)",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/check-eve-ng",
+    "download_url": "https://raw.githubusercontent.com/inexio/check-eve-ng/master/check_eve_ng.go",
+    "version": "master",
+    "tags": [
+      "inexio",
+      "check-eve-ng"
+    ]
+  },
+  {
+    "name": "check_disk_io",
+    "title": "check_disk_io",
+    "description": "Custom Nagios plugin to monitor disk IO utilization",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/denis-jdsouza/nagios-plugin-disk-io-usage",
+    "download_url": "https://raw.githubusercontent.com/denis-jdsouza/nagios-plugin-disk-io-usage/master/check_disk_io.sh",
+    "version": "master",
+    "tags": [
+      "denis-jdsouza",
+      "nagios-plugin-disk-io-usage"
+    ]
+  },
+  {
+    "name": "check_test",
+    "title": "check_test",
+    "description": "Replacement Icinga/Nagios HTTP check  - \u1e83ith fixed return codes and NTLM support",
+    "license": "Apache-2.0",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/wftech/another-http-check",
+    "download_url": "https://raw.githubusercontent.com/wftech/another-http-check/master/check_test.go",
+    "version": "master",
+    "tags": [
+      "wftech",
+      "another-http-check"
+    ]
+  },
+  {
+    "name": "check_ping",
+    "title": "check_ping",
+    "description": "Nagios plugin to check ping with source address definition",
+    "license": "GPL-2.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/marcio-pessoa/check_ping",
+    "download_url": "https://raw.githubusercontent.com/marcio-pessoa/check_ping/master/check_ping.sh",
+    "version": "master",
+    "tags": [
+      "marcio-pessoa",
+      "check_ping"
+    ]
+  },
+  {
+    "name": "check_hpstoreeasy",
+    "title": "check_hpstoreeasy",
+    "description": "Nagios plugin that checks HP StoreEasy Storages based on Windows Server by querying rest API via HTTP",
+    "license": "GPL-2.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/ramonromancastro/check_hpstoreeasy",
+    "download_url": "https://raw.githubusercontent.com/ramonromancastro/check_hpstoreeasy/master/check_hpstoreeasy.sh",
+    "version": "master",
+    "tags": [
+      "ramonromancastro",
+      "check_hpstoreeasy"
+    ]
+  },
+  {
+    "name": "check_aws_budgets",
+    "title": "check_aws_budgets",
+    "description": "Icinga/Nagios check to check budgets in an AWS account",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/elias5000/check_aws_budgets",
+    "download_url": "https://raw.githubusercontent.com/elias5000/check_aws_budgets/main/check_aws_budgets.py",
+    "version": "main",
+    "tags": [
+      "elias5000",
+      "check_aws_budgets"
+    ]
+  },
+  {
+    "name": "check_shoutcast",
+    "title": "check_shoutcast",
+    "description": "Simple PHP script to monitor a shoutcast DNAS v1 stream with Nagios Core",
+    "license": "UNLICENSE",
+    "language": "php",
+    "categories": [],
+    "homepage": "https://github.com/timdlp/check_shoutcast-nagios",
+    "download_url": "https://raw.githubusercontent.com/timdlp/check_shoutcast-nagios/master/check_shoutcast.php",
+    "version": "master",
+    "tags": [
+      "timdlp",
+      "check_shoutcast-nagios"
+    ]
+  },
+  {
+    "name": "check_md_mismatch_cnt",
+    "title": "check_md_mismatch_cnt",
+    "description": "This is a Nagios/Icinga compatible check plugin for software raid (mdadm). It reads /sys/block/md*/md/mismatch_cnt and produces warnings if these values exceed a given threshold.",
+    "license": "UNLICENSE",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/antonfischl1980/check_md_mismatch_cnt",
+    "download_url": "https://raw.githubusercontent.com/antonfischl1980/check_md_mismatch_cnt/main/check_md_mismatch_cnt.sh",
+    "version": "main",
+    "tags": [
+      "antonfischl1980",
+      "check_md_mismatch_cnt"
+    ]
+  },
+  {
+    "name": "check_imap_receive",
+    "title": "check_imap_receive",
+    "description": "",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/0x4171341/plugin-nagios-monitoreo",
+    "download_url": "https://raw.githubusercontent.com/0x4171341/plugin-nagios-monitoreo/master/check_imap_receive.py",
+    "version": "master",
+    "tags": [
+      "0x4171341",
+      "plugin-nagios-monitoreo"
+    ]
+  },
+  {
+    "name": "check_smtp_send",
+    "title": "check_smtp_send",
+    "description": "",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/0x4171341/plugin-nagios-monitoreo",
+    "download_url": "https://raw.githubusercontent.com/0x4171341/plugin-nagios-monitoreo/master/check_smtp_send.py",
+    "version": "master",
+    "tags": [
+      "0x4171341",
+      "plugin-nagios-monitoreo"
+    ]
+  },
+  {
+    "name": "check_timezone",
+    "title": "check_timezone",
+    "description": "Nagios plugin to check timezone",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/melmorabity/nagios-plugin-timezone",
+    "download_url": "https://raw.githubusercontent.com/melmorabity/nagios-plugin-timezone/master/check_timezone.sh",
+    "version": "master",
+    "tags": [
+      "melmorabity",
+      "nagios-plugin-timezone"
+    ]
+  },
+  {
+    "name": "check_rcagent",
+    "title": "check_rcagent",
+    "description": "Plugins used to communicate with the ReChecked Agent.",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/rechecked/rcagent-plugins",
+    "download_url": "https://raw.githubusercontent.com/rechecked/rcagent-plugins/main/check_rcagent.py",
+    "version": "main",
+    "tags": [
+      "rechecked",
+      "rcagent-plugins"
+    ]
+  },
+  {
+    "name": "check_papercut",
+    "title": "check_papercut",
+    "description": "Nagios plugin to check PaperCut MF health using PaperCut API",
+    "license": "GPL-2.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/ramonromancastro/check_papercut",
+    "download_url": "https://raw.githubusercontent.com/ramonromancastro/check_papercut/master/check_papercut.sh",
+    "version": "master",
+    "tags": [
+      "ramonromancastro",
+      "check_papercut"
+    ]
+  },
+  {
+    "name": "check_cert",
+    "title": "check_cert",
+    "description": "Nagios plugin to check a HTTPS/SSL certificate",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/OpusVL/check_cert",
+    "download_url": "https://raw.githubusercontent.com/OpusVL/check_cert/master/check_cert.sh",
+    "version": "master",
+    "tags": [
+      "opusvl",
+      "check_cert"
+    ]
+  },
+  {
+    "name": "check_xmpp",
+    "title": "check_xmpp",
+    "description": "Nagios plugin to check a HTTPS/SSL certificate",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/OpusVL/check_cert",
+    "download_url": "https://raw.githubusercontent.com/OpusVL/check_cert/master/check_xmpp.sh",
+    "version": "master",
+    "tags": [
+      "opusvl",
+      "check_cert"
+    ]
+  },
+  {
+    "name": "check_adrive_usage",
+    "title": "check_adrive_usage",
+    "description": "Nagios plugins that are good for general purpose or are for 3rd party providers",
+    "license": "Apache-2.0",
+    "language": "php",
+    "categories": [],
+    "homepage": "https://github.com/HireChrisJohnston/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/HireChrisJohnston/nagios-plugins/master/check_adrive_usage.php",
+    "version": "master",
+    "tags": [
+      "hirechrisjohnston",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_mem",
+    "title": "check_mem",
+    "description": "Nagios plugins that are good for general purpose or are for 3rd party providers",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/HireChrisJohnston/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/HireChrisJohnston/nagios-plugins/master/check_mem.py",
+    "version": "master",
+    "tags": [
+      "hirechrisjohnston",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "notify_via_xmpp",
+    "title": "notify_via_xmpp",
+    "description": "Nagios plugins that are good for general purpose or are for 3rd party providers",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/HireChrisJohnston/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/HireChrisJohnston/nagios-plugins/master/notify_via_xmpp.pl",
+    "version": "master",
+    "tags": [
+      "hirechrisjohnston",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_haproxy_state",
+    "title": "check_haproxy_state",
+    "description": "Nagios plugin to check HAProxy frontend and backends state",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/kadasz/check-haproxy-state",
+    "download_url": "https://raw.githubusercontent.com/kadasz/check-haproxy-state/main/check_haproxy_state.py",
+    "version": "main",
+    "tags": [
+      "kadasz",
+      "check-haproxy-state"
+    ]
+  },
+  {
+    "name": "check_mas_health",
+    "title": "check_mas_health",
+    "description": "Nagios checks for Citrix Netscaler",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/uhei/nagios-netscaler-checks",
+    "download_url": "https://raw.githubusercontent.com/uhei/nagios-netscaler-checks/master/check_mas_health.py",
+    "version": "master",
+    "tags": [
+      "uhei",
+      "nagios-netscaler-checks"
+    ]
+  },
+  {
+    "name": "check_ns_auth_vserver",
+    "title": "check_ns_auth_vserver",
+    "description": "Nagios checks for Citrix Netscaler",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/uhei/nagios-netscaler-checks",
+    "download_url": "https://raw.githubusercontent.com/uhei/nagios-netscaler-checks/master/check_ns_auth_vserver.py",
+    "version": "master",
+    "tags": [
+      "uhei",
+      "nagios-netscaler-checks"
+    ]
+  },
+  {
+    "name": "check_ns_cert",
+    "title": "check_ns_cert",
+    "description": "Nagios checks for Citrix Netscaler",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/uhei/nagios-netscaler-checks",
+    "download_url": "https://raw.githubusercontent.com/uhei/nagios-netscaler-checks/master/check_ns_cert.py",
+    "version": "master",
+    "tags": [
+      "uhei",
+      "nagios-netscaler-checks"
+    ]
+  },
+  {
+    "name": "check_ns_conn",
+    "title": "check_ns_conn",
+    "description": "Nagios checks for Citrix Netscaler",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/uhei/nagios-netscaler-checks",
+    "download_url": "https://raw.githubusercontent.com/uhei/nagios-netscaler-checks/master/check_ns_conn.py",
+    "version": "master",
+    "tags": [
+      "uhei",
+      "nagios-netscaler-checks"
+    ]
+  },
+  {
+    "name": "check_ns_cpu",
+    "title": "check_ns_cpu",
+    "description": "Nagios checks for Citrix Netscaler",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/uhei/nagios-netscaler-checks",
+    "download_url": "https://raw.githubusercontent.com/uhei/nagios-netscaler-checks/master/check_ns_cpu.py",
+    "version": "master",
+    "tags": [
+      "uhei",
+      "nagios-netscaler-checks"
+    ]
+  },
+  {
+    "name": "check_ns_cs_vserver",
+    "title": "check_ns_cs_vserver",
+    "description": "Nagios checks for Citrix Netscaler",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/uhei/nagios-netscaler-checks",
+    "download_url": "https://raw.githubusercontent.com/uhei/nagios-netscaler-checks/master/check_ns_cs_vserver.py",
+    "version": "master",
+    "tags": [
+      "uhei",
+      "nagios-netscaler-checks"
+    ]
+  },
+  {
+    "name": "check_ns_disk",
+    "title": "check_ns_disk",
+    "description": "Nagios checks for Citrix Netscaler",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/uhei/nagios-netscaler-checks",
+    "download_url": "https://raw.githubusercontent.com/uhei/nagios-netscaler-checks/master/check_ns_disk.py",
+    "version": "master",
+    "tags": [
+      "uhei",
+      "nagios-netscaler-checks"
+    ]
+  },
+  {
+    "name": "check_ns_hardware",
+    "title": "check_ns_hardware",
+    "description": "Nagios checks for Citrix Netscaler",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/uhei/nagios-netscaler-checks",
+    "download_url": "https://raw.githubusercontent.com/uhei/nagios-netscaler-checks/master/check_ns_hardware.py",
+    "version": "master",
+    "tags": [
+      "uhei",
+      "nagios-netscaler-checks"
+    ]
+  },
+  {
+    "name": "check_ns_hastatus",
+    "title": "check_ns_hastatus",
+    "description": "Nagios checks for Citrix Netscaler",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/uhei/nagios-netscaler-checks",
+    "download_url": "https://raw.githubusercontent.com/uhei/nagios-netscaler-checks/master/check_ns_hastatus.py",
+    "version": "master",
+    "tags": [
+      "uhei",
+      "nagios-netscaler-checks"
+    ]
+  },
+  {
+    "name": "check_ns_mem",
+    "title": "check_ns_mem",
+    "description": "Nagios checks for Citrix Netscaler",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/uhei/nagios-netscaler-checks",
+    "download_url": "https://raw.githubusercontent.com/uhei/nagios-netscaler-checks/master/check_ns_mem.py",
+    "version": "master",
+    "tags": [
+      "uhei",
+      "nagios-netscaler-checks"
+    ]
+  },
+  {
+    "name": "check_ns_vserver",
+    "title": "check_ns_vserver",
+    "description": "Nagios checks for Citrix Netscaler",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/uhei/nagios-netscaler-checks",
+    "download_url": "https://raw.githubusercontent.com/uhei/nagios-netscaler-checks/master/check_ns_vserver.py",
+    "version": "master",
+    "tags": [
+      "uhei",
+      "nagios-netscaler-checks"
+    ]
+  },
+  {
+    "name": "check_openrc",
+    "title": "check_openrc",
+    "description": "icinga/nagios check plugins specific for gentoo",
+    "license": "MIT",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/antonfischl1980/monitoring-plugins-gentoo",
+    "download_url": "https://raw.githubusercontent.com/antonfischl1980/monitoring-plugins-gentoo/main/check_openrc.pl",
+    "version": "main",
+    "tags": [
+      "antonfischl1980",
+      "monitoring-plugins-gentoo"
+    ]
+  },
+  {
+    "name": "check_portage_age",
+    "title": "check_portage_age",
+    "description": "icinga/nagios check plugins specific for gentoo",
+    "license": "MIT",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/antonfischl1980/monitoring-plugins-gentoo",
+    "download_url": "https://raw.githubusercontent.com/antonfischl1980/monitoring-plugins-gentoo/main/check_portage_age.pl",
+    "version": "main",
+    "tags": [
+      "antonfischl1980",
+      "monitoring-plugins-gentoo"
+    ]
+  },
+  {
+    "name": "check_poe_consumption_snmp",
+    "title": "check_poe_consumption_snmp",
+    "description": "Nagios/Icinga compatible check plugin for PoE capable Switches that implement POWER-ETHERNET-MIB",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/antonfischl1980/check_poe_consumption_snmp",
+    "download_url": "https://raw.githubusercontent.com/antonfischl1980/check_poe_consumption_snmp/main/check_poe_consumption_snmp.sh",
+    "version": "main",
+    "tags": [
+      "antonfischl1980",
+      "check_poe_consumption_snmp"
+    ]
+  },
+  {
+    "name": "check_sftp",
+    "title": "check_sftp",
+    "description": "Monitoring plugin to check a remote SFTP server",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/Napsty/check_sftp",
+    "download_url": "https://raw.githubusercontent.com/Napsty/check_sftp/main/check_sftp.sh",
+    "version": "main",
+    "tags": [
+      "napsty",
+      "check_sftp"
+    ]
+  },
+  {
+    "name": "check_huawei_health",
+    "title": "check_huawei_health",
+    "description": "A check plugin for Nagios/Icinga to check enviromental status and report performance data on Huawei Switches",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/ntokos/check-huawei-health",
+    "download_url": "https://raw.githubusercontent.com/ntokos/check-huawei-health/main/check_huawei_health.pl",
+    "version": "main",
+    "tags": [
+      "ntokos",
+      "check-huawei-health"
+    ]
+  },
+  {
+    "name": "check_joan",
+    "title": "check_joan",
+    "description": "monitor joan displays plugin for Nagios",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/anilech/check_joan",
+    "download_url": "https://raw.githubusercontent.com/anilech/check_joan/master/check_joan.sh",
+    "version": "master",
+    "tags": [
+      "anilech",
+      "check_joan"
+    ]
+  },
+  {
+    "name": "check_mount",
+    "title": "check_mount",
+    "description": "Monitoring Plugins",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/hbrennhaeuser/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/hbrennhaeuser/monitoring-plugins/main/check_mount.pl",
+    "version": "main",
+    "tags": [
+      "hbrennhaeuser",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_systemd",
+    "title": "check_systemd",
+    "description": "Monitoring Plugins",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/hbrennhaeuser/monitoring-plugins",
+    "download_url": "https://raw.githubusercontent.com/hbrennhaeuser/monitoring-plugins/main/check_systemd.pl",
+    "version": "main",
+    "tags": [
+      "hbrennhaeuser",
+      "monitoring-plugins"
+    ]
+  },
+  {
+    "name": "check_sap_sm58",
+    "title": "check_sap_sm58",
+    "description": "Nagios plugin for checking SAP Transactional RFC - sm58 ",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/kmodric/check_sap_sm58.py",
+    "download_url": "https://raw.githubusercontent.com/kmodric/check_sap_sm58.py/master/check_sap_sm58.py",
+    "version": "master",
+    "tags": [
+      "kmodric",
+      "check_sap_sm58.py"
+    ]
+  },
+  {
+    "name": "check_couchbase",
+    "title": "check_couchbase",
+    "description": "A Nagios plugin for Couchbase",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/couchbase-partners/nagios-plugin-couchbase",
+    "download_url": "https://raw.githubusercontent.com/couchbase-partners/nagios-plugin-couchbase/master/check_couchbase.py",
+    "version": "master",
+    "tags": [
+      "couchbase-partners",
+      "nagios-plugin-couchbase"
+    ]
+  },
+  {
+    "name": "check_couchbase",
+    "title": "check_couchbase",
+    "description": "A Nagios plugin for Couchbase",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/deanproctor/nagios-plugin-couchbase",
+    "download_url": "https://raw.githubusercontent.com/deanproctor/nagios-plugin-couchbase/master/check_couchbase.py",
+    "version": "master",
+    "tags": [
+      "deanproctor",
+      "nagios-plugin-couchbase"
+    ]
+  },
+  {
+    "name": "check_sap_shortdumps",
+    "title": "check_sap_shortdumps",
+    "description": "Nagios plugin for checking SAP Short Dumps in last two days",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/kmodric/check_sap_shortdumps.py",
+    "download_url": "https://raw.githubusercontent.com/kmodric/check_sap_shortdumps.py/master/check_sap_shortdumps.py",
+    "version": "master",
+    "tags": [
+      "kmodric",
+      "check_sap_shortdumps.py"
+    ]
+  },
+  {
+    "name": "check_cert",
+    "title": "check_cert",
+    "description": "Custom nagios plugins to check expiration of certs and CRLs.",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/franps/nagios-cryppy",
+    "download_url": "https://raw.githubusercontent.com/franps/nagios-cryppy/master/check_cert.py",
+    "version": "master",
+    "tags": [
+      "franps",
+      "nagios-cryppy"
+    ]
+  },
+  {
+    "name": "check_certs_folder",
+    "title": "check_certs_folder",
+    "description": "Custom nagios plugins to check expiration of certs and CRLs.",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/franps/nagios-cryppy",
+    "download_url": "https://raw.githubusercontent.com/franps/nagios-cryppy/master/check_certs_folder.py",
+    "version": "master",
+    "tags": [
+      "franps",
+      "nagios-cryppy"
+    ]
+  },
+  {
+    "name": "check_crl",
+    "title": "check_crl",
+    "description": "Custom nagios plugins to check expiration of certs and CRLs.",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/franps/nagios-cryppy",
+    "download_url": "https://raw.githubusercontent.com/franps/nagios-cryppy/master/check_crl.py",
+    "version": "master",
+    "tags": [
+      "franps",
+      "nagios-cryppy"
+    ]
+  },
+  {
+    "name": "check_keystore",
+    "title": "check_keystore",
+    "description": "Custom nagios plugins to check expiration of certs and CRLs.",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/franps/nagios-cryppy",
+    "download_url": "https://raw.githubusercontent.com/franps/nagios-cryppy/master/check_keystore.py",
+    "version": "master",
+    "tags": [
+      "franps",
+      "nagios-cryppy"
+    ]
+  },
+  {
+    "name": "check_ssl",
+    "title": "check_ssl",
+    "description": "Custom nagios plugins to check expiration of certs and CRLs.",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/franps/nagios-cryppy",
+    "download_url": "https://raw.githubusercontent.com/franps/nagios-cryppy/master/check_ssl.py",
+    "version": "master",
+    "tags": [
+      "franps",
+      "nagios-cryppy"
+    ]
+  },
+  {
+    "name": "check_postgrey",
+    "title": "check_postgrey",
+    "description": "Nagios plugin that checks the status of a postgrey server",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/WBTMagnum/check_postgrey",
+    "download_url": "https://raw.githubusercontent.com/WBTMagnum/check_postgrey/main/check_postgrey.pl",
+    "version": "main",
+    "tags": [
+      "wbtmagnum",
+      "check_postgrey"
+    ]
+  },
+  {
+    "name": "check_domain",
+    "title": "check_domain",
+    "description": "golang check_domain nagios domain check script ",
+    "license": "MIT",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/matveynator/check_domain",
+    "download_url": "https://raw.githubusercontent.com/matveynator/check_domain/main/check_domain.go",
+    "version": "main",
+    "tags": [
+      "matveynator",
+      "check_domain"
+    ]
+  },
+  {
+    "name": "check_aloxe",
+    "title": "check_aloxe",
+    "description": "A check plugin for nagios/icinga for Alcatel OmniPCX Enterprise PBXs",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/ntokos/check-aloxe",
+    "download_url": "https://raw.githubusercontent.com/ntokos/check-aloxe/master/check_aloxe.pl",
+    "version": "master",
+    "tags": [
+      "ntokos",
+      "check-aloxe"
+    ]
+  },
+  {
+    "name": "check_ap_status",
+    "title": "check_ap_status",
+    "description": "Nagios Plugins for checking devices connected to ExtremeCloud IQ via API.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/jozefrebjak/nagios-plugins-extreme-cloud-iq",
+    "download_url": "https://raw.githubusercontent.com/jozefrebjak/nagios-plugins-extreme-cloud-iq/master/check_ap_status.sh",
+    "version": "master",
+    "tags": [
+      "jozefrebjak",
+      "nagios-plugins-extreme-cloud-iq"
+    ]
+  },
+  {
+    "name": "check_sap_longrunningjobs_utc",
+    "title": "check_sap_longrunningjobs_utc",
+    "description": "Nagios plugin for checking SAP long running jobs",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/kmodric/check_sap_longrunningjobs_utc.py",
+    "download_url": "https://raw.githubusercontent.com/kmodric/check_sap_longrunningjobs_utc.py/master/check_sap_longrunningjobs_utc.py",
+    "version": "master",
+    "tags": [
+      "kmodric",
+      "check_sap_longrunningjobs_utc.py"
+    ]
+  },
+  {
+    "name": "check_sap_scc4",
+    "title": "check_sap_scc4",
+    "description": "Nagios plugin for checking SAP SCC4 settings",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/kmodric/check_sap_scc4.py",
+    "download_url": "https://raw.githubusercontent.com/kmodric/check_sap_scc4.py/master/check_sap_scc4.py",
+    "version": "master",
+    "tags": [
+      "kmodric",
+      "check_sap_scc4.py"
+    ]
+  },
+  {
+    "name": "check_crm",
+    "title": "check_crm",
+    "description": "custom built nagios plugins",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/anoel2/nagios_plugins",
+    "download_url": "https://raw.githubusercontent.com/anoel2/nagios_plugins/main/check_crm.py",
+    "version": "main",
+    "tags": [
+      "anoel2",
+      "nagios_plugins"
+    ]
+  },
+  {
+    "name": "check_gitlab",
+    "title": "check_gitlab",
+    "description": "custom built nagios plugins",
+    "license": "GPL-3.0",
+    "language": "php",
+    "categories": [],
+    "homepage": "https://github.com/anoel2/nagios_plugins",
+    "download_url": "https://raw.githubusercontent.com/anoel2/nagios_plugins/main/check_gitlab.php",
+    "version": "main",
+    "tags": [
+      "anoel2",
+      "nagios_plugins"
+    ]
+  },
+  {
+    "name": "check_megacli",
+    "title": "check_megacli",
+    "description": "custom built nagios plugins",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/anoel2/nagios_plugins",
+    "download_url": "https://raw.githubusercontent.com/anoel2/nagios_plugins/main/check_megacli.py",
+    "version": "main",
+    "tags": [
+      "anoel2",
+      "nagios_plugins"
+    ]
+  },
+  {
+    "name": "check_serveroutput",
+    "title": "check_serveroutput",
+    "description": "custom built nagios plugins",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/anoel2/nagios_plugins",
+    "download_url": "https://raw.githubusercontent.com/anoel2/nagios_plugins/main/check_serveroutput.py",
+    "version": "main",
+    "tags": [
+      "anoel2",
+      "nagios_plugins"
+    ]
+  },
+  {
+    "name": "check_zammad",
+    "title": "check_zammad",
+    "description": "custom built nagios plugins",
+    "license": "GPL-3.0",
+    "language": "php",
+    "categories": [],
+    "homepage": "https://github.com/anoel2/nagios_plugins",
+    "download_url": "https://raw.githubusercontent.com/anoel2/nagios_plugins/main/check_zammad.php",
+    "version": "main",
+    "tags": [
+      "anoel2",
+      "nagios_plugins"
+    ]
+  },
+  {
+    "name": "check_niping",
+    "title": "check_niping",
+    "description": "Nagios check plugin for Niping",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/Erp7441/check_niping",
+    "download_url": "https://raw.githubusercontent.com/Erp7441/check_niping/main/check_niping.py",
+    "version": "main",
+    "tags": [
+      "erp7441",
+      "check_niping"
+    ]
+  },
+  {
+    "name": "check_redis_bgsave",
+    "title": "check_redis_bgsave",
+    "description": "Custom Nagios Plugins to verify if Redis Bgsave was completed",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/denis-jdsouza/nagios-plugin-redis-bgsave",
+    "download_url": "https://raw.githubusercontent.com/denis-jdsouza/nagios-plugin-redis-bgsave/master/check_redis_bgsave.sh",
+    "version": "master",
+    "tags": [
+      "denis-jdsouza",
+      "nagios-plugin-redis-bgsave"
+    ]
+  },
+  {
+    "name": "check_redis_process",
+    "title": "check_redis_process",
+    "description": "Custom Nagios Plugins to verify if Redis Bgsave was completed",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/denis-jdsouza/nagios-plugin-redis-bgsave",
+    "download_url": "https://raw.githubusercontent.com/denis-jdsouza/nagios-plugin-redis-bgsave/master/check_redis_process.sh",
+    "version": "master",
+    "tags": [
+      "denis-jdsouza",
+      "nagios-plugin-redis-bgsave"
+    ]
+  },
+  {
+    "name": "check_unbound-ng",
+    "title": "check_unbound-ng",
+    "description": "A script for monitoring Unbound DNS resolvers.",
+    "license": "Apache-2.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/joubbi/check_unbound-ng",
+    "download_url": "https://raw.githubusercontent.com/joubbi/check_unbound-ng/master/check_unbound-ng.sh",
+    "version": "master",
+    "tags": [
+      "joubbi",
+      "check_unbound-ng"
+    ]
+  },
+  {
+    "name": "check_elasticsearch_cluster_detailed",
+    "title": "check_elasticsearch_cluster_detailed",
+    "description": "Monitoring plugins for Nagios Core/Nagios XI and OP5 Monitor",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/jvandermeulen/NagiosPlugins",
+    "download_url": "https://raw.githubusercontent.com/jvandermeulen/NagiosPlugins/master/check_elasticsearch_cluster_detailed.bash",
+    "version": "master",
+    "tags": [
+      "jvandermeulen",
+      "nagiosplugins"
+    ]
+  },
+  {
+    "name": "check_elasticsearch_highlevel",
+    "title": "check_elasticsearch_highlevel",
+    "description": "Monitoring plugins for Nagios Core/Nagios XI and OP5 Monitor",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/jvandermeulen/NagiosPlugins",
+    "download_url": "https://raw.githubusercontent.com/jvandermeulen/NagiosPlugins/master/check_elasticsearch_highlevel.bash",
+    "version": "master",
+    "tags": [
+      "jvandermeulen",
+      "nagiosplugins"
+    ]
+  },
+  {
+    "name": "check_galera_nodes",
+    "title": "check_galera_nodes",
+    "description": "Monitoring plugins for Nagios Core/Nagios XI and OP5 Monitor",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/jvandermeulen/NagiosPlugins",
+    "download_url": "https://raw.githubusercontent.com/jvandermeulen/NagiosPlugins/master/check_galera_nodes.pl",
+    "version": "master",
+    "tags": [
+      "jvandermeulen",
+      "nagiosplugins"
+    ]
+  },
+  {
+    "name": "check_isp",
+    "title": "check_isp",
+    "description": "Monitoring plugins for Nagios Core/Nagios XI and OP5 Monitor",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/jvandermeulen/NagiosPlugins",
+    "download_url": "https://raw.githubusercontent.com/jvandermeulen/NagiosPlugins/master/check_isp.bash",
+    "version": "master",
+    "tags": [
+      "jvandermeulen",
+      "nagiosplugins"
+    ]
+  },
+  {
+    "name": "check_last_nls_backup",
+    "title": "check_last_nls_backup",
+    "description": "Monitoring plugins for Nagios Core/Nagios XI and OP5 Monitor",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/jvandermeulen/NagiosPlugins",
+    "download_url": "https://raw.githubusercontent.com/jvandermeulen/NagiosPlugins/master/check_last_nls_backup.sh",
+    "version": "master",
+    "tags": [
+      "jvandermeulen",
+      "nagiosplugins"
+    ]
+  },
+  {
+    "name": "check_nna_flow_devices",
+    "title": "check_nna_flow_devices",
+    "description": "Monitoring plugins for Nagios Core/Nagios XI and OP5 Monitor",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/jvandermeulen/NagiosPlugins",
+    "download_url": "https://raw.githubusercontent.com/jvandermeulen/NagiosPlugins/master/check_nna_flow_devices.sh",
+    "version": "master",
+    "tags": [
+      "jvandermeulen",
+      "nagiosplugins"
+    ]
+  },
+  {
+    "name": "check_reboot_required",
+    "title": "check_reboot_required",
+    "description": "Monitoring plugins for Nagios Core/Nagios XI and OP5 Monitor",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/jvandermeulen/NagiosPlugins",
+    "download_url": "https://raw.githubusercontent.com/jvandermeulen/NagiosPlugins/master/check_reboot_required.bash",
+    "version": "master",
+    "tags": [
+      "jvandermeulen",
+      "nagiosplugins"
+    ]
+  },
+  {
+    "name": "check_service_active",
+    "title": "check_service_active",
+    "description": "Monitoring plugins for Nagios Core/Nagios XI and OP5 Monitor",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/jvandermeulen/NagiosPlugins",
+    "download_url": "https://raw.githubusercontent.com/jvandermeulen/NagiosPlugins/master/check_service_active.sh",
+    "version": "master",
+    "tags": [
+      "jvandermeulen",
+      "nagiosplugins"
+    ]
+  },
+  {
+    "name": "check_subscription_status",
+    "title": "check_subscription_status",
+    "description": "Monitoring plugins for Nagios Core/Nagios XI and OP5 Monitor",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/jvandermeulen/NagiosPlugins",
+    "download_url": "https://raw.githubusercontent.com/jvandermeulen/NagiosPlugins/master/check_subscription_status.sh",
+    "version": "master",
+    "tags": [
+      "jvandermeulen",
+      "nagiosplugins"
+    ]
+  },
+  {
+    "name": "check_cpu_load",
+    "title": "check_cpu_load",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_cpu_load.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_disk",
+    "title": "check_disk",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_disk.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_hardware_health",
+    "title": "check_hardware_health",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_hardware_health.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_high_availability",
+    "title": "check_high_availability",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_high_availability.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_identify",
+    "title": "check_identify",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_identify.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_interface_metrics",
+    "title": "check_interface_metrics",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_interface_metrics.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_memory_usage",
+    "title": "check_memory_usage",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_memory_usage.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_sbc",
+    "title": "check_sbc",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_sbc.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_server",
+    "title": "check_server",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_server.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_snmp",
+    "title": "check_snmp",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_snmp.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_thola_server",
+    "title": "check_thola_server",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_thola_server.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_ups",
+    "title": "check_ups",
+    "description": "Tool for monitoring network devices (mainly using SNMP) - monitoring check plugin",
+    "license": "BSD-2-Clause",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/inexio/thola",
+    "download_url": "https://raw.githubusercontent.com/inexio/thola/main/cmd/check_ups.go",
+    "version": "main",
+    "tags": [
+      "inexio",
+      "thola"
+    ]
+  },
+  {
+    "name": "check_release_notes",
+    "title": "check_release_notes",
+    "description": "The Prometheus monitoring system and time series database.",
+    "license": "Apache-2.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/prometheus/prometheus",
+    "download_url": "https://raw.githubusercontent.com/prometheus/prometheus/main/scripts/check_release_notes.sh",
+    "version": "main",
+    "tags": [
+      "prometheus",
+      "prometheus"
+    ]
+  },
+  {
+    "name": "check_fix_markers",
+    "title": "check_fix_markers",
+    "description": "\u03c0 RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection \u2014 all without a single pixel of video.",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/ruvnet/RuView",
+    "download_url": "https://raw.githubusercontent.com/ruvnet/RuView/main/scripts/check_fix_markers.py",
+    "version": "main",
+    "tags": [
+      "ruvnet",
+      "ruview"
+    ]
+  },
+  {
+    "name": "check_health",
+    "title": "check_health",
+    "description": "\u03c0 RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection \u2014 all without a single pixel of video.",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/ruvnet/RuView",
+    "download_url": "https://raw.githubusercontent.com/ruvnet/RuView/main/scripts/check_health.py",
+    "version": "main",
+    "tags": [
+      "ruvnet",
+      "ruview"
+    ]
+  },
+  {
+    "name": "check_changelog_fragments",
+    "title": "check_changelog_fragments",
+    "description": "A high-performance observability data pipeline.",
+    "license": "MPL-2.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/vectordotdev/vector",
+    "download_url": "https://raw.githubusercontent.com/vectordotdev/vector/master/scripts/check_changelog_fragments.sh",
+    "version": "master",
+    "tags": [
+      "vectordotdev",
+      "vector"
+    ]
+  },
+  {
+    "name": "check_temporal_db",
+    "title": "check_temporal_db",
+    "description": "Open-source security automation platform for teams and AI agents",
+    "license": "AGPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/TracecatHQ/tracecat",
+    "download_url": "https://raw.githubusercontent.com/TracecatHQ/tracecat/main/scripts/check_temporal_db.py",
+    "version": "main",
+    "tags": [
+      "tracecathq",
+      "tracecat"
+    ]
+  },
+  {
+    "name": "check_mk",
+    "title": "check_mk",
+    "description": "Checkmk - Best-in-class infrastructure & application monitoring",
+    "license": "GPL-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/Checkmk/checkmk",
+    "download_url": "https://raw.githubusercontent.com/Checkmk/checkmk/master/bin/check_mk.py",
+    "version": "master",
+    "tags": [
+      "checkmk",
+      "checkmk"
+    ]
+  },
+  {
+    "name": "check_news",
+    "title": "check_news",
+    "description": "Check Python signature params for proper documentation",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/jshwi/docsig",
+    "download_url": "https://raw.githubusercontent.com/jshwi/docsig/master/scripts/check_news.py",
+    "version": "master",
+    "tags": [
+      "jshwi",
+      "docsig"
+    ]
+  },
+  {
+    "name": "check_ssl",
+    "title": "check_ssl",
+    "description": "Check the expiration date of your ssl-cert with bash (implemented for Nagios/Icinga)",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/adfinis/check-ssl",
+    "download_url": "https://raw.githubusercontent.com/adfinis/check-ssl/master/check_ssl.sh",
+    "version": "master",
+    "tags": [
+      "adfinis",
+      "check-ssl"
+    ]
+  },
+  {
+    "name": "check_supervisord",
+    "title": "check_supervisord",
+    "description": "Check supervisord programs status Nagios plugin",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/vint21h/nagios-check-supervisord",
+    "download_url": "https://raw.githubusercontent.com/vint21h/nagios-check-supervisord/master/check_supervisord.py",
+    "version": "master",
+    "tags": [
+      "vint21h",
+      "nagios-check-supervisord"
+    ]
+  },
+  {
+    "name": "check_code_format",
+    "title": "check_code_format",
+    "description": "Data structures and algorithms written in C",
+    "license": "BSD-3-Clause",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/Benardi/sibylline",
+    "download_url": "https://raw.githubusercontent.com/Benardi/sibylline/main/check_code_format.sh",
+    "version": "main",
+    "tags": [
+      "benardi",
+      "sibylline"
+    ]
+  },
+  {
+    "name": "check_test",
+    "title": "check_test",
+    "description": "\ud83d\udc6e\u200d\u2642\ufe0f Form validation utilities",
+    "license": "MIT",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/gowww/check",
+    "download_url": "https://raw.githubusercontent.com/gowww/check/master/check_test.go",
+    "version": "master",
+    "tags": [
+      "gowww",
+      "check"
+    ]
+  },
+  {
+    "name": "check_unifi",
+    "title": "check_unifi",
+    "description": "Icinga 2 check plugin for UniFi Network Application",
+    "license": "UNLICENSE",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/hardoverflow/check-unifi",
+    "download_url": "https://raw.githubusercontent.com/hardoverflow/check-unifi/main/check_unifi.py",
+    "version": "main",
+    "tags": [
+      "hardoverflow",
+      "check-unifi"
+    ]
+  },
+  {
+    "name": "check_minecraft_username",
+    "title": "check_minecraft_username",
+    "description": "A minecraft username sniper tool.",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/Ayfri/MCUS",
+    "download_url": "https://raw.githubusercontent.com/Ayfri/MCUS/main/check_minecraft_username.py",
+    "version": "main",
+    "tags": [
+      "ayfri",
+      "mcus"
+    ]
+  },
+  {
+    "name": "check_test",
+    "title": "check_test",
+    "description": "Minimalistic library for keeping up to date with TLD checks.",
+    "license": "MIT",
+    "language": "go",
+    "categories": [],
+    "homepage": "https://github.com/lawzava/go-tld",
+    "download_url": "https://raw.githubusercontent.com/lawzava/go-tld/main/check_test.go",
+    "version": "main",
+    "tags": [
+      "lawzava",
+      "go-tld"
+    ]
+  },
+  {
+    "name": "check_mk_telegram-notify",
+    "title": "check_mk_telegram-notify",
+    "description": "Get alerted by Check_MK via Telegram bash script",
+    "license": "BSD-3-Clause",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/filipnet/checkmk-telegram-notify",
+    "download_url": "https://raw.githubusercontent.com/filipnet/checkmk-telegram-notify/main/check_mk_telegram-notify.sh",
+    "version": "main",
+    "tags": [
+      "filipnet",
+      "checkmk-telegram-notify"
+    ]
+  },
+  {
+    "name": "check_application_health",
+    "title": "check_application_health",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_application_health.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_backup",
+    "title": "check_backup",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_backup.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_bandwidth",
+    "title": "check_bandwidth",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_bandwidth.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_conntrack",
+    "title": "check_conntrack",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_conntrack.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_couchdb",
+    "title": "check_couchdb",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_couchdb.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_ddos",
+    "title": "check_ddos",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_ddos.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_dmesg",
+    "title": "check_dmesg",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_dmesg.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_ephemeral_port_exhaustion",
+    "title": "check_ephemeral_port_exhaustion",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_ephemeral_port_exhaustion.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_forkrate",
+    "title": "check_forkrate",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_forkrate.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_fs_writable",
+    "title": "check_fs_writable",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_fs_writable.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_gcp_maintenance_event",
+    "title": "check_gcp_maintenance_event",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_gcp_maintenance_event.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_influxdb",
+    "title": "check_influxdb",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_influxdb.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_last",
+    "title": "check_last",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_last.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_max_open_files",
+    "title": "check_max_open_files",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_max_open_files.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_memcached",
+    "title": "check_memcached",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_memcached.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_memory",
+    "title": "check_memory",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_memory.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_mysql",
+    "title": "check_mysql",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_mysql.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_php_fpm",
+    "title": "check_php_fpm",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_php_fpm.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_php_project_security_issue",
+    "title": "check_php_project_security_issue",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_php_project_security_issue.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_redis",
+    "title": "check_redis",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_redis.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_shellshock",
+    "title": "check_shellshock",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_shellshock.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_smart",
+    "title": "check_smart",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_smart.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_ssl_cert",
+    "title": "check_ssl_cert",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_ssl_cert.sh",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_twemproxy",
+    "title": "check_twemproxy",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
+    "license": "MIT",
+    "language": "ruby",
+    "categories": [],
+    "homepage": "https://github.com/bdossantos/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/bdossantos/nagios-plugins/master/check_twemproxy.rb",
+    "version": "master",
+    "tags": [
+      "bdossantos",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_http_json",
+    "title": "check_http_json",
+    "description": "Nagios plugin to parse JSON from an HTTP response.",
+    "license": "Apache-2.0",
+    "language": "ruby",
+    "categories": [],
+    "homepage": "https://github.com/phrawzty/check_http_json",
+    "download_url": "https://raw.githubusercontent.com/phrawzty/check_http_json/main/check_http_json.rb",
+    "version": "main",
+    "tags": [
+      "phrawzty",
+      "check_http_json"
+    ]
+  },
+  {
+    "name": "check_es_system",
+    "title": "check_es_system",
+    "description": "Monitoring plugin to check status and resource usage of an ElasticSearch cluster node",
+    "license": "GPL-2.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/Napsty/check_es_system",
+    "download_url": "https://raw.githubusercontent.com/Napsty/check_es_system/master/check_es_system.sh",
+    "version": "master",
+    "tags": [
+      "napsty",
+      "check_es_system"
+    ]
+  },
+  {
+    "name": "check_synology",
+    "title": "check_synology",
+    "description": " This plugin will check a lot of different values on your Synology DiskStation.",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/wernerfred/check_synology",
+    "download_url": "https://raw.githubusercontent.com/wernerfred/check_synology/master/check_synology.py",
+    "version": "master",
+    "tags": [
+      "wernerfred",
+      "check_synology"
+    ]
+  },
+  {
+    "name": "check_mak",
+    "title": "check_mak",
+    "description": "Tool to check remaining MAK activations",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/casdr/mak-tool",
+    "download_url": "https://raw.githubusercontent.com/casdr/mak-tool/master/check_mak.py",
+    "version": "master",
+    "tags": [
+      "casdr",
+      "mak-tool"
+    ]
+  },
+  {
+    "name": "check_container_stats_docker",
+    "title": "check_container_stats_docker",
+    "description": "Icinga / Nagios plugins to check metrics of Docker / PodMan containers",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-container-stats",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-container-stats/master/check_container_stats_docker.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-container-stats"
+    ]
+  },
+  {
+    "name": "check_container_stats_podman",
+    "title": "check_container_stats_podman",
+    "description": "Icinga / Nagios plugins to check metrics of Docker / PodMan containers",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-container-stats",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-container-stats/master/check_container_stats_podman.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-container-stats"
+    ]
+  },
+  {
+    "name": "check_docker_system",
+    "title": "check_docker_system",
+    "description": "Icinga / Nagios plugins to check metrics of Docker / PodMan containers",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-container-stats",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-container-stats/master/check_docker_system.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-container-stats"
+    ]
+  },
+  {
+    "name": "check_aggr",
+    "title": "check_aggr",
+    "description": "NetApp Monitoring over REST-API (Nagios, Icinga, CheckMK, etc.)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-ontap-monitoring-rest",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-ontap-monitoring-rest/main/check_aggr.pl",
+    "version": "main",
+    "tags": [
+      "aleex42",
+      "netapp-ontap-monitoring-rest"
+    ]
+  },
+  {
+    "name": "check_disks",
+    "title": "check_disks",
+    "description": "NetApp Monitoring over REST-API (Nagios, Icinga, CheckMK, etc.)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-ontap-monitoring-rest",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-ontap-monitoring-rest/main/check_disks.pl",
+    "version": "main",
+    "tags": [
+      "aleex42",
+      "netapp-ontap-monitoring-rest"
+    ]
+  },
+  {
+    "name": "check_health_sensors",
+    "title": "check_health_sensors",
+    "description": "NetApp Monitoring over REST-API (Nagios, Icinga, CheckMK, etc.)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-ontap-monitoring-rest",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-ontap-monitoring-rest/main/check_health_sensors.pl",
+    "version": "main",
+    "tags": [
+      "aleex42",
+      "netapp-ontap-monitoring-rest"
+    ]
+  },
+  {
+    "name": "check_lun",
+    "title": "check_lun",
+    "description": "NetApp Monitoring over REST-API (Nagios, Icinga, CheckMK, etc.)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-ontap-monitoring-rest",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-ontap-monitoring-rest/main/check_lun.pl",
+    "version": "main",
+    "tags": [
+      "aleex42",
+      "netapp-ontap-monitoring-rest"
+    ]
+  },
+  {
+    "name": "check_volume",
+    "title": "check_volume",
+    "description": "NetApp Monitoring over REST-API (Nagios, Icinga, CheckMK, etc.)",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-ontap-monitoring-rest",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-ontap-monitoring-rest/main/check_volume.pl",
+    "version": "main",
+    "tags": [
+      "aleex42",
+      "netapp-ontap-monitoring-rest"
+    ]
+  },
+  {
+    "name": "check_rabbit_aliveness",
+    "title": "check_rabbit_aliveness",
+    "description": "Set of python based rabbitmq plugins",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/jasonmcintosh/rabbitmq-nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/jasonmcintosh/rabbitmq-nagios-plugins/master/check_rabbit_aliveness.py",
+    "version": "master",
+    "tags": [
+      "jasonmcintosh",
+      "rabbitmq-nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_rabbit_all_queues",
+    "title": "check_rabbit_all_queues",
+    "description": "Set of python based rabbitmq plugins",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/jasonmcintosh/rabbitmq-nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/jasonmcintosh/rabbitmq-nagios-plugins/master/check_rabbit_all_queues.py",
+    "version": "master",
+    "tags": [
+      "jasonmcintosh",
+      "rabbitmq-nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_rabbit_federation",
+    "title": "check_rabbit_federation",
+    "description": "Set of python based rabbitmq plugins",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/jasonmcintosh/rabbitmq-nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/jasonmcintosh/rabbitmq-nagios-plugins/master/check_rabbit_federation.py",
+    "version": "master",
+    "tags": [
+      "jasonmcintosh",
+      "rabbitmq-nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_rabbit_overview",
+    "title": "check_rabbit_overview",
+    "description": "Set of python based rabbitmq plugins",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/jasonmcintosh/rabbitmq-nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/jasonmcintosh/rabbitmq-nagios-plugins/master/check_rabbit_overview.py",
+    "version": "master",
+    "tags": [
+      "jasonmcintosh",
+      "rabbitmq-nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_rabbit_queue",
+    "title": "check_rabbit_queue",
+    "description": "Set of python based rabbitmq plugins",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/jasonmcintosh/rabbitmq-nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/jasonmcintosh/rabbitmq-nagios-plugins/master/check_rabbit_queue.py",
+    "version": "master",
+    "tags": [
+      "jasonmcintosh",
+      "rabbitmq-nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_rabbit_server",
+    "title": "check_rabbit_server",
+    "description": "Set of python based rabbitmq plugins",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/jasonmcintosh/rabbitmq-nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/jasonmcintosh/rabbitmq-nagios-plugins/master/check_rabbit_server.py",
+    "version": "master",
+    "tags": [
+      "jasonmcintosh",
+      "rabbitmq-nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_rabbit_vhost",
+    "title": "check_rabbit_vhost",
+    "description": "Set of python based rabbitmq plugins",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/jasonmcintosh/rabbitmq-nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/jasonmcintosh/rabbitmq-nagios-plugins/master/check_rabbit_vhost.py",
+    "version": "master",
+    "tags": [
+      "jasonmcintosh",
+      "rabbitmq-nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_hddtemp",
+    "title": "check_hddtemp",
+    "description": "Check HDD temperature Nagios plugin",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/vint21h/nagios-check-hddtemp",
+    "download_url": "https://raw.githubusercontent.com/vint21h/nagios-check-hddtemp/master/check_hddtemp.py",
+    "version": "master",
+    "tags": [
+      "vint21h",
+      "nagios-check-hddtemp"
+    ]
+  },
+  {
+    "name": "check_synology_cpu",
+    "title": "check_synology_cpu",
+    "description": "Collection of Icinga / Nagios plugins to monitor Synology DSM NAS devices",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-synology-plugins",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-synology-plugins/master/check_synology_cpu.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-synology-plugins"
+    ]
+  },
+  {
+    "name": "check_synology_disks",
+    "title": "check_synology_disks",
+    "description": "Collection of Icinga / Nagios plugins to monitor Synology DSM NAS devices",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-synology-plugins",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-synology-plugins/master/check_synology_disks.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-synology-plugins"
+    ]
+  },
+  {
+    "name": "check_synology_ram",
+    "title": "check_synology_ram",
+    "description": "Collection of Icinga / Nagios plugins to monitor Synology DSM NAS devices",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-synology-plugins",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-synology-plugins/master/check_synology_ram.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-synology-plugins"
+    ]
+  },
+  {
+    "name": "check_synology_ups",
+    "title": "check_synology_ups",
+    "description": "Collection of Icinga / Nagios plugins to monitor Synology DSM NAS devices",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-synology-plugins",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-synology-plugins/master/check_synology_ups.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-synology-plugins"
+    ]
+  },
+  {
+    "name": "check_synology_volumes",
+    "title": "check_synology_volumes",
+    "description": "Collection of Icinga / Nagios plugins to monitor Synology DSM NAS devices",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-synology-plugins",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-synology-plugins/master/check_synology_volumes.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-synology-plugins"
+    ]
+  },
+  {
+    "name": "check_test",
+    "title": "check_test",
+    "description": "A light-weight cross-platform Nagios compatible monitoring agent.",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/rechecked/rcagent",
+    "download_url": "https://raw.githubusercontent.com/rechecked/rcagent/main/plugins/check_test.sh",
+    "version": "main",
+    "tags": [
+      "rechecked",
+      "rcagent"
+    ]
+  },
+  {
+    "name": "check_ib_switch",
+    "title": "check_ib_switch",
+    "description": "Nagios script to check the status and fault in unmanaged Mellanox Infiniband switches",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/guilbaults/check_ib_switch",
+    "download_url": "https://raw.githubusercontent.com/guilbaults/check_ib_switch/master/check_ib_switch.py",
+    "version": "master",
+    "tags": [
+      "guilbaults",
+      "check_ib_switch"
+    ]
+  },
+  {
+    "name": "check_blade_temp",
+    "title": "check_blade_temp",
+    "description": "Check plugins for Networking devices to be used in Nagios or Shinken",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/bigbrozer/netplugins",
+    "download_url": "https://raw.githubusercontent.com/bigbrozer/netplugins/master/check_blade_temp.pl",
+    "version": "master",
+    "tags": [
+      "bigbrozer",
+      "netplugins"
+    ]
+  },
+  {
+    "name": "check_cisco_config",
+    "title": "check_cisco_config",
+    "description": "Check plugins for Networking devices to be used in Nagios or Shinken",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/bigbrozer/netplugins",
+    "download_url": "https://raw.githubusercontent.com/bigbrozer/netplugins/master/check_cisco_config.py",
+    "version": "master",
+    "tags": [
+      "bigbrozer",
+      "netplugins"
+    ]
+  },
+  {
+    "name": "check_cisco_cpu",
+    "title": "check_cisco_cpu",
+    "description": "Check plugins for Networking devices to be used in Nagios or Shinken",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/bigbrozer/netplugins",
+    "download_url": "https://raw.githubusercontent.com/bigbrozer/netplugins/master/check_cisco_cpu.py",
+    "version": "master",
+    "tags": [
+      "bigbrozer",
+      "netplugins"
+    ]
+  },
+  {
+    "name": "check_cisco_cpu_module",
+    "title": "check_cisco_cpu_module",
+    "description": "Check plugins for Networking devices to be used in Nagios or Shinken",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/bigbrozer/netplugins",
+    "download_url": "https://raw.githubusercontent.com/bigbrozer/netplugins/master/check_cisco_cpu_module.pl",
+    "version": "master",
+    "tags": [
+      "bigbrozer",
+      "netplugins"
+    ]
+  },
+  {
+    "name": "check_cisco_hard",
+    "title": "check_cisco_hard",
+    "description": "Check plugins for Networking devices to be used in Nagios or Shinken",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/bigbrozer/netplugins",
+    "download_url": "https://raw.githubusercontent.com/bigbrozer/netplugins/master/check_cisco_hard.py",
+    "version": "master",
+    "tags": [
+      "bigbrozer",
+      "netplugins"
+    ]
+  },
+  {
+    "name": "check_cisco_hsrp",
+    "title": "check_cisco_hsrp",
+    "description": "Check plugins for Networking devices to be used in Nagios or Shinken",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/bigbrozer/netplugins",
+    "download_url": "https://raw.githubusercontent.com/bigbrozer/netplugins/master/check_cisco_hsrp.py",
+    "version": "master",
+    "tags": [
+      "bigbrozer",
+      "netplugins"
+    ]
+  },
+  {
+    "name": "check_cisco_temp",
+    "title": "check_cisco_temp",
+    "description": "Check plugins for Networking devices to be used in Nagios or Shinken",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/bigbrozer/netplugins",
+    "download_url": "https://raw.githubusercontent.com/bigbrozer/netplugins/master/check_cisco_temp.py",
+    "version": "master",
+    "tags": [
+      "bigbrozer",
+      "netplugins"
+    ]
+  },
+  {
+    "name": "check_ibm_san_directors_crcs",
+    "title": "check_ibm_san_directors_crcs",
+    "description": "Check plugins for Networking devices to be used in Nagios or Shinken",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/bigbrozer/netplugins",
+    "download_url": "https://raw.githubusercontent.com/bigbrozer/netplugins/master/check_ibm_san_directors_crcs.py",
+    "version": "master",
+    "tags": [
+      "bigbrozer",
+      "netplugins"
+    ]
+  },
+  {
+    "name": "check_oftp",
+    "title": "check_oftp",
+    "description": "Check plugins for Networking devices to be used in Nagios or Shinken",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/bigbrozer/netplugins",
+    "download_url": "https://raw.githubusercontent.com/bigbrozer/netplugins/master/check_oftp.py",
+    "version": "master",
+    "tags": [
+      "bigbrozer",
+      "netplugins"
+    ]
+  },
+  {
+    "name": "check_snmpnetstat",
+    "title": "check_snmpnetstat",
+    "description": "Check plugins for Networking devices to be used in Nagios or Shinken",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/bigbrozer/netplugins",
+    "download_url": "https://raw.githubusercontent.com/bigbrozer/netplugins/master/check_snmpnetstat.py",
+    "version": "master",
+    "tags": [
+      "bigbrozer",
+      "netplugins"
+    ]
+  },
+  {
+    "name": "check_bandwidth",
+    "title": "check_bandwidth",
+    "description": "Nagios (NRPE) plugin for checking bandwidth limit",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/tuladhar/check_bandwidth",
+    "download_url": "https://raw.githubusercontent.com/tuladhar/check_bandwidth/main/check_bandwidth.py",
+    "version": "main",
+    "tags": [
+      "tuladhar",
+      "check_bandwidth"
+    ]
+  },
+  {
+    "name": "check_7mode_aggr_reserve",
+    "title": "check_7mode_aggr_reserve",
+    "description": "Nagios-Checks for monitoring NetApp 7-Mode-Systems via NetApp Perl API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-7mode-nagios",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-7mode-nagios/master/check_7mode_aggr_reserve.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "netapp-7mode-nagios"
+    ]
+  },
+  {
+    "name": "check_7mode_aggr_usage",
+    "title": "check_7mode_aggr_usage",
+    "description": "Nagios-Checks for monitoring NetApp 7-Mode-Systems via NetApp Perl API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-7mode-nagios",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-7mode-nagios/master/check_7mode_aggr_usage.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "netapp-7mode-nagios"
+    ]
+  },
+  {
+    "name": "check_7mode_interfaces",
+    "title": "check_7mode_interfaces",
+    "description": "Nagios-Checks for monitoring NetApp 7-Mode-Systems via NetApp Perl API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-7mode-nagios",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-7mode-nagios/master/check_7mode_interfaces.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "netapp-7mode-nagios"
+    ]
+  },
+  {
+    "name": "check_7mode_multipath",
+    "title": "check_7mode_multipath",
+    "description": "Nagios-Checks for monitoring NetApp 7-Mode-Systems via NetApp Perl API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-7mode-nagios",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-7mode-nagios/master/check_7mode_multipath.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "netapp-7mode-nagios"
+    ]
+  },
+  {
+    "name": "check_7mode_ntp",
+    "title": "check_7mode_ntp",
+    "description": "Nagios-Checks for monitoring NetApp 7-Mode-Systems via NetApp Perl API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-7mode-nagios",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-7mode-nagios/master/check_7mode_ntp.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "netapp-7mode-nagios"
+    ]
+  },
+  {
+    "name": "check_7mode_rebuild",
+    "title": "check_7mode_rebuild",
+    "description": "Nagios-Checks for monitoring NetApp 7-Mode-Systems via NetApp Perl API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-7mode-nagios",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-7mode-nagios/master/check_7mode_rebuild.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "netapp-7mode-nagios"
+    ]
+  },
+  {
+    "name": "check_7mode_snapmirror",
+    "title": "check_7mode_snapmirror",
+    "description": "Nagios-Checks for monitoring NetApp 7-Mode-Systems via NetApp Perl API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-7mode-nagios",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-7mode-nagios/master/check_7mode_snapmirror.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "netapp-7mode-nagios"
+    ]
+  },
+  {
+    "name": "check_7mode_snapshot_age",
+    "title": "check_7mode_snapshot_age",
+    "description": "Nagios-Checks for monitoring NetApp 7-Mode-Systems via NetApp Perl API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-7mode-nagios",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-7mode-nagios/master/check_7mode_snapshot_age.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "netapp-7mode-nagios"
+    ]
+  },
+  {
+    "name": "check_7mode_sparedisk",
+    "title": "check_7mode_sparedisk",
+    "description": "Nagios-Checks for monitoring NetApp 7-Mode-Systems via NetApp Perl API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-7mode-nagios",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-7mode-nagios/master/check_7mode_sparedisk.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "netapp-7mode-nagios"
+    ]
+  },
+  {
+    "name": "check_7mode_uptime",
+    "title": "check_7mode_uptime",
+    "description": "Nagios-Checks for monitoring NetApp 7-Mode-Systems via NetApp Perl API",
+    "license": "GPL-3.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-7mode-nagios",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-7mode-nagios/master/check_7mode_uptime.sh",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "netapp-7mode-nagios"
+    ]
+  },
+  {
+    "name": "check_7mode_volume",
+    "title": "check_7mode_volume",
+    "description": "Nagios-Checks for monitoring NetApp 7-Mode-Systems via NetApp Perl API",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/netapp-7mode-nagios",
+    "download_url": "https://raw.githubusercontent.com/aleex42/netapp-7mode-nagios/master/check_7mode_volume.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "netapp-7mode-nagios"
+    ]
+  },
+  {
+    "name": "check_element_cluster_performance",
+    "title": "check_element_cluster_performance",
+    "description": "NetApp ElementOS Monitoring for Nagios/Icinga ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/elementOS-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/elementOS-monitoring/master/check_element_cluster_performance.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "elementos-monitoring"
+    ]
+  },
+  {
+    "name": "check_element_drives",
+    "title": "check_element_drives",
+    "description": "NetApp ElementOS Monitoring for Nagios/Icinga ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/elementOS-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/elementOS-monitoring/master/check_element_drives.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "elementos-monitoring"
+    ]
+  },
+  {
+    "name": "check_element_interfaces",
+    "title": "check_element_interfaces",
+    "description": "NetApp ElementOS Monitoring for Nagios/Icinga ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/elementOS-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/elementOS-monitoring/master/check_element_interfaces.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "elementos-monitoring"
+    ]
+  },
+  {
+    "name": "check_element_latency",
+    "title": "check_element_latency",
+    "description": "NetApp ElementOS Monitoring for Nagios/Icinga ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/elementOS-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/elementOS-monitoring/master/check_element_latency.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "elementos-monitoring"
+    ]
+  },
+  {
+    "name": "check_element_nodes",
+    "title": "check_element_nodes",
+    "description": "NetApp ElementOS Monitoring for Nagios/Icinga ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/elementOS-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/elementOS-monitoring/master/check_element_nodes.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "elementos-monitoring"
+    ]
+  },
+  {
+    "name": "check_element_space",
+    "title": "check_element_space",
+    "description": "NetApp ElementOS Monitoring for Nagios/Icinga ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/elementOS-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/elementOS-monitoring/master/check_element_space.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "elementos-monitoring"
+    ]
+  },
+  {
+    "name": "check_pd_failures",
+    "title": "check_pd_failures",
+    "description": "NetApp ElementOS Monitoring for Nagios/Icinga ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/elementOS-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/elementOS-monitoring/master/check_pd_failures.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "elementos-monitoring"
+    ]
+  },
+  {
+    "name": "check_pd_space",
+    "title": "check_pd_space",
+    "description": "NetApp ElementOS Monitoring for Nagios/Icinga ",
+    "license": "GPL-3.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/aleex42/elementOS-monitoring",
+    "download_url": "https://raw.githubusercontent.com/aleex42/elementOS-monitoring/master/check_pd_space.pl",
+    "version": "master",
+    "tags": [
+      "aleex42",
+      "elementos-monitoring"
+    ]
+  },
+  {
+    "name": "check_cisco_cpuload",
+    "title": "check_cisco_cpuload",
+    "description": "Collection of Icinga / Nagios plugins to monitor Cisco IOS and NX-OS devices",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-cisco-plugins",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-cisco-plugins/master/check_cisco_cpuload.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-cisco-plugins"
+    ]
+  },
+  {
+    "name": "check_cisco_envtemp",
+    "title": "check_cisco_envtemp",
+    "description": "Collection of Icinga / Nagios plugins to monitor Cisco IOS and NX-OS devices",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-cisco-plugins",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-cisco-plugins/master/check_cisco_envtemp.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-cisco-plugins"
+    ]
+  },
+  {
+    "name": "check_cisco_memusage",
+    "title": "check_cisco_memusage",
+    "description": "Collection of Icinga / Nagios plugins to monitor Cisco IOS and NX-OS devices",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-cisco-plugins",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-cisco-plugins/master/check_cisco_memusage.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-cisco-plugins"
+    ]
+  },
+  {
+    "name": "check_cisco_stackmodules",
+    "title": "check_cisco_stackmodules",
+    "description": "Collection of Icinga / Nagios plugins to monitor Cisco IOS and NX-OS devices",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/m-erhardt/check-cisco-plugins",
+    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-cisco-plugins/master/check_cisco_stackmodules.py",
+    "version": "master",
+    "tags": [
+      "m-erhardt",
+      "check-cisco-plugins"
+    ]
+  },
+  {
+    "name": "check_smartmon",
+    "title": "check_smartmon",
+    "description": "Fork of https://exchange.nagios.org/directory/Plugins/Operating-Systems/Linux/check_smartmon/details",
+    "license": "GPL-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/nihlaeth/Nagios_check_smartmon",
+    "download_url": "https://raw.githubusercontent.com/nihlaeth/Nagios_check_smartmon/master/check_smartmon.py",
+    "version": "master",
+    "tags": [
+      "nihlaeth",
+      "nagios_check_smartmon"
+    ]
+  },
+  {
+    "name": "check_rubrik_cluster_storage",
+    "title": "check_rubrik_cluster_storage",
+    "description": "Nagios/Icinga Plugin for monitoring Rubrik CDM",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/rubrikinc/rubrik-plugin-for-nagios",
+    "download_url": "https://raw.githubusercontent.com/rubrikinc/rubrik-plugin-for-nagios/master/check_rubrik_cluster_storage.py",
+    "version": "master",
+    "tags": [
+      "rubrikinc",
+      "rubrik-plugin-for-nagios"
+    ]
+  },
+  {
+    "name": "check_rubrik_node_status",
+    "title": "check_rubrik_node_status",
+    "description": "Nagios/Icinga Plugin for monitoring Rubrik CDM",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/rubrikinc/rubrik-plugin-for-nagios",
+    "download_url": "https://raw.githubusercontent.com/rubrikinc/rubrik-plugin-for-nagios/master/check_rubrik_node_status.py",
+    "version": "master",
+    "tags": [
+      "rubrikinc",
+      "rubrik-plugin-for-nagios"
+    ]
+  },
+  {
+    "name": "check_rubrik_runway",
+    "title": "check_rubrik_runway",
+    "description": "Nagios/Icinga Plugin for monitoring Rubrik CDM",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/rubrikinc/rubrik-plugin-for-nagios",
+    "download_url": "https://raw.githubusercontent.com/rubrikinc/rubrik-plugin-for-nagios/master/check_rubrik_runway.py",
+    "version": "master",
+    "tags": [
+      "rubrikinc",
+      "rubrik-plugin-for-nagios"
+    ]
+  },
+  {
+    "name": "check_d42_health",
+    "title": "check_d42_health",
+    "description": "Device42 Health Checks in Nagios",
+    "license": "Apache-2.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/device42/Device42-Nagios-Health-Check",
+    "download_url": "https://raw.githubusercontent.com/device42/Device42-Nagios-Health-Check/master/check_d42_health.pl",
+    "version": "master",
+    "tags": [
+      "device42",
+      "device42-nagios-health-check"
+    ]
+  },
+  {
+    "name": "check_couchdb_replication",
+    "title": "check_couchdb_replication",
+    "description": "Monitor CouchDB replication",
+    "license": "GPL-2.0",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/Napsty/check_couchdb_replication",
+    "download_url": "https://raw.githubusercontent.com/Napsty/check_couchdb_replication/master/check_couchdb_replication.sh",
+    "version": "master",
+    "tags": [
+      "napsty",
+      "check_couchdb_replication"
+    ]
+  },
+  {
+    "name": "check_duplicity",
+    "title": "check_duplicity",
+    "description": "Plugins written for Icinga2 and other nagios-compatible software",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/sysmike/nagios-plugins",
+    "download_url": "https://raw.githubusercontent.com/sysmike/nagios-plugins/master/check_duplicity.py",
+    "version": "master",
+    "tags": [
+      "sysmike",
+      "nagios-plugins"
+    ]
+  },
+  {
+    "name": "check_jbod",
+    "title": "check_jbod",
+    "description": "Nagios script to check the status and fault in JBODs.",
+    "license": "Apache-2.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/guilbaults/check_jbod",
+    "download_url": "https://raw.githubusercontent.com/guilbaults/check_jbod/master/check_jbod.py",
+    "version": "master",
+    "tags": [
+      "guilbaults",
+      "check_jbod"
+    ]
+  },
+  {
+    "name": "check_bitcoind",
+    "title": "check_bitcoind",
+    "description": "Nagios plugin to monitor bitcoind",
+    "license": "MIT",
+    "language": "shell",
+    "categories": [],
+    "homepage": "https://github.com/mattdy/nagios-bitcoin",
+    "download_url": "https://raw.githubusercontent.com/mattdy/nagios-bitcoin/master/check_bitcoind.sh",
+    "version": "master",
+    "tags": [
+      "mattdy",
+      "nagios-bitcoin"
+    ]
+  },
+  {
+    "name": "check_s3_file_age",
+    "title": "check_s3_file_age",
+    "description": "nagios check for AWS S3 file age",
+    "license": "GPL-2.0",
+    "language": "perl",
+    "categories": [],
+    "homepage": "https://github.com/chicks-net/check-s3-file-age",
+    "download_url": "https://raw.githubusercontent.com/chicks-net/check-s3-file-age/main/check_s3_file_age.pl",
+    "version": "main",
+    "tags": [
+      "chicks-net",
+      "check-s3-file-age"
+    ]
+  },
+  {
+    "name": "check_ethercalc",
+    "title": "check_ethercalc",
+    "description": "Monitoring Plugins for Icinga/Nagios developed by systemli",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/systemli/monitoring-plugins-systemli",
+    "download_url": "https://raw.githubusercontent.com/systemli/monitoring-plugins-systemli/main/check_ethercalc.py",
+    "version": "main",
+    "tags": [
+      "systemli",
+      "monitoring-plugins-systemli"
+    ]
+  },
+  {
+    "name": "check_etherpad",
+    "title": "check_etherpad",
+    "description": "Monitoring Plugins for Icinga/Nagios developed by systemli",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/systemli/monitoring-plugins-systemli",
+    "download_url": "https://raw.githubusercontent.com/systemli/monitoring-plugins-systemli/main/check_etherpad.py",
+    "version": "main",
+    "tags": [
+      "systemli",
+      "monitoring-plugins-systemli"
+    ]
+  },
+  {
+    "name": "check_postfix",
+    "title": "check_postfix",
+    "description": "Monitoring Plugins for Icinga/Nagios developed by systemli",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/systemli/monitoring-plugins-systemli",
+    "download_url": "https://raw.githubusercontent.com/systemli/monitoring-plugins-systemli/main/check_postfix.py",
+    "version": "main",
+    "tags": [
+      "systemli",
+      "monitoring-plugins-systemli"
+    ]
+  },
+  {
+    "name": "check_prosody",
+    "title": "check_prosody",
+    "description": "Monitoring Plugins for Icinga/Nagios developed by systemli",
+    "license": "GPL-3.0",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/systemli/monitoring-plugins-systemli",
+    "download_url": "https://raw.githubusercontent.com/systemli/monitoring-plugins-systemli/main/check_prosody.py",
+    "version": "main",
+    "tags": [
+      "systemli",
+      "monitoring-plugins-systemli"
+    ]
+  },
+  {
+    "name": "check_nsupdates",
+    "title": "check_nsupdates",
+    "description": "Nagios Plugin which checks if an update is available for a Citrix ADC (formerly Citrix NetScaler)",
+    "license": "MIT",
+    "language": "python",
+    "categories": [],
+    "homepage": "https://github.com/slauger/check_nsupdates",
+    "download_url": "https://raw.githubusercontent.com/slauger/check_nsupdates/master/check_nsupdates.py",
+    "version": "master",
+    "tags": [
+      "slauger",
+      "check_nsupdates"
+    ]
+  }
 ]
