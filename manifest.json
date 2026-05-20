@@ -267,118 +267,6 @@
     "size": 6449
   },
   {
-    "name": "check_emc_isilon_health",
-    "title": "check_emc_isilon_health",
-    "description": "EMC Isilon storage cluster health",
-    "license": "GPL-2.0",
-    "language": "perl",
-    "categories": [
-      "storage"
-    ],
-    "homepage": "https://github.com/lausser/check_emc_isilon_health",
-    "download_url": "https://raw.githubusercontent.com/lausser/check_emc_isilon_health/master/plugins-scripts/check_emc_isilon_health.pl",
-    "version": "master",
-    "tags": [
-      "emc",
-      "isilon",
-      "storage",
-      "nas"
-    ]
-  },
-  {
-    "name": "check_netapp_health",
-    "title": "check_netapp_health",
-    "description": "NetApp ONTAP health via SNMP/REST",
-    "license": "GPL-2.0",
-    "language": "perl",
-    "categories": [
-      "storage"
-    ],
-    "homepage": "https://github.com/lausser/check_netapp_health",
-    "download_url": "https://raw.githubusercontent.com/lausser/check_netapp_health/master/plugins-scripts/check_netapp_health.pl",
-    "version": "master",
-    "tags": [
-      "netapp",
-      "ontap",
-      "storage",
-      "nas"
-    ]
-  },
-  {
-    "name": "check_disk_io",
-    "title": "check_disk_io (lausser)",
-    "description": "Disk I/O statistics with throughput and IOPS",
-    "license": "GPL-2.0",
-    "language": "perl",
-    "categories": [
-      "os",
-      "storage"
-    ],
-    "homepage": "https://github.com/lausser/check_disk_io",
-    "download_url": "https://raw.githubusercontent.com/lausser/check_disk_io/master/plugins-scripts/check_disk_io.pl",
-    "version": "master",
-    "tags": [
-      "disk",
-      "iops",
-      "linux"
-    ]
-  },
-  {
-    "name": "check_memory",
-    "title": "check_memory (lausser)",
-    "description": "Detailed memory + swap + buffers analysis",
-    "license": "GPL-2.0",
-    "language": "perl",
-    "categories": [
-      "os"
-    ],
-    "homepage": "https://github.com/lausser/check_memory",
-    "download_url": "https://raw.githubusercontent.com/lausser/check_memory/master/plugins-scripts/check_memory.pl",
-    "version": "master",
-    "tags": [
-      "memory",
-      "ram",
-      "swap",
-      "linux"
-    ]
-  },
-  {
-    "name": "check_uptime",
-    "title": "check_uptime (lausser)",
-    "description": "System uptime check with min/max thresholds",
-    "license": "GPL-2.0",
-    "language": "perl",
-    "categories": [
-      "os"
-    ],
-    "homepage": "https://github.com/lausser/check_uptime",
-    "download_url": "https://raw.githubusercontent.com/lausser/check_uptime/master/plugins-scripts/check_uptime.pl",
-    "version": "master",
-    "tags": [
-      "uptime",
-      "linux"
-    ]
-  },
-  {
-    "name": "check_pulse_secure",
-    "title": "check_pulse_secure",
-    "description": "Pulse Secure / Ivanti Connect Secure VPN appliance health",
-    "license": "GPL-2.0",
-    "language": "perl",
-    "categories": [
-      "security",
-      "network"
-    ],
-    "homepage": "https://github.com/lausser/check_pulse_secure",
-    "download_url": "https://raw.githubusercontent.com/lausser/check_pulse_secure/master/plugins-scripts/check_pulse_secure.pl",
-    "version": "master",
-    "tags": [
-      "pulse",
-      "ivanti",
-      "vpn"
-    ]
-  },
-  {
     "name": "check_rabbitmq_aliveness",
     "title": "check_rabbitmq_aliveness",
     "description": "RabbitMQ vhost test-publish-and-consume aliveness probe",
@@ -610,98 +498,6 @@
     "size": 6875
   },
   {
-    "name": "check_bareos",
-    "title": "check_bareos",
-    "description": "Bareos backup jobs and catalog via REST API",
-    "license": "GPL-3.0",
-    "language": "go",
-    "categories": [
-      "backup"
-    ],
-    "homepage": "https://github.com/NETWAYS/check_bareos",
-    "download_url": "https://github.com/NETWAYS/check_bareos/releases/download/v2.1.1/check_bareos-linux-amd64",
-    "version": "2.1.1",
-    "tags": [
-      "bareos",
-      "backup"
-    ]
-  },
-  {
-    "name": "check_elasticsearch",
-    "title": "check_elasticsearch (NETWAYS)",
-    "description": "Elasticsearch cluster health, shards, node usage",
-    "license": "GPL-3.0",
-    "language": "go",
-    "categories": [
-      "database",
-      "monitoring"
-    ],
-    "homepage": "https://github.com/NETWAYS/check_elasticsearch",
-    "download_url": "https://github.com/NETWAYS/check_elasticsearch/releases/download/v1.0.0/check_elasticsearch-linux-amd64",
-    "version": "1.0.0",
-    "tags": [
-      "elasticsearch",
-      "opensearch",
-      "search"
-    ]
-  },
-  {
-    "name": "check_logstash",
-    "title": "check_logstash",
-    "description": "Logstash pipeline status, throughput, JVM heap",
-    "license": "GPL-3.0",
-    "language": "go",
-    "categories": [
-      "monitoring",
-      "logs"
-    ],
-    "homepage": "https://github.com/NETWAYS/check_logstash",
-    "download_url": "https://github.com/NETWAYS/check_logstash/releases/download/v0.12.2/check_logstash-linux-amd64",
-    "version": "0.12.2",
-    "tags": [
-      "logstash",
-      "elk",
-      "logs"
-    ]
-  },
-  {
-    "name": "check_influxdb",
-    "title": "check_influxdb",
-    "description": "InfluxDB health, write throughput, query latency",
-    "license": "GPL-3.0",
-    "language": "go",
-    "categories": [
-      "database",
-      "monitoring"
-    ],
-    "homepage": "https://github.com/NETWAYS/check_influxdb",
-    "download_url": "https://github.com/NETWAYS/check_influxdb/releases/download/v0.2.1/check_influxdb-linux-amd64",
-    "version": "0.2.1",
-    "tags": [
-      "influxdb",
-      "timeseries",
-      "tsdb"
-    ]
-  },
-  {
-    "name": "check_prometheus",
-    "title": "check_prometheus",
-    "description": "Evaluate Prometheus queries as Nagios/Icinga checks",
-    "license": "GPL-3.0",
-    "language": "go",
-    "categories": [
-      "monitoring"
-    ],
-    "homepage": "https://github.com/NETWAYS/check_prometheus",
-    "download_url": "https://github.com/NETWAYS/check_prometheus/releases/download/v0.6.0/check_prometheus-linux-amd64",
-    "version": "0.6.0",
-    "tags": [
-      "prometheus",
-      "promql",
-      "metrics"
-    ]
-  },
-  {
     "name": "check_graphite",
     "title": "check_graphite",
     "description": "Graphite metric series threshold checks",
@@ -744,25 +540,6 @@
     "size": 10205
   },
   {
-    "name": "check_system_basics",
-    "title": "check_system_basics",
-    "description": "Linux CPU/memory/swap/uptime basics",
-    "license": "GPL-3.0",
-    "language": "go",
-    "categories": [
-      "os"
-    ],
-    "homepage": "https://github.com/NETWAYS/check_system_basics",
-    "download_url": "https://github.com/NETWAYS/check_system_basics/releases/download/v0.1.8/check_system_basics-linux-amd64",
-    "version": "0.1.8",
-    "tags": [
-      "linux",
-      "cpu",
-      "memory",
-      "uptime"
-    ]
-  },
-  {
     "name": "check_haproxy",
     "title": "check_haproxy (DinoTools)",
     "description": "HAProxy backend/frontend status via stats socket or CSV",
@@ -781,24 +558,6 @@
     "original_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_haproxy/master/check_haproxy",
     "sha256": "b608f517e257f5a6a21fea1b26d6c12d99249ebb09c10b431d640c6775a9b387",
     "size": 34749
-  },
-  {
-    "name": "check_jenkins",
-    "title": "check_jenkins (DinoTools)",
-    "description": "Jenkins job state and queue depth",
-    "license": "GPL-3.0",
-    "language": "perl",
-    "categories": [
-      "app"
-    ],
-    "homepage": "https://github.com/DinoTools/monitoring-check_jenkins",
-    "download_url": "https://raw.githubusercontent.com/DinoTools/monitoring-check_jenkins/master/check_jenkins.pl",
-    "version": "master",
-    "tags": [
-      "jenkins",
-      "ci",
-      "cd"
-    ]
   },
   {
     "name": "check_sophos_xg_vpn",
@@ -888,112 +647,6 @@
     "size": 164614
   },
   {
-    "name": "check-prtg-sensor",
-    "title": "check_prtg_sensor",
-    "description": "Query PRTG sensor values as Nagios checks",
-    "license": "GPL-3.0",
-    "language": "python",
-    "categories": [
-      "monitoring"
-    ],
-    "homepage": "https://github.com/m-erhardt/check-prtg-sensor",
-    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-prtg-sensor/main/check_prtg_sensor.py",
-    "version": "main",
-    "tags": [
-      "prtg",
-      "paessler",
-      "sensor"
-    ]
-  },
-  {
-    "name": "check-borgbackup-repo",
-    "title": "check_borgbackup_repo",
-    "description": "BorgBackup repository age + integrity check",
-    "license": "GPL-3.0",
-    "language": "python",
-    "categories": [
-      "backup"
-    ],
-    "homepage": "https://github.com/m-erhardt/check-borgbackup-repo",
-    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-borgbackup-repo/main/check_borgbackup_repo.py",
-    "version": "main",
-    "tags": [
-      "borg",
-      "backup",
-      "restic"
-    ]
-  },
-  {
-    "name": "check-restic-repo",
-    "title": "check_restic_repo",
-    "description": "Restic repository snapshot age + integrity",
-    "license": "GPL-3.0",
-    "language": "python",
-    "categories": [
-      "backup"
-    ],
-    "homepage": "https://github.com/m-erhardt/check-restic-repo",
-    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-restic-repo/main/check_restic_repo.py",
-    "version": "main",
-    "tags": [
-      "restic",
-      "backup"
-    ]
-  },
-  {
-    "name": "check-haproxy-status",
-    "title": "check_haproxy_status",
-    "description": "HAProxy backend health via stats CSV",
-    "license": "GPL-3.0",
-    "language": "python",
-    "categories": [
-      "webserver"
-    ],
-    "homepage": "https://github.com/m-erhardt/check-haproxy-status",
-    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-haproxy-status/main/check_haproxy_status.py",
-    "version": "main",
-    "tags": [
-      "haproxy",
-      "loadbalancer"
-    ]
-  },
-  {
-    "name": "check-nextcloud-updates",
-    "title": "check_nextcloud_updates",
-    "description": "Nextcloud server + app update availability",
-    "license": "GPL-3.0",
-    "language": "python",
-    "categories": [
-      "app"
-    ],
-    "homepage": "https://github.com/m-erhardt/check-nextcloud-updates",
-    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-nextcloud-updates/main/check_nextcloud_updates.py",
-    "version": "main",
-    "tags": [
-      "nextcloud",
-      "updates"
-    ]
-  },
-  {
-    "name": "check-cisco-asa-vpn",
-    "title": "check_cisco_asa_vpn",
-    "description": "Cisco ASA IPsec/SSL VPN tunnels via SNMP",
-    "license": "GPL-3.0",
-    "language": "python",
-    "categories": [
-      "network",
-      "security"
-    ],
-    "homepage": "https://github.com/m-erhardt/check-cisco-asa-vpn",
-    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-cisco-asa-vpn/main/check_cisco_asa_vpn.py",
-    "version": "main",
-    "tags": [
-      "cisco",
-      "asa",
-      "vpn"
-    ]
-  },
-  {
     "name": "check-disksmart",
     "title": "check_disksmart",
     "description": "S.M.A.R.T. disk health via smartctl (Napsty/check_smart)",
@@ -1014,23 +667,6 @@
     "original_url": "https://raw.githubusercontent.com/Napsty/check_smart/master/check_smart.pl",
     "sha256": "b3b7221e6f60aba42988ce770ca2bf7a31506ce21374c65c2a963635b6d95e04",
     "size": 43428
-  },
-  {
-    "name": "check-pi-temp",
-    "title": "check_pi_temp",
-    "description": "Raspberry Pi SoC temperature",
-    "license": "GPL-3.0",
-    "language": "python",
-    "categories": [
-      "hardware"
-    ],
-    "homepage": "https://github.com/m-erhardt/check-pi-temp",
-    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-pi-temp/main/check_pi_temp.py",
-    "version": "main",
-    "tags": [
-      "raspberrypi",
-      "temperature"
-    ]
   },
   {
     "name": "check_snmp_agent",
@@ -1683,7 +1319,7 @@
   {
     "name": "check_vcsa_cpu",
     "title": "check_vcsa_cpu",
-    "description": "Monitoring für VMware vCenter Server Appliance via API",
+    "description": "Monitoring f\u00fcr VMware vCenter Server Appliance via API",
     "license": "GPL-3.0",
     "language": "perl",
     "categories": [],
@@ -1701,7 +1337,7 @@
   {
     "name": "check_vcsa_mem",
     "title": "check_vcsa_mem",
-    "description": "Monitoring für VMware vCenter Server Appliance via API",
+    "description": "Monitoring f\u00fcr VMware vCenter Server Appliance via API",
     "license": "GPL-3.0",
     "language": "perl",
     "categories": [],
@@ -1719,7 +1355,7 @@
   {
     "name": "check_vcsa_services",
     "title": "check_vcsa_services",
-    "description": "Monitoring für VMware vCenter Server Appliance via API",
+    "description": "Monitoring f\u00fcr VMware vCenter Server Appliance via API",
     "license": "GPL-3.0",
     "language": "perl",
     "categories": [],
@@ -1737,7 +1373,7 @@
   {
     "name": "check_vcsa_storage",
     "title": "check_vcsa_storage",
-    "description": "Monitoring für VMware vCenter Server Appliance via API",
+    "description": "Monitoring f\u00fcr VMware vCenter Server Appliance via API",
     "license": "GPL-3.0",
     "language": "perl",
     "categories": [],
@@ -2637,7 +2273,7 @@
   {
     "name": "check_test",
     "title": "check_test",
-    "description": "Replacement Icinga/Nagios HTTP check  - ẃith fixed return codes and NTLM support",
+    "description": "Replacement Icinga/Nagios HTTP check  - \u1e83ith fixed return codes and NTLM support",
     "license": "Apache-2.0",
     "language": "go",
     "categories": [],
@@ -4113,7 +3749,7 @@
   {
     "name": "check_fix_markers",
     "title": "check_fix_markers",
-    "description": "π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.",
+    "description": "\u03c0 RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection \u2014 all without a single pixel of video.",
     "license": "MIT",
     "language": "python",
     "categories": [],
@@ -4131,7 +3767,7 @@
   {
     "name": "check_health",
     "title": "check_health",
-    "description": "π RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection — all without a single pixel of video.",
+    "description": "\u03c0 RuView turns commodity WiFi signals into real-time spatial intelligence, vital sign monitoring, and presence detection \u2014 all without a single pixel of video.",
     "license": "MIT",
     "language": "python",
     "categories": [],
@@ -4275,7 +3911,7 @@
   {
     "name": "check_test",
     "title": "check_test",
-    "description": "👮‍♂️ Form validation utilities",
+    "description": "\ud83d\udc6e\u200d\u2642\ufe0f Form validation utilities",
     "license": "MIT",
     "language": "go",
     "categories": [],
@@ -4365,7 +4001,7 @@
   {
     "name": "check_application_health",
     "title": "check_application_health",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4383,7 +4019,7 @@
   {
     "name": "check_backup",
     "title": "check_backup",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4401,7 +4037,7 @@
   {
     "name": "check_bandwidth",
     "title": "check_bandwidth",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4419,7 +4055,7 @@
   {
     "name": "check_conntrack",
     "title": "check_conntrack",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4437,7 +4073,7 @@
   {
     "name": "check_couchdb",
     "title": "check_couchdb",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4455,7 +4091,7 @@
   {
     "name": "check_ddos",
     "title": "check_ddos",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4473,7 +4109,7 @@
   {
     "name": "check_dmesg",
     "title": "check_dmesg",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4491,7 +4127,7 @@
   {
     "name": "check_ephemeral_port_exhaustion",
     "title": "check_ephemeral_port_exhaustion",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4509,7 +4145,7 @@
   {
     "name": "check_forkrate",
     "title": "check_forkrate",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4527,7 +4163,7 @@
   {
     "name": "check_fs_writable",
     "title": "check_fs_writable",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4545,7 +4181,7 @@
   {
     "name": "check_gcp_maintenance_event",
     "title": "check_gcp_maintenance_event",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4563,7 +4199,7 @@
   {
     "name": "check_influxdb",
     "title": "check_influxdb",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4581,7 +4217,7 @@
   {
     "name": "check_last",
     "title": "check_last",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4599,7 +4235,7 @@
   {
     "name": "check_max_open_files",
     "title": "check_max_open_files",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4617,7 +4253,7 @@
   {
     "name": "check_memcached",
     "title": "check_memcached",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4635,7 +4271,7 @@
   {
     "name": "check_memory",
     "title": "check_memory",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4653,7 +4289,7 @@
   {
     "name": "check_mysql",
     "title": "check_mysql",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4671,7 +4307,7 @@
   {
     "name": "check_php_fpm",
     "title": "check_php_fpm",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4689,7 +4325,7 @@
   {
     "name": "check_php_project_security_issue",
     "title": "check_php_project_security_issue",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4707,7 +4343,7 @@
   {
     "name": "check_redis",
     "title": "check_redis",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4725,7 +4361,7 @@
   {
     "name": "check_shellshock",
     "title": "check_shellshock",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4743,7 +4379,7 @@
   {
     "name": "check_smart",
     "title": "check_smart",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4761,7 +4397,7 @@
   {
     "name": "check_ssl_cert",
     "title": "check_ssl_cert",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "shell",
     "categories": [],
@@ -4779,7 +4415,7 @@
   {
     "name": "check_twemproxy",
     "title": "check_twemproxy",
-    "description": "🌡️ Various Sensu, Nagios, you name it, monitoring plugins.",
+    "description": "\ud83c\udf21\ufe0f Various Sensu, Nagios, you name it, monitoring plugins.",
     "license": "MIT",
     "language": "ruby",
     "categories": [],
