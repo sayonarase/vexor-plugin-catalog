@@ -996,21 +996,24 @@
   {
     "name": "check-disksmart",
     "title": "check_disksmart",
-    "description": "S.M.A.R.T. disk health via smartctl",
+    "description": "S.M.A.R.T. disk health via smartctl (Napsty/check_smart)",
     "license": "GPL-3.0",
-    "language": "python",
+    "language": "perl",
     "categories": [
       "storage"
     ],
-    "homepage": "https://github.com/m-erhardt/check-disksmart",
-    "download_url": "https://raw.githubusercontent.com/m-erhardt/check-disksmart/main/check_disksmart.py",
+    "homepage": "https://github.com/Napsty/check_smart",
+    "download_url": "https://raw.githubusercontent.com/sayonarase/vexor-plugin-catalog/main/plugins/check-disksmart.pl",
     "version": "main",
     "tags": [
       "smart",
       "disk",
       "hdd",
       "ssd"
-    ]
+    ],
+    "original_url": "https://raw.githubusercontent.com/Napsty/check_smart/master/check_smart.pl",
+    "sha256": "b3b7221e6f60aba42988ce770ca2bf7a31506ce21374c65c2a963635b6d95e04",
+    "size": 43428
   },
   {
     "name": "check-pi-temp",
