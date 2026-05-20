@@ -1,0 +1,290 @@
+#!/usr/bin/env python3
+"""
+###############################################################################
+# check_cisco_memusage.py
+# Nagios plugin that checks the system memory usage on a Cisco Switch/Router
+# via SNMPv3 using the CISCO-PROCESS-MIB
+#
+#
+# Author        : Mauno Erhardt <mauno.erhardt@burkert.com>
+# Copyright     : (c) 2021 Burkert Fluid Control Systems
+# Source        : https://github.com/m-erhardt/check-cisco-plugins
+# License       : GPLv3 (http://www.gnu.org/licenses/gpl-3.0.txt)
+#
+###############################################################################
+"""
+
+import sys
+import asyncio
+from argparse import ArgumentParser
+from itertools import chain
+from pysnmp.hlapi.v3arch.asyncio import bulk_walk_cmd, SnmpEngine, UsmUserData, \
+                         UdpTransportTarget, Udp6TransportTarget, \
+                         ObjectType, ObjectIdentity, \
+                         ContextData, usmHMACMD5AuthProtocol, \
+                         usmHMACSHAAuthProtocol, \
+                         usmHMAC128SHA224AuthProtocol, \
+                         usmHMAC192SHA256AuthProtocol, \
+                         usmHMAC256SHA384AuthProtocol, \
+                         usmHMAC384SHA512AuthProtocol, usmDESPrivProtocol, \
+                         usm3DESEDEPrivProtocol, usmAesCfb128Protocol, \
+                         usmAesCfb192Protocol, usmAesCfb256Protocol
+
+authprot = {
+    "MD5": usmHMACMD5AuthProtocol,
+    "SHA": usmHMACSHAAuthProtocol,
+    "SHA224": usmHMAC128SHA224AuthProtocol,
+    "SHA256": usmHMAC192SHA256AuthProtocol,
+    "SHA384": usmHMAC256SHA384AuthProtocol,
+    "SHA512": usmHMAC384SHA512AuthProtocol,
+    }
+privprot = {
+    "DES": usmDESPrivProtocol,
+    "3DES": usm3DESEDEPrivProtocol,
+    "AES": usmAesCfb128Protocol,
+    "AES192": usmAesCfb192Protocol,
+    "AES256": usmAesCfb256Protocol,
+}
+
+
+def get_args():
+    """ Parse Arguments """
+    parser = ArgumentParser(
+                 description="Icinga/Nagios plugin which checks system memory \
+                             usage on Cisco switches/routers")
+
+    checkopts = parser.add_argument_group('Check parameters')
+    checkopts.add_argument("--mib", required=False, help="use OIDs from this MIB",
+                           type=str, dest='mib',
+                           default="CISCO-PROCESS-MIB",
+                           choices=["CISCO-PROCESS-MIB", "CISCO-MEMORY-POOL-MIB"])
+
+    connopts = parser.add_argument_group('Connection parameters')
+    connopts.add_argument("-H", "--host", required=True,
+                          help="hostname or IP address", type=str, dest='host')
+    connopts.add_argument("-p", "--port", required=False, help="SNMP port",
+                          type=int, dest='port', default=161)
+    connopts.add_argument("-6", "--ipv6", required=False, help='Use IPv6',
+                          dest='ipv6', action='store_true', default=False)
+    connopts.add_argument("-t", "--timeout", required=False,
+                          help="SNMP timeout", type=int, dest='timeout',
+                          default=10)
+
+    thresholds = parser.add_argument_group('Thresholds')
+    thresholds.add_argument("-w", "--warn", required=False,
+                            help="warning threshold (in percent)",
+                            type=float, dest='warn', default="70")
+    thresholds.add_argument("-c", "--crit", required=False,
+                            help="warning thresholds (in percent)",
+                            type=float, dest='crit', default="80")
+
+    snmpopts = parser.add_argument_group('SNMPv3 parameters')
+    snmpopts.add_argument("-u", "--user", required=True,
+                          help="SNMPv3 user name", type=str, dest='user')
+    snmpopts.add_argument("-l", "--seclevel", required=False,
+                          help="SNMPv3 security level", type=str,
+                          dest="v3mode",
+                          choices=["authPriv", "authNoPriv"], default="authPriv")
+    snmpopts.add_argument("-A", "--authkey", required=True,
+                          help="SNMPv3 auth key", type=str, dest='authkey')
+    snmpopts.add_argument("-X", "--privkey", required=True,
+                          help="SNMPv3 priv key", type=str, dest='privkey')
+    snmpopts.add_argument("-a", "--authmode", required=False,
+                          help="SNMPv3 auth mode", type=str, dest='authmode',
+                          default='SHA',
+                          choices=['MD5', 'SHA', 'SHA224', 'SHA256', 'SHA384',
+                                   'SHA512'])
+    snmpopts.add_argument("-x", "--privmode", required=False,
+                          help="SNMPv3 privacy mode", type=str, dest='privmode',
+                          default='AES',
+                          choices=['DES', '3DES', 'AES', 'AES192', 'AES256'])
+
+    args = parser.parse_args()
+    return args
+
+
+async def get_snmp_table(table_oid, args):
+    """ get SNMP table """
+
+    # initialize empty list for return object
+    table = []
+
+    # Set up TransportTarget object
+    if args.ipv6:
+        transport_target = await Udp6TransportTarget.create((args.host, args.port), args.timeout)
+    else:
+        transport_target = await UdpTransportTarget.create((args.host, args.port), args.timeout)
+
+    # Set up UsmUserData object
+    if args.v3mode == "authPriv":
+        usm_user_data = UsmUserData(
+            args.user, args.authkey, args.privkey,
+            authProtocol=authprot[args.authmode],
+            privProtocol=privprot[args.privmode]
+        )
+    elif args.v3mode == "authNoPriv":
+        usm_user_data = UsmUserData(
+            args.user, args.authkey,
+            authProtocol=authprot[args.authmode]
+        )
+    else:
+        # Should never occur - prevent pylint "possibly-used-before-assignment"
+        usm_user_data = None
+
+    snmp_engine = SnmpEngine()
+
+    objects = bulk_walk_cmd(
+        snmp_engine,
+        usm_user_data,
+        transport_target,
+        ContextData(),
+        0, 50,
+        ObjectType(ObjectIdentity(table_oid)),
+        lexicographicMode=False,
+        lookupMib=False
+    )
+
+    iterator = [item async for item in objects]
+    for error_indication, error_status, error_index, var_binds in iterator:
+
+        if error_indication:
+            # Exit if error occured during SNMP query
+            exit_plugin(3, ''.join(['SNMP error: ', str(error_indication)]), "")
+        elif error_status:
+            print(f"{error_status.prettyPrint()} at "
+                  f"{error_index and var_binds[int(error_index) - 1][0] or '?'}")
+        else:
+            # loop over returned OIDs and append to table
+            for oid_element in var_binds:
+                table.append([str(oid_element[0]), str(oid_element[1])])
+
+    snmp_engine.close_dispatcher()
+
+    # return list with all OIDs/values from snmp table
+    return table
+
+
+def exit_plugin(returncode, output, perfdata):
+    """ Check status and exit accordingly """
+    if returncode == "3":
+        print("UNKNOWN - " + str(output))
+        sys.exit(3)
+    if returncode == "2":
+        print("CRITICAL - " + str(output) + " | " + str(perfdata))
+        sys.exit(2)
+    if returncode == "1":
+        print("WARNING - " + str(output) + " | " + str(perfdata))
+        sys.exit(1)
+    elif returncode == "0":
+        print("OK - " + str(output) + " | " + str(perfdata))
+        sys.exit(0)
+
+
+async def main():
+    """ Main program code """
+
+    # Get Arguments
+    args = get_args()
+
+    if args.mib == "CISCO-PROCESS-MIB":
+        # Use revised OIDs in CISCO-PROCESS-MIB
+        #     CISCO-PROCESS-MIB::cpmCPUMemoryUsed
+        #     CISCO-PROCESS-MIB::cpmCPUMemoryFree
+        try:
+            mem_used, mem_free = await asyncio.gather(
+                get_snmp_table('1.3.6.1.4.1.9.9.109.1.1.1.1.12', args),
+                get_snmp_table('1.3.6.1.4.1.9.9.109.1.1.1.1.13', args),
+            )
+        except Exception as err:  # pylint: disable=broad-exception-caught
+            exit_plugin("3", f'Exception during SNMP query: {type(err)} {err}', "NULL")
+
+    elif args.mib == "CISCO-MEMORY-POOL-MIB":
+        # Use OIDs in CISCO-MEMORY-POOL-MIB
+        #     CISCO-MEMORY-POOL-MIB::ciscoMemoryPoolUsed
+        #     CISCO-MEMORY-POOL-MIB::ciscoMemoryPoolFree
+        try:
+            mem_used, mem_free = await asyncio.gather(
+                get_snmp_table('1.3.6.1.4.1.9.9.48.1.1.1.5', args),
+                get_snmp_table('1.3.6.1.4.1.9.9.48.1.1.1.6', args),
+            )
+        except Exception as err:  # pylint: disable=broad-exception-caught
+            exit_plugin("3", f'Exception during SNMP query: {type(err)} {err}', "NULL")
+
+    if len(mem_used) == 0 or len(mem_free) == 0:  # pylint: disable=E0606
+        # Check if we received data via SNMP, otherwise exit with state Unknown
+        exit_plugin("3", "No data returned via SNMP", "NULL")
+
+    # Extract OID identifier from OID
+    for entry in chain(mem_used, mem_free):
+        entry[0] = entry[0].strip().split(".")[-1:]
+        entry[0] = "".join(map(str, entry[0]))
+        entry[1] = entry[1].strip()
+
+    # Create list with CPU identifiers
+    memids = []
+    for i in mem_free:
+        memids.append(i[0])
+
+    if args.mib == "CISCO-MEMORY-POOL-MIB":
+        # Further changes for CISCO-MEMORY-POOL-MIB
+
+        # CISCO-MEMORY-POOL-MIB gives readings in B instead of KB,
+        # convert accordingly
+        for i in mem_used:
+            i[1] = round(int(i[1]) / 1024, 2)
+        for i in mem_free:
+            i[1] = round(int(i[1]) / 1024, 2)
+
+    # Set return code and generate output and perfdata strings
+    returncode = "0"
+    perfdata = ""
+    output = ""
+
+    for i in memids:
+        # loop through memory id's
+        memid = i
+
+        # Assign default values to prevent pylint E0606 "possibly-used-before-assignment"
+        used, free = 0.0, 0.0
+
+        for entry in mem_used:
+            # loop through "mempory used" values and extract reading
+            # for this memory ID
+            if str(entry[0]) == str(memid):
+                used = float(entry[1])
+
+        for entry in mem_free:
+            # loop throug "memory free" values and extract reading for this
+            # CPU ID
+            if str(entry[0]) == str(memid):
+                free = float(entry[1])
+
+        # Calculate total memory and thresholds (all in KB)
+        total = free + used
+        warn_b = round(total * (args.warn / 100))
+        crit_b = round(total * (args.crit / 100))
+
+        # Calculate percentages
+        used_pct = round((used / total) * 100, 2)
+
+        # Append to perfdata and output string
+        perfdata += ''.join(["\'mem_used_", str(memid), "\'=", str(used),
+                             "KB;", str(warn_b), ";", str(crit_b), ";0;",
+                             str(total), " "])
+        output += ''.join(["Memory (", str(memid), "): ", str(used_pct),
+                           "%, "])
+
+        # Evaluate against thresholds
+        if used >= crit_b:
+            returncode = "2"
+        if returncode != "2" and used >= warn_b:
+            returncode = "1"
+
+    # Remove last comma from output string
+    output = output.rstrip(', ')
+
+    exit_plugin(returncode, output, perfdata)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

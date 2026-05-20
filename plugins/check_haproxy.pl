@@ -1,0 +1,1200 @@
+#!/usr/bin/perl
+# This file is part of the check_haproxy Nagios Plugin
+#
+# SPDX-FileCopyrightText: 2014-2015 Jonathan Wright <github@jon.than.io>
+# SPDX-FileCopyrightText: 2021- PhiBo (DinoTools)
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+# Nagios Plugin to check the state of HAProxy.
+#  (c) 2014-2015 Jonathan Wright <github@jon.than.io>
+#  (c) 2021- PhiBo (DinoTools)
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+# Configure the Perl Environment
+use strict;
+use warnings FATAL => 'all';
+use Carp;
+
+# Import Modules
+#use Getopt::Long qw(:config no_ignore_case);
+use POSIX;
+use Pod::Usage qw(pod2usage);
+use IO::Socket::UNIX qw( SOCK_STREAM );
+use Data::Dumper;
+use Scalar::Util qw(looks_like_number);
+
+my $pkg_nagios_available = 0;
+my $pkg_monitoring_available = 0;
+my @g_long_message;
+
+# Configure Program details
+our ($_program, $_version, $_author);
+$_program = 'check_haproxy';
+$_version = '1.2.1';
+$_author  = 'PhiBo | Jonathan Wright <github@jon.than.io>';
+
+use constant {
+  # Field names to locations for all the CSV data provided by HAProxy
+  STAT_PROXY_NAME               => 0,
+  STAT_SERVICE_NAME             => 1,
+  STAT_QUEUED_REQUESTS          => 2,
+  STAT_QUEUED_MAX               => 3,
+  STAT_SESSIONS_CURRENT         => 4,
+  STAT_SESSIONS_MAX             => 5,
+  STAT_SESSIONS_LIMIT           => 6,
+  STAT_CONNECTIONS_TOTAL        => 7,
+  STAT_BYTES_IN                 => 8,
+  STAT_BYTES_OUT                => 9,
+  STAT_REQUESTS_DENIED          => 10,
+  STAT_RESPONSES_DENIED         => 11,
+  STAT_REQUESTS_ERROR           => 12,
+  STAT_CONNECTIONS_ERROR        => 13,
+  STAT_RESPONSES_ERROR          => 14,
+  STAT_CONNECTIONS_RETRIED      => 15,
+  STAT_CONNECTIONS_REDISPATCHED => 16,
+  STAT_STATUS                   => 17,
+  STAT_WEIGHT                   => 18,
+  STAT_SERVER_ACTIVE            => 19, STAT_SERVERS_ACTIVE => 19,
+  STAT_SERVER_BACKUP            => 20, STAT_SERVERS_BACKUP => 20,
+  STAT_CHECKS_FAIL              => 21,
+  STAT_CHECKS_GO_DOWN           => 22,
+  STAT_CHECKS_LAST_CHANGE       => 23,
+  STAT_CHECKS_DOWNTIME          => 24,
+  STAT_QUEUED_LIMIT             => 25,
+  STAT_PID                      => 26,
+  STAT_UID                      => 27,
+  STAT_SID                      => 28,
+  STAT_THROTTLE                 => 29,
+  STAT_SESSIONS_TOTAL           => 30,
+  STAT_TRACKED                  => 31,
+  STAT_SERVICE_TYPE             => 32,
+  STAT_SESSIONS_RATE_CURRENT    => 33,
+  STAT_SESSIONS_RATE_LIMIT      => 34,
+  STAT_SESSIONS_RATE_MAX        => 35,
+  STAT_CHECK_STATUS             => 36,
+  STAT_CHECK_CODE               => 37,
+  STAT_CHECK_DURATION           => 38,
+  STAT_RESPONSES_HTTP_1XX       => 39,
+  STAT_RESPONSES_HTTP_2XX       => 40,
+  STAT_RESPONSES_HTTP_3XX       => 41,
+  STAT_RESPONSES_HTTP_4XX       => 42,
+  STAT_RESPONSES_HTTP_5XX       => 43,
+  STAT_RESPONSES_HTTP_XXX       => 44,
+  STAT_CHECK_FAILED_DETAILS     => 45,
+  STAT_REQUESTS_RATE_CURRENT    => 46,
+  STAT_REQUESTS_RATE_MAX        => 47,
+  STAT_REQUESTS_TOTAL           => 48,
+  STAT_ABORTS_CLIENT            => 49,
+  STAT_ABORTS_SERVER            => 50,
+  STAT_COMPRESSOR_IN            => 51,
+  STAT_COMPRESSOR_OUT           => 52,
+  STAT_COMPRESSOR_BYPASSED      => 53,
+  STAT_COMPRESSOR_REQUESTS      => 54,
+  STAT_SESSIONS_LAST            => 55,
+  STAT_CHECK_HEALTH_LAST        => 56,
+  STAT_CHECK_AGENT_LAST         => 57,
+  STAT_TIME_QUEUE               => 58,
+  STAT_TIME_CONNECT             => 59,
+  STAT_TIME_RESPONSE            => 60,
+  STAT_TIME_TOTAL               => 61,
+  # Types used by HAProxy for some fields
+  TYPE_FRONTEND                 => 0,
+  TYPE_BACKEND                  => 1,
+  TYPE_SERVER                   => 2,
+  TYPE_LISTENER                 => 3,
+};
+
+use constant {
+  LIMIT_BACKEND_CHECK           => 'u',
+  LIMIT_WARN_BACKEND_UP         => 5,
+  LIMIT_CRIT_BACKEND_UP         => 2,
+  LIMIT_WARN_BACKEND_DOWN       => 2,
+  LIMIT_CRIT_BACKEND_DOWN       => 5,
+  LIMIT_WARN_LIMITS             => 0.75,  # Percentages
+  LIMIT_CRIT_LIMITS             => 0.90,
+};
+
+use constant EXIT_STATUS => qw(OK WARNING CRITICAL UNKNOWN);
+
+use constant {
+  EXIT_OK                       => 0,
+  EXIT_WARNING                  => 1,
+  EXIT_CRITICAL                 => 2,
+  EXIT_UNKNOWN                  => 3,
+};
+
+use constant {
+  OK         => 0,
+  WARNING    => 1,
+  CRITICAL   => 2,
+  UNKNOWN    => 3,
+};
+
+use constant {
+  DEBUG_MSG_THRESHOLDS => 'found %d (limit %d); thresholds are %s (warn) %s (crit)'
+};
+
+my $REGEX_PARSE_VALUES = '([udx]?)' .
+                         '(?:,' .
+                         '(?:(?:((?:0?\.)?[0-9]+|[0-9]+)(%)?|)' .
+                         '(?:,(?:((?:0?\.)?[0-9]+|[0-9]+)(%)?|)' .
+                         '(?:,(?:((?:0?\.)?[0-9]+|[0-9]+)(%)?|)' .
+                         '(?:,(?:((?:0?\.)?[0-9]+|[0-9]+)(%)?|))?)?)?)?)?';
+BEGIN {
+    eval {
+        require Monitoring::Plugin;
+        require Monitoring::Plugin::Functions;
+        require Monitoring::Plugin::Threshold;
+        $pkg_monitoring_available = 1;
+    };
+    if (!$pkg_monitoring_available) {
+        eval {
+            require Nagios::Plugin;
+            require Nagios::Plugin::Functions;
+            require Nagios::Plugin::Threshold;
+            *Monitoring::Plugin:: = *Nagios::Plugin::;
+            $pkg_nagios_available = 1;
+        };
+    }
+    if (!$pkg_monitoring_available && !$pkg_nagios_available) {
+        print("UNKNOWN - Unable to find module Monitoring::Plugin or Nagios::Plugin\n");
+        exit UNKNOWN;
+    }
+}
+
+# Create hash array for holding all configuration variables
+our (%data, %checks);
+
+my $mp;
+
+sub main {
+  my (@overrides);
+
+  $mp = Monitoring::Plugin->new(
+      shortname => $_program,
+      usage     => "Usage: check_haproxy [--defaults (defaults)] [--overrides (override 1)]\n" .
+                   "                     [--overrides (override 2)] [--overrides (override n)]\n" .
+                   "                     [--[no]frontends] [--[no]backends] [--[no]servers]\n" .
+                   "                     [--socket (path)] [--help]",
+      version   => $_version,
+      extra     => pod2scalar(),
+  );
+  $mp->add_arg(
+    spec     => 'debug|d!',
+    help     => 'Enable/disable debug output',
+    default  => 0,
+  );
+  $mp->add_arg(
+    spec     => 'backends|b!',
+    help     => 'Enable/disable checks for the backends in HAProxy',
+    default  => 1,
+  );
+  $mp->add_arg(
+    spec     => 'frontends|f!',
+    help     => 'Enable/disable checks for the frontends in HAProxy',
+    default  => 1,
+  );
+  $mp->add_arg(
+    spec     => 'servers|s!',
+    help     => 'Enable/disable checks for the servers in HAProxy',
+    default  => 1,
+  );
+  $mp->add_arg(
+    spec     => 'socket|S=s',
+    help     => 'Path to the socket check_haproxy should connect to',
+    default  => '/var/run/haproxy.sock',
+  );
+  $mp->add_arg(
+    spec     => 'defaults|D=s',
+    help     => 'Set/Override the defaults which will be applied to all checks',
+    default  => undef,
+  );
+  $mp->add_arg(
+    spec     => 'overrides|O=s@',
+    help     => 'Override the defaults for a particular frontend or backend',
+    default  => [],
+  );
+
+  $mp->getopts;
+
+  my $socket = IO::Socket::UNIX->new(
+    Peer    => $mp->opts->socket,
+    Type    => SOCK_STREAM,
+    Timeout => 1,
+  ) or wrap_exit(
+    UNKNOWN,
+    sprintf(
+      'Cannot connect to socket %s',
+      $mp->opts->socket
+    )
+  );
+
+  %data   = get_data($socket);
+  %checks = build_checks(\@{$mp->opts->overrides});
+
+  check_frontends() if $mp->opts->frontends;
+  check_backends()  if $mp->opts->backends;
+  check_servers()   if $mp->opts->servers;
+
+  my ($frontends, $backends, $servers, $services) = (0,0,0,0);
+  my (%servers);
+
+  foreach my $service (sort keys %data) {
+    if ($data{$service}{'type'} == TYPE_FRONTEND) {
+      ++$frontends;
+    } elsif ($data{$service}{'type'} == TYPE_BACKEND) {
+      ++$backends;
+      foreach my $server (sort keys %{$data{$service}{'servers'}}) {
+        next if $data{$service}{'servers'}{$server}{'backup'};
+        ++$services;
+        unless (exists $servers{$server}) {
+          ++$servers;
+          $servers{$server} = 1;
+        }
+      }
+    }
+  }
+
+  $mp->add_message(OK,
+    sprintf(
+      'HAProxy is functioning within established parameters. '.
+      '(%d frontends, %d backends, %d servers, %d services)',
+      $frontends,
+      $backends,
+      $servers,
+      $services
+    )
+  );
+
+  my ($code, $message) = $mp->check_messages();
+  wrap_exit($code, $message);
+}
+
+sub _debug {
+  if ($mp->opts->debug) {
+    printf(
+      "%s{} %s\n",
+      shift,
+      sprintf(shift, @_)
+    );
+  }
+}
+
+sub get_data {
+  my ($s, %v); $s = shift;
+
+  _debug('get_data', 'is reading data from HAProxy');
+
+  print $s "show stat\n";
+  while (<$s>) {
+    chomp; next unless length;
+    my @stat = split (',');
+
+    if ($stat[STAT_SERVICE_TYPE] eq TYPE_FRONTEND) {
+      # Process all FRONTEND type entries; these are singular and are totals
+      # only for each of the frontends configured
+      $v{$stat[STAT_PROXY_NAME]} = {
+        type        => TYPE_FRONTEND,
+        connections => $stat[STAT_CONNECTIONS_TOTAL],
+        sessions    => {
+          current   => $stat[STAT_SESSIONS_CURRENT],
+          limit     => ($stat[STAT_SESSIONS_LIMIT] ? $stat[STAT_SESSIONS_LIMIT] : 0),
+        },
+        status      => $stat[STAT_STATUS],
+        queued      => 0,
+      };
+    } elsif ($stat[STAT_SERVICE_TYPE] eq TYPE_BACKEND) {
+      # Process all BACKEND type entries; these are the totals for each backend
+      # and don't have the same amount of information as SERVERs
+
+      # We can't 'set' the hash here as the backend totals are normally after
+      # the backend's servers, so would override anything previously set
+      # in TYPE_SERVER
+      $v{$stat[STAT_PROXY_NAME]}{'type'} = TYPE_BACKEND;
+      $v{$stat[STAT_PROXY_NAME]}{'connections'} = $stat[STAT_CONNECTIONS_TOTAL];
+      $v{$stat[STAT_PROXY_NAME]}{'sessions'} = {
+        current     => $stat[STAT_SESSIONS_CURRENT],
+        limit       => ($stat[STAT_SESSIONS_LIMIT] ? $stat[STAT_SESSIONS_LIMIT] : 0),
+      };
+      $v{$stat[STAT_PROXY_NAME]}{'queued'} = $stat[STAT_QUEUED_REQUESTS];
+      $v{$stat[STAT_PROXY_NAME]}{'active'} = $stat[STAT_SERVERS_ACTIVE];
+      $v{$stat[STAT_PROXY_NAME]}{'backup'} = $stat[STAT_SERVERS_BACKUP];
+
+    } elsif ($stat[STAT_SERVICE_TYPE] eq TYPE_SERVER) {
+      # Process all SERVER type entries, which are the most details and give
+      # information about how each server is responding
+
+      # Only set the server itself directly, otherwise we may override
+      # anything previously set
+      $v{$stat[STAT_PROXY_NAME]}{'servers'}{$stat[STAT_SERVICE_NAME]} = {
+        active      => ($stat[STAT_SERVER_ACTIVE] ? 1 : 0),
+        backup      => ($stat[STAT_SERVER_BACKUP] ? 1 : 0),
+        up          => ($stat[STAT_STATUS] =~ /^(UP|NO CHECK)/i ? 1 : 0),
+        down        => ($stat[STAT_STATUS] eq 'DOWN' ? 1 : 0),
+        disabled    => ($stat[STAT_STATUS] =~ /^(MAINT|DRAIN|NOLB)/i ? 1 : 0),
+        connections => $stat[STAT_CONNECTIONS_TOTAL],
+        sessions    => {
+          current   => $stat[STAT_SESSIONS_CURRENT],
+          limit     => ($stat[STAT_SESSIONS_LIMIT] ? $stat[STAT_SESSIONS_LIMIT] : 0),
+        },
+        queued      => {
+          current   => $stat[STAT_QUEUED_REQUESTS],
+          limit     => ($stat[STAT_QUEUED_LIMIT] ? $stat[STAT_QUEUED_LIMIT] : 0),
+        },
+        status      => $stat[STAT_STATUS],
+        timing      => {
+          queue     => $stat[STAT_TIME_QUEUE],
+          connect   => $stat[STAT_TIME_CONNECT],
+          response  => $stat[STAT_TIME_RESPONSE],
+          total     => $stat[STAT_TIME_TOTAL]
+        },
+      };
+    }
+  }
+
+  return %v;
+}
+
+sub build_checks {
+  my $overrides = shift;
+  my @overrides = @{$overrides};
+
+  my (%checks, $state, $be_warn, $be_crit, $limit_warn, $limit_crit);
+
+  # Setup the defaults for all checks
+  $state      = 'd';
+  $be_warn    = LIMIT_WARN_BACKEND_DOWN;
+  $be_crit    = LIMIT_CRIT_BACKEND_DOWN;
+  if (LIMIT_BACKEND_CHECK eq 'u') {
+    $state      = 'u';
+    $be_warn    = LIMIT_WARN_BACKEND_UP;
+    $be_crit    = LIMIT_CRIT_BACKEND_UP;
+  }
+
+  $limit_warn = LIMIT_WARN_LIMITS;
+  $limit_crit = LIMIT_CRIT_LIMITS;
+
+  # See if there is an override for the defaults, then use those
+  if (defined $mp->opts->defaults
+      and $mp->opts->defaults =~ /$REGEX_PARSE_VALUES/) {
+    $state      =  $1 if $1;
+    if (looks_like_number($2)) {
+      $be_warn = (defined($3) and $3 eq '%') ? $2 / 100 : $2;
+    }
+    if (looks_like_number($4)) {
+      $be_crit = (defined($5) and $5 eq '%') ? $4 / 100 : $4;
+    }
+    if (looks_like_number($6)) {
+      $limit_warn = (defined($7) and $7 eq '%') ? $6 / 100 : $6;
+    }
+    if (looks_like_number($8)) {
+      $limit_crit = (defined($9) and $9 eq '%') ? $8 / 100 : $8;
+    }
+
+    _debug(
+      'build_checks',
+      'setting defaults to %s,%.2f,%.2f,%.2f,%.2f',
+      (
+        $state,
+        $be_warn,
+        $be_crit,
+        $limit_warn,
+        $limit_crit
+      )
+    );
+  }
+
+  # Build the defaults for all checks
+  foreach my $service (sort keys %data) {
+    my $type;
+
+    if ($data{$service}{'type'} == TYPE_FRONTEND) {
+      $type = 'FRONTEND';
+      %{$checks{$service}} = (
+        limit_warn  => $limit_warn,
+        limit_crit  => $limit_crit,
+      );
+    } elsif ($data{$service}{'type'} == TYPE_BACKEND) {
+      $type = 'BACKEND';
+      %{$checks{$service}} = (
+        state       => $state,
+        be_warn     => $be_warn,
+        be_crit     => $be_crit,
+        limit_warn  => $limit_warn,
+        limit_crit  => $limit_crit,
+      );
+    }
+    _debug(
+      'build_checks',
+      'building %s check for %s',
+      (
+        $type,
+        $service
+      )
+    );
+  }
+
+  # Merge the two arrays
+  foreach my $override (sort @overrides) {
+    my ($service, $state, $be_warn, $be_crit, $limit_warn, $limit_crit);
+
+    _debug(
+      'build_checks',
+      'processing override %s',
+      $override
+    );
+
+    my (
+      $override_name,
+      $override_state,
+      $override_be_warn,
+      $override_be_warn_unit,
+      $override_be_crit,
+      $override_be_crit_unit,
+      $override_limit_warn,
+      $override_limit_warn_unit,
+      $override_limit_crit,
+      $override_limit_crit_unit
+    );
+    my @matches;
+    if (@matches = $override =~ /^([a-zA-Z0-9-_:.]+):${REGEX_PARSE_VALUES}$/) {
+      $override_name = shift @matches;
+      (
+        $override_state,
+        $override_be_warn,
+        $override_be_warn_unit,
+        $override_be_crit,
+        $override_be_crit_unit,
+        $override_limit_warn,
+        $override_limit_warn_unit,
+        $override_limit_crit,
+        $override_limit_crit_unit
+      ) = @matches;
+    } else {
+      wrap_exit(
+        UNKNOWN,
+        sprintf(
+          'Unable to parse override "%s"',
+          $override
+        )
+      );
+    }
+
+    next unless exists $data{$override_name};
+
+    if ($data{$override_name}{'type'} eq TYPE_BACKEND) {
+      $checks{$override_name}{'state'} = $override_state if $override_state and ($override_state eq 'u' or $override_state eq 'd' or $override_state eq 'x');
+      if (looks_like_number($override_be_warn)) {
+        $checks{$override_name}{'be_warn'} = (defined($override_be_warn_unit) and $override_be_warn_unit eq '%') ? $override_be_warn / 100 : $override_be_warn;
+      }
+      if (looks_like_number($override_be_crit)) {
+        $checks{$override_name}{'be_crit'} = (defined($override_be_crit_unit) and $override_be_crit_unit eq '%') ? $override_be_crit / 100 : $override_be_crit;
+      }
+    }
+
+    if (looks_like_number($override_limit_warn)) {
+      $checks{$override_name}{'limit_warn'} = (defined($override_limit_warn_unit) and $override_limit_warn_unit eq '%') ? $override_limit_warn / 100 : $override_limit_warn;
+    }
+    if (looks_like_number($override_limit_crit)) {
+      $checks{$override_name}{'limit_crit'} = (defined($override_limit_crit_unit) and $override_limit_crit_unit eq '%') ? $override_limit_crit / 100 : $override_limit_crit;
+    }
+
+    _debug(
+      'build_checks',
+      'setting override for %s to %s,%.2f,%.2f,%.2f,%.2f',
+      $override_name,
+      $checks{$override_name}{'state'},
+      $checks{$override_name}{'be_warn'},
+      $checks{$override_name}{'be_crit'},
+      $checks{$override_name}{'limit_warn'},
+      $checks{$override_name}{'limit_crit'},
+    );
+  }
+
+  return %checks;
+}
+
+sub check_frontends {
+  _debug('check_frontends', 'is starting check on frontends');
+  foreach my $service (sort keys %data) {
+    next unless $data{$service}{'type'} eq TYPE_FRONTEND;
+    _debug(
+      'check_frontends',
+      'checking FRONTEND %s',
+      $service
+    );
+
+    _debug('check_frontends', 'running OPEN check');
+
+    if ($data{$service}{'status'} ne 'OPEN') {
+      $mp->add_message(
+        CRITICAL,
+        sprintf(
+          'FRONTEND %s is %s',
+          $service,
+          $data{$service}{'status'}
+        )
+      )
+    }
+
+    # Theses no supported Queueing on the Frontends, so no checks for that
+    # need to be done here, just for Sessions.
+
+    next unless $data{$service}{'sessions'}{'limit'} > 0;
+    my $sessions_current = $data{$service}{'sessions'}{'current'};
+    my $sessions_limit = $data{$service}{'sessions'}{'limit'};
+
+    my $limit_warn = $checks{$service}{'limit_warn'};
+    my $limit_crit = $checks{$service}{'limit_crit'};
+
+    my $sessions_warning = $limit_warn < 1 ? ceil($sessions_limit * $limit_warn) : $limit_warn;
+    my $sessions_critical = $limit_crit < 1 ? ceil($sessions_limit * $limit_crit) : $limit_crit;
+
+    _debug('check_frontends', 'running Sessions check');
+    _debug(
+      'check_frontends',
+      DEBUG_MSG_THRESHOLDS,
+      $sessions_current,
+      $sessions_limit,
+      $sessions_warning,
+      $sessions_critical,
+    );
+
+    my $threshold = Monitoring::Plugin::Threshold->set_thresholds(
+      warning   => $sessions_warning,
+      critical  => $sessions_critical,
+    );
+
+    $mp->add_perfdata(
+        label     => 'frontend_' . $service . '_sessions',
+        value     => $sessions_current,
+        max       => $sessions_limit,
+        threshold => $threshold,
+    );
+
+    if ($threshold->get_status($sessions_current) != OK) {
+      $mp->add_message(
+        $threshold->get_status($sessions_current),
+        sprintf(
+          'FRONTED %s reached session limit (active: %d, warning: %d, critical: %d, max %d)',
+          $service,
+          $sessions_current,
+          $sessions_warning,
+          $sessions_critical,
+          $sessions_limit,
+        )
+      );
+    }
+  }
+}
+
+sub check_backends {
+  _debug('check_backends', 'is starting check on backends');
+  # Run checks for each of the backends
+  foreach my $service (sort keys %data) {
+    next unless $data{$service}{'type'} eq TYPE_BACKEND;
+    next if $checks{$service}{'state'} eq 'x';
+    next if $service eq 'stats';
+    _debug(
+      'check_backends',
+      'checking BACKEND %s',
+      $service
+    );
+
+    my ($msg, $total, $up, $down, $disabled) = ('',0,0,0,0);
+
+    foreach my $server (sort keys %{$data{$service}{'servers'}}) {
+      ++$total unless $data{$service}{'servers'}{$server}{'backend'};
+      ++$up        if $data{$service}{'servers'}{$server}{'up'};
+      ++$down      if $data{$service}{'servers'}{$server}{'down'};
+      ++$disabled  if $data{$service}{'servers'}{$server}{'disabled'};
+    }
+
+    _debug(
+      'check_backends',
+      'found %d up, %d down, %d disabled (%d total)',
+      $up,
+      $down,
+      $disabled,
+      $total,
+    );
+
+    my $be_warn = $checks{$service}{'be_warn'};
+    my $be_crit = $checks{$service}{'be_crit'};
+
+    # if ($checks{$service}{'state'} eq 'u') {
+    #   $warning_value = $checks{$service}{'be_warn'};
+    #   $critical_value = $checks{$service}{'be_crit'};
+    # } else {
+    #   $warning_value = $total - $checks{$service}{'be_warn'};
+    #   $critical_value = $total - $checks{$service}{'be_crit'};
+    # }
+
+    my $backends_warning;
+    my $backends_critical;
+    my $backends_warning_threshold;
+    my $backends_critical_threshold;
+
+    my $backends_current  = $up;
+    my $backends_limit    = $total;
+    my $metric;
+
+    if ($checks{$service}{'state'} eq 'u') {
+      $metric = $up;
+      $backends_warning  = $be_warn < 1 ? ceil($backends_limit * $be_warn) : $be_warn;
+      $backends_critical = $be_crit < 1 ? ceil($backends_limit * $be_crit) : $be_crit;
+
+      $backends_warning_threshold = sprintf('%i:', $backends_warning);
+      $backends_critical_threshold = sprintf('%i:', $backends_critical);
+    } else {
+      $metric = $down;
+      $backends_warning  = $be_warn < 1 ? ceil($backends_limit * $be_warn) : $be_warn;
+      $backends_critical = $be_crit < 1 ? ceil($backends_limit * $be_crit) : $be_crit;
+
+      $backends_warning_threshold = sprintf('~:%i', $backends_warning);
+      $backends_critical_threshold = sprintf('~:%i', $backends_critical);
+    }
+
+    _debug(
+      'check_backends',
+      DEBUG_MSG_THRESHOLDS,
+      (
+       $backends_current,
+       $backends_limit,
+       $backends_warning,
+       $backends_critical,
+      )
+    );
+
+    my $threshold = Monitoring::Plugin::Threshold->set_thresholds(
+      warning   => $backends_warning_threshold,
+      critical  => $backends_critical_threshold,
+    );
+
+    $mp->add_perfdata(
+        label    => 'backend_' . $service . '_servers_up',
+        value    => $up,
+        warning  => $checks{$service}{'state'} eq 'u' ? $backends_warning : undef,
+        critical => $checks{$service}{'state'} eq 'u' ? $backends_critical : undef,
+        max      => $total,
+    );
+
+    $mp->add_perfdata(
+        label    => 'backend_' . $service . '_servers_down',
+        value    => $down,
+        warning  => $checks{$service}{'state'} eq 'd' ? $backends_warning : undef,
+        critical => $checks{$service}{'state'} eq 'd' ? $backends_critical : undef,
+        max      => $total,
+    );
+
+    $mp->add_perfdata(
+        label => 'backend_' . $service . '_servers_disabled',
+        value => $disabled,
+        max   => $total,
+    );
+
+    if ($threshold->get_status($metric) != OK) {
+      $mp->add_message(
+        $threshold->get_status($metric),
+        sprintf(
+          'Backend %s servers (up: %d, down %d, disabled %d, total %d)',
+          $service,
+          $up,
+          $down,
+          $disabled,
+          $total,
+        )
+      );
+    }
+
+    my $sessions_current = $data{$service}{'sessions'}{'current'};
+    my $sessions_limit = $data{$service}{'sessions'}{'limit'};
+
+    my $limit_warn = $checks{$service}{'limit_warn'};
+    my $limit_crit = $checks{$service}{'limit_crit'};
+
+    my $sessions_warning = $limit_warn < 1 ? ceil($sessions_limit * $limit_warn) : $limit_warn;
+    my $sessions_critical = $limit_crit < 1 ? ceil($sessions_limit * $limit_crit) : $limit_crit;
+
+    _debug('check_frontends', 'running Sessions check');
+    _debug(
+      'check_backends',
+      DEBUG_MSG_THRESHOLDS,
+      (
+       $sessions_current,
+       $sessions_limit,
+       $sessions_warning,
+       $sessions_critical,
+      )
+    );
+
+    $threshold = Monitoring::Plugin::Threshold->set_thresholds(
+        warning   => $sessions_warning,
+        critical  => $sessions_critical,
+    );
+
+    $mp->add_perfdata(
+        label     => 'backend_' . $service . '_sessions',
+        value     => $sessions_current,
+        threshold => $threshold
+    );
+
+    if ($threshold->get_status($sessions_current) != OK) {
+      $mp->add_message(
+        $threshold->get_status($sessions_current),
+        sprintf(
+          'Backend %s sessions %d of %d',
+          $service,
+          $sessions_current,
+          $sessions_limit,
+        )
+      );
+    }
+  }
+}
+
+sub check_servers {
+  _debug('check_servers', 'is starting check on servers');
+  # Run checks for each of servers in each of the backends
+  foreach my $service (sort keys %data) {
+    next unless $data{$service}{'type'} eq TYPE_BACKEND;
+    next if $checks{$service}{'state'} eq 'x';
+    foreach my $server (sort keys %{$data{$service}{'servers'}}) {
+      next if $data{$service}{'servers'}{$server}{'backend'};
+      _debug(
+        'check_servers',
+        'checking SERVER %s on BACKEND %s',
+        ($server, $service)
+      );
+
+      if ($data{$service}{'servers'}{$server}{'sessions'}{'limit'} > 0) {
+        my $sessions_current = $data{$service}{'servers'}{$server}{'sessions'}{'current'};
+        my $sessions_limit = $data{$service}{'servers'}{$server}{'sessions'}{'limit'};
+
+        my $limit_warn = $checks{$service}{'limit_warn'};
+        my $limit_crit = $checks{$service}{'limit_crit'};
+
+        my $sessions_warning = $limit_warn < 1 ? ceil($sessions_limit * $limit_warn) : $limit_warn;
+        my $sessions_critical = $limit_crit < 1 ? ceil($sessions_limit * $limit_crit) : $limit_crit;
+
+        _debug('check_servers', 'running Sessions check');
+        _debug(
+          'check_servers',
+          DEBUG_MSG_THRESHOLDS,
+          (
+            $sessions_current,
+            $sessions_limit,
+            $sessions_warning,
+            $sessions_critical,
+          )
+        );
+
+        my $sessions_threshold = Monitoring::Plugin::Threshold->set_thresholds(
+          warning   => $sessions_warning,
+          critical  => $sessions_critical,
+        );
+
+        $mp->add_perfdata(
+          label     => 'backend_' . $service . '_server_' . $server . '_sessions',
+          value     => $sessions_current,
+          max       => $sessions_limit,
+          threshold => $sessions_threshold,
+        );
+
+        if ($sessions_threshold->get_status($sessions_current) != OK) {
+          $mp->add_message(
+            $sessions_threshold->get_status($sessions_current),
+            sprintf(
+              'SERVER %s of BACKEND %s reached session limit (active: %d, warning: %d, critical: %d, max %d)',
+              $server,
+              $service,
+              $sessions_current,
+              $sessions_warning,
+              $sessions_critical,
+              $sessions_limit,
+            )
+          );
+        }
+      }
+
+      if ($data{$service}{'servers'}{$server}{'queued'}{'limit'} > 0) {
+        _debug('check_servers', 'running Queue check');
+
+        my $queued_current = $data{$service}{'servers'}{$server}{'queued'}{'current'};
+        my $queued_limit = $data{$service}{'servers'}{$server}{'queued'}{'limit'};
+        my $queued_warning = $queued_limit * $checks{$service}{'limit_warn'};
+        my $queued_critical = $queued_limit * $checks{$service}{'limit_crit'};
+        _debug(
+          'check_servers',
+          DEBUG_MSG_THRESHOLDS,
+          (
+            $queued_current,
+            $queued_limit,
+            $queued_warning,
+            $queued_critical,
+          )
+        );
+
+        my $queued_threshold = Monitoring::Plugin::Threshold->set_thresholds(
+          warning   => $queued_warning,
+          critical  => $queued_critical,
+        );
+
+        $mp->add_perfdata(
+          label     => 'backend_' . $service . '_server_' . $server . '_sessions_queued',
+          value     => $queued_current,
+          max       => $queued_limit,
+          threshold => $queued_threshold,
+        );
+
+        if ($queued_threshold->get_status($queued_current) != OK) {
+          $mp->add_message(
+            $queued_threshold->get_status($queued_current),
+            sprintf(
+              'SERVER %s of BACKEND %s reached limit of session queue (active: %d, warning: %d, critical: %d, max %d)',
+              $server,
+              $service,
+              $queued_current,
+              $queued_warning,
+              $queued_critical,
+              $queued_limit,
+            )
+          );
+        }
+      }
+    }
+  }
+}
+
+sub pod2scalar {
+  open my $fh, '>', \my $text;
+  pod2usage(
+    @_,
+    -output  => $fh,
+    -exitval => 'NOEXIT'
+  );
+  $text;
+}
+
+sub wrap_exit
+{
+    if($pkg_monitoring_available == 1) {
+        $mp->plugin_exit( @_ );
+    } else {
+        $mp->nagios_exit( @_ );
+    }
+}
+
+# Run the program
+&main();
+
+__END__
+
+=head1 NAME
+
+check_haproxy: This is a Nagios plugin to check the status of HAProxy over a
+socket connection (by default, /var/run/haproxy.sock).
+
+=head1 SYNOPSIS
+
+check_haproxy [--defaults (defaults)] [--overrides S<(override 1)>]
+  [--overrides S<(override 2)>] [--overrides S<(override n)>]
+  [--[no]frontends] [--[no]backends] [--[no]servers]
+  [--socket (path)] [--help]
+
+=head1 OPTIONS
+
+=over
+
+=item B<-f>, B<--[no]frontends>
+
+Enable/disable checks for the frontends in HAProxy (that they're marked as OPEN
+and the session limits haven't been reached).
+
+=item B<-b>, B<--[no]backends>
+
+Enable/disable checks for the backends in HAProxy (that they have the required
+quorum of servers, and that the session limits haven't been reached).
+
+=item B<-s>, B<--[no]servers>
+
+Enable/disable checks for the servers in HAProxy (that they haven't reached the
+limits for the sessions or for queues).
+
+=item B<-D>, B<--defaults> I<defaults>
+
+Set/Override the defaults which will be applied to all checks (unless
+specifically set by --overrides). Takes the form:
+
+C<{u,d,x},{svr_warn},{svr_crit},{sess_warn},{sess_crit}>
+
+Each of these is optional, but the positioning is important. To fully override,
+set (for example):
+
+C<u,10,5,.25,0.5>
+
+which means:
+
+=over
+
+=item C<u>
+
+Check for servers up (C<u>) or servers down (C<d>), or disable all checks on
+that particular frontend/backend (C<x>).
+
+=item C<10>
+
+WARNING if less than 10 servers are up, or if at least that many servers are
+down.
+
+=item C<5>
+
+CRITICAL if less than 5 servers are available, or if at least that many have
+gone away.
+
+=item C<.25>
+
+WARNING if more any frontend, backend, or individual server has gone over 25% of
+it's maximum allowed sessions (or any queue for any server on the backend is at
+least 25% full).
+
+=item C<0.5>
+
+CRITICAL for the same reasons as previous, but we've reached 50% of these
+levels.
+
+=back
+
+To override only some of these values from the pre-set defaults
+(C<u,5,2,.75..9>), simply leave the others as empty, for example: C<,10,7> will
+leave checks as up, but increase the server WARN/CRIT to 10/7. or to switch to
+use down, use C<d,>, or off with C<x>.
+
+Each number has two meanings:
+
+=over
+
+=item C<less than 1>
+
+Where any number is less than (but not equal to) 1, then the value is understood
+as a percentage of the available servers or session limits. If you have 20
+servers and set a threshold of .25 then that would mean 5 servers either up or
+down.
+
+=item C<greater than, or equal to 1>
+
+Where any number is greater than, or equal to, 1, then this is a fixed value.
+By setting 5 you are hard-coding the number of servers or sessions, regardless
+of the limit or number available to HAProxy.
+
+The code B<does not> alter this limit if it is greater than the available
+servers or sessions so there are situations where the alert may not trigger.
+For example, in the event of C<down> being the trigger and the number of servers
+is less than the Warning or Critical thresholds, the error may never trigger.
+It is generally better to use C<up> and percentage values where you are going
+to have a flexible number of backends.
+
+=back
+
+=item B<-O>, B<--overrides> I<override>
+
+Override the defaults for a particular frontend or backend, in the form
+{name}:{override}, where {override} is the same format as --defaults above. For
+example, to override the frontend called "api" and allow that to increase to
+limits of 15/10 for WARN/CRIT, use C<api:,15,10>. Add as many as you like by
+specifing the flag multiple times:
+
+C<--overrides api:,15,10 --overrides assets:d,2,5 --overrides webmail:u,3,2>
+
+=item B<-S>, B<--socket> I</path/to/socket>
+
+Path to the socket check_haproxy should connect to (requires read/write
+permissions and must be at least user level; no operator or admin privileges
+needed).
+
+=back
+
+=head1 DESCRIPTION
+
+B<This program> will connect to the HAProxy socket and parse the statistics to
+ensure that it is operating within accepted limits, as per the defaults, or as
+set for each frontend/backend.
+
+=head1 HISTORY
+
+=over
+
+=item v1.0.0rc1
+
+=over
+
+=item *
+
+Testing Release.
+
+=back
+
+=item v1.0.0rc2
+
+=over
+
+=item *
+
+Fix bug in calling do_unknown().
+
+=back
+
+=item v1.0.0
+
+=over
+
+=item *
+
+Added support for disabling some checks with an x state.
+
+=back
+
+=item v1.0.1
+
+=over
+
+=item *
+
+Added prefix to response message.
+
+=back
+
+=item v1.0.2
+
+=over
+
+=item *
+
+Removed old constants no longer needed.
+
+=item *
+
+Added help POD messages.
+
+=back
+
+=item v1.0.3
+
+=over
+
+=item *
+
+Improved error messages around check_pass.
+
+=item *
+
+Fixed critical messaeg for sessions levels: Missing substitution in the report
+string.
+
+=item *
+
+Remove sanity check forcing a maximum value to be blow any threshold as it seams
+that in some cases this is possible in HAProxy.
+
+=back
+
+=item v1.1.0
+
+=over
+
+=item *
+
+Most parts have been rewritten to use Monitoring Plugins or Nagios Plugins
+
+=item *
+
+Adding support to report performance data
+
+=item *
+
+Adding support for state 'no check'
+
+=item *
+
+Change the output to show all parts(servers, backend, frontends) not in OK state.
+
+=back
+
+=item v1.1.1
+
+=over
+
+=item *
+
+Allow colon in backend names in overrides
+
+=item *
+
+Minor fixes and update of documentation
+
+=back
+
+=item v1.2.0
+
+=over
+
+=item *
+
+Make check working as documented
+
+=item *
+
+Fix threshold calculation
+
+=back
+
+=item v1.2.1
+
+=over
+
+=item *
+
+Fix issue with excludes in overrides
+
+=back
+
+=back
+
+=head1 AUTHOR
+
+Jonathan Wright E<lt>github@jon.than.ioE<gt>
+
+=head1 COPYRIGHT AND LICENCE
+
+(c) 2014-2015, Jonathan Wright E<lt>github@jon.than.ioE<gt>
+(c) 2021- PhiBo (DinoTools)
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+=cut

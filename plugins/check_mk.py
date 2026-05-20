@@ -1,0 +1,180 @@
+#!/usr/bin/env python3
+# Copyright (C) 2019 Checkmk GmbH - License: GNU General Public License v2
+# This file is part of Checkmk (https://checkmk.com). It is subject to the terms and
+# conditions defined in the file COPYING, which is part of this source code package.
+
+# Future convention within all Checkmk modules for variable names:
+#
+# - host_name     - Monitoring name of a host (string)
+# - node_name     - Name of cluster member (string)
+# - cluster_name  - Name of a cluster (string)
+# - realhost_name - Name of a *real* host, not a cluster (string)
+
+import errno
+import getopt
+import logging
+import os
+import sys
+from pathlib import Path
+from typing import Self
+
+# Needs to be placed before cmk modules, because they are not available
+# when executed as non site user.
+if not os.environ.get("OMD_SITE"):
+    sys.stderr.write("Checkmk can be used only as site user.\n")
+    sys.exit(1)
+
+import cmk.base.utils  # astrein: disable=cmk-module-layer-violation
+import cmk.ccc.debug  # astrein: disable=cmk-module-layer-violation
+import cmk.ccc.version as cmk_version  # astrein: disable=cmk-module-layer-violation
+import cmk.utils.log  # astrein: disable=cmk-module-layer-violation
+import cmk.utils.paths  # astrein: disable=cmk-module-layer-violation
+from cmk import trace  # astrein: disable=cmk-module-layer-violation
+from cmk.base import profiling  # astrein: disable=cmk-module-layer-violation
+from cmk.base.app import make_app  # astrein: disable=cmk-module-layer-violation
+from cmk.base.modes.call import call  # astrein: disable=cmk-module-layer-violation
+from cmk.base.modes.check_mk import general_options  # astrein: disable=cmk-module-layer-violation
+from cmk.base.modes.modes import (  # astrein: disable=cmk-module-layer-violation
+    discover_modes,
+    Modes,
+)
+from cmk.ccc.crash_reporting import (  # astrein: disable=cmk-module-layer-violation
+    ABCCrashReport,
+    BaseDetails,
+    CrashReportStore,
+    make_crash_report_base_path,
+    VersionInfo,
+)
+from cmk.ccc.exceptions import (  # astrein: disable=cmk-module-layer-violation
+    MKBailOut,
+    MKGeneralException,
+    MKTerminate,
+)
+from cmk.ccc.site import get_omd_config, omd_site  # astrein: disable=cmk-module-layer-violation
+from cmk.trace.export import (  # astrein: disable=cmk-module-layer-violation
+    exporter_from_config,
+    init_span_processor,
+)
+from cmk.utils.log import console  # astrein: disable=cmk-module-layer-violation
+
+cmk.utils.log.setup_console_logging()
+logger = logging.getLogger("cmk.base")
+
+cmk.base.utils.register_sigint_handler()
+
+
+init_span_processor(
+    trace.init_tracing(
+        service_namespace=trace.service_namespace_from_config(
+            "", omd_config := get_omd_config(cmk.utils.paths.omd_root)
+        ),
+        service_name="cmk",
+        service_instance_id=omd_site(),
+        extra_resource_attributes=trace.resource_attributes_from_config(cmk.utils.paths.omd_root),
+    ),
+    exporter_from_config(
+        exporter_log_level=logging.CRITICAL,
+        config=trace.trace_send_config(omd_config),
+    ),
+)
+
+
+class CrashReport(ABCCrashReport[BaseDetails]):
+    @classmethod
+    def type(cls) -> str:
+        return "base"
+
+    @classmethod
+    def from_exception(
+        cls,
+        *,
+        crash_report_base_path: Path,
+        version_info: VersionInfo,
+    ) -> Self:
+        return cls(
+            crash_report_base_path=crash_report_base_path,
+            crash_info=cls.make_crash_info(
+                version_info,
+                BaseDetails(
+                    argv=sys.argv,
+                    env=dict(os.environ),
+                ),
+            ),
+        )
+
+
+modes = Modes(plugins=discover_modes(), general_options=general_options())
+
+try:
+    opts, args = getopt.getopt(sys.argv[1:], modes.short_getopt_specs(), modes.long_getopt_specs())
+except getopt.GetoptError as err:
+    console.error(f"ERROR: {err}\n", file=sys.stderr)
+    sys.stdout.write(modes.help())
+    sys.exit(1)
+
+# First load the general modifying options
+modes.process_general_options(opts)
+
+try:
+    # Now find the requested mode and execute it
+    mode_name, mode_args = None, None
+    for o, a in opts:
+        if modes.exists(o := o.lstrip("-")):
+            mode_name, mode_args = o, a
+            break
+
+    if not opts and not args:
+        sys.stdout.write(modes.help())
+        sys.exit(0)
+
+    app = make_app(cmk_version.edition(cmk.utils.paths.omd_root))
+
+    done, exit_status = False, 0
+    trace_context = trace.extract_context_from_environment(dict(os.environ))
+    if mode_name is not None and mode_args is not None:
+        exit_status = call(app, modes.get(mode_name), mode_args, opts, args, trace_context)
+        done = True
+
+    # When no mode was found, Checkmk is running the "check" mode
+    if not done:
+        if (args and len(args) <= 2) or "--keepalive" in [o[0] for o in opts]:
+            exit_status = call(app, modes.get("check"), None, opts, args, trace_context)
+        else:
+            sys.stdout.write(modes.help())
+            exit_status = 0
+
+    sys.exit(exit_status)
+
+except MKTerminate:
+    sys.stderr.write("<Interrupted>\n")
+    sys.exit(1)
+
+except (MKGeneralException, MKBailOut) as e:
+    sys.stderr.write(f"{e}\n")
+    if cmk.ccc.debug.enabled():
+        raise
+    sys.exit(3)
+
+except OSError as e:
+    if e.errno == errno.EPIPE:
+        # this is not an error, caller closes socket(s) and will kill cmk too
+        sys.exit(4)
+    CrashReportStore().save(
+        CrashReport.from_exception(
+            crash_report_base_path=make_crash_report_base_path(cmk.utils.paths.omd_root),
+            version_info=cmk_version.get_general_version_infos(cmk.utils.paths.omd_root),
+        )
+    )
+    raise
+
+except Exception:
+    CrashReportStore().save(
+        CrashReport.from_exception(
+            crash_report_base_path=make_crash_report_base_path(cmk.utils.paths.omd_root),
+            version_info=cmk_version.get_general_version_infos(cmk.utils.paths.omd_root),
+        )
+    )
+    raise
+
+finally:
+    profiling.output_profile()
